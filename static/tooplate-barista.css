@@ -336,8 +336,8 @@ strong {
 }
 
 .navbar {
-  background: transparent;
-  z-index: 999999;
+  background: transparent !important;
+  z-index: 999999 !important;
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -795,7 +795,7 @@ strong {
   BOOKING SECTION              
 -----------------------------------------*/
 .booking-section {
-  background-image: url('images/barber_masthead.jpg');
+  background-image: url('images/poltrone.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

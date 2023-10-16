@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Barista Cafe - HTML Reservation Form</title>
+        <title>GigaBarber</title>
 
         <!-- CSS FILES -->                
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@ Bootstrap 5 HTML CSS Template
                     <div class="container">
                         <a class="navbar-brand d-flex align-items-center" href="index.html">
                             <img src="../static/images/Logo.png" class="navbar-brand-image img-fluid" alt="">
-                            Barista.co
+                            GigaBarber
                         </a>
         
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,7 @@ Bootstrap 5 HTML CSS Template
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html#section_3">Our Menu</a>
+                                    <a class="nav-link" href="index.html#section_3">Service</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -94,7 +94,7 @@ Bootstrap 5 HTML CSS Template
                                             <div class="text-center mb-4 pb-lg-2">
                                                 <em class="text-white">Fill out the booking form</em>
 
-                                                <h2 class="text-white">Book a table</h2>
+                                                <h2 class="text-white">Book a service</h2>
                                             </div>
 
                                             <div class="booking-form-body">
@@ -104,7 +104,7 @@ Bootstrap 5 HTML CSS Template
                                                     </div>
 
                                                     <div class="col-lg-6 col-12">
-                                                        <input type="tel" class="form-control" name="booking-form-phone" placeholder="Phone: 085 456 7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="">
+                                                        <input type="tel" class="form-control" name="booking-form-phone" placeholder="Phone: 333 613 7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="">
                                                     </div>
 
                                                     <div class="col-lg-6 col-12">
@@ -115,9 +115,35 @@ Bootstrap 5 HTML CSS Template
                                                         <input type="date" name="booking-form-date" id="booking-form-date" class="form-control" placeholder="Date" required="">
                                                     </div>
 
-                                                    <div class="col-lg-12 col-12">
-                                                        <input type="number" name="booking-form-number" id="booking-form-number" class="form-control" placeholder="Number of People" required="">
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="Salon" style="color: white">Salon</label>
+                                                        <select class= "form-control" name="Salon" required>
+                                                            <option value="">--select--</option>
+                                                            <option type="hidden" name="Salon">Barber Shop</option>
+                                                            <option type="hidden" name="Salon">Hairdressing Salon</option>
+                                                        </select>
+                                                    </div>
 
+                                                    <!-- If (Salon= 'Barber Shop')
+                                                                Mostra tipoServizio Maschile
+                                                         elseif (Salon = 'Hairdressing Salon')
+                                                                Mostra tipoServizio Femminile
+                                                         else
+                                                                Non mostrare niente
+                                                    -->
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="tipoV" style="color: white">Service</label>
+                                                            <select class= "form-control" name="tipoServizio" required>
+                                                                <option value="">--select--</option>
+                                                                <option type="hidden" name="tipoServizio">Haircut</option>
+                                                                <option type="hidden" name="tipoServizio">Beard</option>
+                                                                <option type="hidden" name="tipoServizio">Haircut & Beard</option>
+                                                                <option type="hidden" name="tipoServizio">Traditional Shave</option>
+                                                                <option type="hidden" name="tipoServizio">Children's Haircut</option>
+                                                            </select>
+                                                    </div>
+
+                                                    <div class="col-lg-12 col-12">
                                                         <textarea name="booking-form-message" rows="3" class="form-control" id="booking-form-message" placeholder="Comment (Optional)"></textarea>
                                                     </div>
 

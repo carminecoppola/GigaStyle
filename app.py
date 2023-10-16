@@ -7,9 +7,11 @@ app = Flask(__name__)
 def hello_world():  # put application's code here
     return 'Hello World!'
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/reservation')
 def reservation():

@@ -1,96 +1,78 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "template.html" %}
 
-        <meta name="description" content="">
-        <meta name="author" content="">
+{% block content %}
 
-        <title>GigaBarber - Login</title>
+<section class="booking-section2 section-padding">
+    <div class="container">
+        <div class="row">
+             <div class="col-lg-10 col-12 mx-auto">
+                            <div class="booking-form-wrap">
+                                <div class="row">
+                                    <div class="col-lg-7 col-12 p-0">
+                                        <form class="custom-form booking-form" action="#" method="post" role="form">
+                                            <div class="text-center mb-4 pb-lg-2">
+                                                <em class="text-white">Register to be able to book GigaBarber services</em>
 
-        <link rel="icon" type="image/x-icon" href="../static/images/icon/logo.svg" />
-        <!-- CSS FILES -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+                                                <h2 class="text-white">Create your profile</h2>
+                                            </div>
 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                                            <div class="booking-form-body">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="tipoV" style="color: white">First Name</label>
+                                                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Mario" required>
+                                                    </div>
 
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap" rel="stylesheet">
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="tipoV" style="color: white">Last Name</label>
+                                                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Rossi" required>
+                                                    </div>
 
-        <link href="../static/bootstrap.min.css" rel="stylesheet">
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="tipoV" style="color: white">E-mail</label>
+                                                        <input type="email" name="email" id="email" class="form-control" placeholder="mariorossi@gmail.com" required>
+                                                    </div>
 
-        <link href="../static/styleLogin.css" rel="stylesheet">
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="tipoV" style="color: white">Password</label>
+                                                        <input type="password" name="password" id="password" class="form-control" placeholder="........" required>
+                                                    </div>
 
-        <link href="../static/bootstrap-icons.css" rel="stylesheet">
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="tipoV" style="color: white">Cellular</label>
+                                                        <input type="tel" class="form-control" name="cellNumber" id="cellNumber" placeholder="Phone: 333 613 7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="">
+                                                    </div>
 
-        <link href="../static/vegas.min.css" rel="stylesheet">
+                                                    <div class="col-lg-6 col-12">
+                                                        <label name="tipoV" style="color: white">Gender</label>
+                                                            <select class= "form-control" name="gender" required>
+                                                                <option value="">--select--</option>
+                                                                <option type="hidden" name="gender">Male</option>
+                                                                <option type="hidden" name="gender">Female</option>
+                                                                <option type="hidden" name="gender">Other</option>
+                                                            </select>
+                                                    </div>
 
-        <link href="../static/tooplate-barista.css" rel="stylesheet">
+                                                    <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
+                                                        <button type="submit" class="form-control">Register</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
 
+                                    <div class="col-lg-5 col-12 p-0">
+                                        <div class="booking-form-image-wrap contact-section">
+                                            <img src="../static/images/team/desBeard.jpg"  class="booking-form-image img-fluid" alt="">
+                                        </div>
 
-    </head>
-
-    <body class="login-page">
-            <main>
-                <section class="section-padding">
-                    <div class="container">
-                        <div class="screen-1">
-
-                            <!--Icona-->
-                            <svg class="logo" xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="300"
-                                 viewbox="0 0 640 480" xml:space="preserve">
-                                <g transform="matrix(3.31 0 0 3.31 320.4 240.4)">
-                                  <circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(188,108,37); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle>
-                                </g>
-                                <g transform="matrix(0.98 0 0 0.98 268.7 213.7)">
-                                  <circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle>
-                                </g>
-                                <g transform="matrix(1.01 0 0 1.01 362.9 210.9)">
-                                  <circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle>
-                                </g>
-                                <g transform="matrix(0.92 0 0 0.92 318.5 286.5)">
-                                  <circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle>
-                                </g>
-                                <g transform="matrix(0.16 -0.12 0.49 0.66 290.57 243.57)">
-                                  <polygon style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" points="-50,-50 -50,50 50,50 50,-50 "></polygon>
-                                </g>
-                                <g transform="matrix(0.16 0.1 -0.44 0.69 342.03 248.34)">
-                                  <polygon style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "></polygon>
-                                </g>
-                            </svg>
-                            <!--Form-->
-                            <div class="email">
-                            <label for="email">Email Address</label>
-                            <div class="sec-2">
-                              <ion-icon name="mail-outline"></ion-icon>
-                              <input type="email" name="email" placeholder="mariorossi@gmail.com"/>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <div class="password">
-                            <label for="password">Password</label>
-                            <div class="sec-2">
-                              <ion-icon name="lock-closed-outline"></ion-icon>
-                              <input class="pas" type="password" name="password" placeholder="············"/>
-                              <ion-icon class="show-hide" name="eye-outline"></ion-icon>
-                            </div>
-                          </div>
-                          <button class="login">Login </button>
-                          <div class="footer" >
-                              <span>Signup</span>
-                              <span>Forgot Password?</span>
-                          </div>
+
                         </div>
-                    </div>
-                </section>
-            </main>
+        </div>
+    </div>
+</section>
 
-
-        <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/vegas.min.js"></script>
-        <script src="js/custom.js"></script>
-
-    </body>
-</html>
+{% endblock %}

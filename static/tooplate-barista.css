@@ -794,6 +794,15 @@ strong {
 /*---------------------------------------
   BOOKING SECTION              
 -----------------------------------------*/
+.booking-section2 {
+  background-image: url('images/team/desBeard.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+
 .booking-section {
   background-image: url('images/poltrone.jpg');
   background-repeat: no-repeat;

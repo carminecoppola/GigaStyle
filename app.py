@@ -48,7 +48,7 @@ def admin_required(f):
     return wrap
 
 
-#Routes
+# Routes
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -57,6 +57,11 @@ def index():
 @app.route('/reservation/')
 def reservation():
     return render_template('reservation.html')
+
+
+@app.route('/registration/')
+def registration():
+    return render_template('registration.html')
 
 
 @app.route('/login/')

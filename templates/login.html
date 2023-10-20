@@ -19,16 +19,6 @@
                                             <div class="booking-form-body">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12">
-                                                        <label name="tipoV" style="color: white">First Name</label>
-                                                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="John" required>
-                                                    </div>
-
-                                                    <div class="col-lg-6 col-12">
-                                                        <label name="tipoV" style="color: white">Last Name</label>
-                                                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Smith" required>
-                                                    </div>
-
-                                                    <div class="col-lg-6 col-12">
                                                         <label name="tipoV" style="color: white">E-mail</label>
                                                         <input type="email" name="email" id="email" class="form-control" placeholder="johnsmith@gmail.com" required>
                                                     </div>
@@ -38,23 +28,11 @@
                                                         <input type="password" name="password" id="password" class="form-control" placeholder="........" required>
                                                     </div>
 
-                                                    <div class="col-lg-6 col-12">
-                                                        <label name="tipoV" style="color: white">Cellular</label>
-                                                        <input type="tel" class="form-control" name="cellNumber" id="cellNumber" placeholder="Phone: 333 613 7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="">
-                                                    </div>
-
-                                                    <div class="col-lg-6 col-12">
-                                                        <label name="tipoV" style="color: white">Gender</label>
-                                                            <select class= "form-control" name="gender" required>
-                                                                <option value="">--select--</option>
-                                                                <option type="hidden" name="gender">Male</option>
-                                                                <option type="hidden" name="gender">Female</option>
-                                                                <option type="hidden" name="gender">Other</option>
-                                                            </select>
-                                                    </div>
-
                                                     <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
-                                                        <button type="submit" class="form-control">Register</button>
+                                                        <button type="submit" class="form-control">Login</button>
+                                                        <div class="text-center">
+                                                            <a href="{{url_for('registration')}}" class="text-secondary">Sign in</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -63,7 +41,7 @@
 
                                     <div class="col-lg-5 col-12 p-0">
                                         <div class="booking-form-image-wrap contact-section">
-                                            <img src="../static/images/cutBarber.jpg"  class="booking-form-image img-fluid" alt="">
+                                            <img src="../static/images/poltrone2.jpg"  class="booking-form-image img-fluid" alt="">
                                         </div>
 
                                     </div>

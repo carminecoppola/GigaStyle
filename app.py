@@ -56,7 +56,7 @@ def index():
 
 @app.route('/reservation/')
 def reservation():
-    return render_template('reservation.html')
+    return render_template('reservationBarber.html')
 
 
 @app.route('/registration/')
@@ -67,6 +67,21 @@ def registration():
 @app.route('/login/')
 def login():
     return render_template('login.html')
+
+
+@app.route('/prereservation/')
+def home():
+    return render_template('preReservation.html')
+
+
+@app.route('/barber/')
+def barber():
+    return render_template('reservationBarber.html')
+
+
+@app.route('/hairdresser/')
+def hairdresser():
+    return render_template('reservationHairDresser.html')
 
 
 if __name__ == '__main__':

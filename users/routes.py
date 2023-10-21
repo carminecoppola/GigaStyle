@@ -2,7 +2,7 @@ from app import app
 from users.models import User
 
 
-@app.route('/user/signup', methods=['POST'])
+@app.route('/user/registration', methods=['POST'])
 def signup():
     return User().signup()
 

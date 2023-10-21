@@ -2,41 +2,28 @@
 
 {% block content %}
 
-    <style>
-        hr.divider {
-        height: 0.3rem;
-        max-width: 7rem;
-        margin: 1rem auto;
-        background-color: #bc6c25;
-        opacity: 1;
-}
-    </style>
-
-
 <div class="about-section section-padding">
     <div class="row">
         <div class="section-overlay"></div>
         <div class="container">
-            <div class="col-lg-10 mx-auto mb-4">
-            <h2 class="text-center mt-0" style="color: white">
-                Choose your salon
-            </h2>
-            <hr class="divider" />
-        </div>
+            <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
+                <em class="text-white">Choose your salon</em>
+                <h2 class="text-white">Salon</h2>
+            </div>
             <div class="row align-items-center">
                 <!-- Uomo -->
                 <div class="col-lg-6 col-12">
                     <div class="ratio ratio-1x1">
-                        <img src="../static/images/barba.jpg" style="box-sizing: border-box" class="custom-video">
+                        <img src="../static/images/salonImage/barba.jpg" style="box-sizing: border-box" class="custom-video">
                         <div class="about-video-info d-flex flex-column">
                             <h4 class="mt-auto">Reservation for BarberShop</h4>
                             <p class="text-white">Treat yourself to the quality experience you deserve. At our barbershop,
                                 our experts are ready to provide you with customized cuts and treatments
                                 to ensure you achieve an impeccable appearance and a renewed sense of
                                 confidence.
-
+                            </p>
                             <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
-                                <a type="submit" class="form-control" href="{{url_for('barber')}}">Reservation</a>
+                                <a class="btn custom-btn custom-border-btn" href="{{url_for('barber')}}">Reservation Barber Shop<i class="bi-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
                     </div>
@@ -45,14 +32,15 @@
                 <!-- Donna -->
                 <div class="col-lg-6 col-12">
                     <div class="ratio ratio-1x1">
-                        <img src="../static/images/capellidonna.jpg" style="box-sizing: border-box" class="custom-video">
+                        <img src="../static/images/salonImage/capellidonna.jpg" style="box-sizing: border-box" class="custom-video">
                         <div class="about-video-info d-flex flex-column">
                             <h4 class="mt-auto">Reservation for HairDresser</h4>
-                            <p class="text-white"> Choose our hair salon and access all our services.
+                            <p class="text-white">Choose our hair salon and access all our services.
                                 Come and relax, and treat yourself to a day of beauty and elegance
                                 tailored just for you.
+                            </p>
                             <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
-                                <a type="submit" class="form-control" href="{{url_for('hairdresser')}}">Reservation</a>
+                                <a class="btn custom-btn custom-border-btn" href="{{url_for('hairdresser')}}">Reservation Hairdresser Salon<i class="bi-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
                     </div>

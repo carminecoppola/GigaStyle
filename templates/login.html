@@ -2,53 +2,42 @@
 
 {% block content %}
 
-<section class="booking-section2 section-padding">
+<section class="booking-section section-padding">
     <div class="container">
         <div class="row">
-             <div class="col-lg-10 col-12 mx-auto">
-                            <div class="booking-form-wrap">
+            <div class="col-lg-12 col-12 d-flex justify-content-center align-items-center">
+                <div class="booking-form-wrap" style="max-width: 400px;"> <!-- Regola la larghezza massima come preferisci -->
+                    <div class="col-12 p-0">
+                        <form class="custom-form booking-form" action="#" method="post" role="form">
+                            <div class="text-center mb-4 pb-lg-2">
+                                <em class="text-white">Log in to your account to book GigaBarber services</em>
+                                <h2 class="text-white">Login</h2>
+                            </div>
+
+                            <div class="booking-form-body">
                                 <div class="row">
-                                    <div class="col-lg-7 col-12 p-0">
-                                        <form class="custom-form booking-form" action="#" method="post" role="form">
-                                            <div class="text-center mb-4 pb-lg-2">
-                                                <em class="text-white">Log in to your account to book GigaBarber services</em>
-
-                                                <h2 class="text-white">Login</h2>
-                                            </div>
-
-                                            <div class="booking-form-body">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-12">
-                                                        <label name="tipoV" style="color: white">E-mail</label>
-                                                        <input type="email" name="email" id="email" class="form-control" placeholder="johnsmith@gmail.com" required>
-                                                    </div>
-
-                                                    <div class="col-lg-6 col-12">
-                                                        <label name="tipoV" style="color: white">Password</label>
-                                                        <input type="password" name="password" id="password" class="form-control" placeholder="........" required>
-                                                    </div>
-
-                                                    <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
-                                                        <button type="submit" class="form-control">Login</button>
-                                                        <div class="text-center">
-                                                            <a href="{{url_for('registration')}}" class="text-secondary">Sign in</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                    <div class="col-12">
+                                        <label for="email" style="color: white">E-mail</label>
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="johnsmith@gmail.com" required>
                                     </div>
 
-                                    <div class="col-lg-5 col-12 p-0">
-                                        <div class="booking-form-image-wrap contact-section">
-                                            <img src="../static/images/poltrone2.jpg"  class="booking-form-image img-fluid" alt="">
-                                        </div>
+                                    <div class="col-12">
+                                        <label for="password" style="color: white">Password</label>
+                                        <input type="password" name "password" id="password" class="form-control" placeholder="........" required>
+                                    </div>
 
+                                    <div class="col-12 mt-2">
+                                        <button type="submit" class="form-control">Login</button>
+                                        <div class="text-center mt-2">
+                                            <a href="{{url_for('registration')}}" class="text-secondary">Sign in</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

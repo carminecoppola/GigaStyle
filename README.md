@@ -1,6 +1,6 @@
-# GigaBarber
+# GigaStyle
 
-GigaBarber is a web application that allows users to book appointments with their favorite barbers and hairdressers in a smart and convenient way. Users can also browse through the price list and available services offered by various barbershops and hair salons. This README provides an overview of the project, how to set it up, and some key features.
+GigaStyle is a web application that allows users to book appointments with their favorite barbers and hairdressers in a smart and convenient way. Users can also browse through the price list and available services offered by various barbershops and hair salons. This README provides an overview of the project, how to set it up, and some key features.
 
 # Features
 
@@ -12,7 +12,7 @@ GigaBarber is a web application that allows users to book appointments with thei
 
 # Usage
 
-Visit the GigaBarber website and register for an account.
+Visit the GigaStyle website and register for an account.
 Browse services, choose a barber or hairdresser, and book an appointment.
 Explore your user profile to manage your information and appointments.
 For barbershop owners, access the admin panel to manage services and appointments.

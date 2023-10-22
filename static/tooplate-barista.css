@@ -336,7 +336,7 @@ strong {
 }
 
 .navbar {
-  background: transparent !important;
+  background: rgba(233, 233, 231, 0.65) !important;
   z-index: 999999 !important;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -685,7 +685,7 @@ strong {
   OUR MENU              
 -----------------------------------------*/
 .menu-section {
-  background-image: url('../static/images/salonImage/saloneParrucchieri.png');
+  background-image: url('../static/images/salonImage/wallpaperPrice.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -805,7 +805,7 @@ strong {
 
 
 .booking-section {
-  background-image: url('../static/images/salonImage/poltrone.jpg');
+  background-image: url('../static/images/salonImage/wallpaper.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

@@ -28,7 +28,7 @@ function initMap() {
 
     //Per la descrizione del Marker (ogni parcheggio)
     const infowindow1 = new google.maps.InfoWindow({
-        content: "GigaBarber,\nVia Roma n.57,\n80142 Napoli NA\n" +
+        content: "GigaStyle,\nVia Roma n.57,\n80142 Napoli NA\n" +
             "Italia",
     });
 

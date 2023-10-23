@@ -540,10 +540,10 @@ strong {
   border-radius: var(--border-radius-medium);
   content: "";
   position: absolute;
-  top: 55%;
+  top: 45%;
   left: 50%;
   transform: translate(-55%, -50%) rotate(45deg);
-  width: 250px;
+  width: 330px;
   height: 350px;
   pointer-events: none;
 }

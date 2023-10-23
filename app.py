@@ -68,25 +68,21 @@ def login():
 
 
 @app.route('/reservation/')
-@login_required
 def reservation():
     return render_template('reservationBarber.html')
 
 
 @app.route('/choose/')
-@login_required
 def choose():
     return render_template('choose.html')
 
 
 @app.route('/barber/')
-@login_required
 def barber():
     return render_template('reservationBarber.html')
 
 
 @app.route('/hairdresser/')
-@login_required
 def hairdresser():
     return render_template('reservationHairDresser.html')
 

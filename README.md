@@ -28,3 +28,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Thanks to the Flask community for providing a powerful web framework.
 Inspiration for this project came from the need for a convenient barber and hairdresser booking system.
+
+
+# Mockup
+<img width="1470" alt="Screenshot 2023-10-22 alle 19 43 35" src="https://github.com/carminecoppola/GigaBarber/assets/74236426/d6a3ad2c-53fa-433c-b5a5-a09a6a1e9014">

@@ -1,69 +1,39 @@
-from functools import wraps
-
-from flask import Flask, render_template, session, redirect, flash, url_for
+from flask import Flask, render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
 
-# Connessione a un'istanza MongoDB locale
-client = MongoClient("mongodb+srv://miniello917:<supermino>@gigabarber.jqoknjr.mongodb.net/")
+uri = "mongodb+srv://miniello:pericle@cluster0.1lorjnu.mongodb.net/?retryWrites=true&w=majority"
 
-# Specifica il database a cui connettersi se non esiste lo crea (Collezzione ???)
-db = client['db-gigabarber']
-userCollection = db["users"]
+# Create a new client and connect to the server
+client = MongoClient(uri)
 
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 
-# Decorators
-def login_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return f(*args, **kwargs)
-        else:
-            return redirect('/')
-
-    return wrap
-
-
-def login_not_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return redirect('/')
-        else:
-            return f(*args, **kwargs)
-
-    return wrap
-
-
-def admin_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if session['user']['role'] == "admin":
-            return f(*args, **kwargs)
-        else:
-            flash("You need to be an admin to view this page.")
-            return redirect(url_for('choose'))
-
-    return wrap
+db = client.DBUtenti
+coll = db.utenti
 
 
 # Routes
-
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
-@app.route('/registration/')
-@login_not_required
+@app.route('/registration/', methods=['GET', 'POST'])
 def registration():
+    print('Africani bastardi')
     return render_template('registration.html')
 
 
-@app.route('/login/')
-@login_not_required
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
+    print('Luridi Africani bastardi')
     return render_template('login.html')
 
 
@@ -74,6 +44,7 @@ def reservation():
 
 @app.route('/choose/')
 def choose():
+    print('Choose fratm ennar')
     return render_template('choose.html')
 
 

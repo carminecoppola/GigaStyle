@@ -15,22 +15,18 @@ class User:
         del user['password']
         session['logged_in'] = True
         session['user'] = user
-        redirect('/User/')
-        return jsonify(user), 200
+        return redirect('/User/')
+        #return jsonify(user), 200
 
     # signup(): gestisce la registrazione degli utenti. Raccoglie i dati dal modulo di registrazione,
     # crea un documento utente con un _id generato casualmente e fa l'hash della password dell'utente.
     # Verifica se l'email è già registrata nel database e se non lo è, salva il nuovo utente nel database,
     # avviando una sessione utente.
     def signup(self):
-
+        print('Ciao luridissimi negri')
         user = {
             "_id": uuid.uuid4().hex,
-            "first_name": request.form.get('first_name'),
-            "last_name": request.form.get('last_name'),
-            "phone": request.form.get('phone'),
             "email": request.form.get('email'),
-            "gender": request.form.get('gender'),
             "password": request.form.get('password'),
             "role": "user"
         }
@@ -39,9 +35,9 @@ class User:
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
 
         # Email check
-        if db.users.find_one({"email": user['email']}):
+        if db.users.find_one({"email": user['email']}):  #Mi puzza db.users (dovrebbe essere forse db.utenti)
             return jsonify({"error": "Email already present"}), 400
-        if db.users.insert_one(user):
+        if db.users.insert_one(user):                    #Mi puzza db.users (dovrebbe essere forse db.utenti)
             return self.start_session(user)
 
         return jsonify({"error": "Signup failed"}), 400
@@ -60,7 +56,9 @@ class User:
             "email": request.form.get('email')
         })
 
-        if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
-            return self.start_session(user)
-        else:
-            return jsonify({"error": "Invalid login credentials"}), 401
+        return self.start_session(user)
+
+        #if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+            #return self.start_session(user)
+        #else:
+            #return jsonify({"error": "Invalid login credentials"}), 401

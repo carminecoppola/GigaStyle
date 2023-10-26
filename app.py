@@ -29,17 +29,12 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/reservation/')
-def reservation():
-    return render_template('reservationBarber.html')
-
-
 @app.route('/choose/')
 def choose():
     return render_template('choose.html')
 
 
-@app.route('/barber/')
+@app.route('/barber/', methods=['GET', 'POST'])
 def barber():
     return render_template('reservationBarber.html')
 

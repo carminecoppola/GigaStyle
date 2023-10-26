@@ -48,6 +48,11 @@ def hairdresser():
     return render_template('reservationHairDresser.html')
 
 
+@app.route('/employees/')
+def employees():
+    return render_template('employees.html')
+
+
 @app.route('/admin/')
 def admin():
     return render_template('admin.html')
@@ -100,6 +105,8 @@ def login():
 
             if email == 'admin@admin.com':
                 return redirect(url_for('admin'))
+            elif email == 'emp@employments.com':
+                return redirect(url_for('employees'))
             else:
                 # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
                 return redirect(url_for('choose', email=email))

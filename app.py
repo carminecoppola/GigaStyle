@@ -39,7 +39,7 @@ def barber():
     return render_template('reservationBarber.html')
 
 
-@app.route('/hairdresser/')
+@app.route('/hairdresser/', methods=['GET', 'POST'])
 def hairdresser():
     return render_template('reservationHairDresser.html')
 
@@ -119,5 +119,13 @@ def logout():
     return 'Sei stato disconnesso. <a href="/">Torna alla pagina principale</a>'
 
 
+
+
+
+
+
 if __name__ == '__main__':
     app.run()
+
+
+

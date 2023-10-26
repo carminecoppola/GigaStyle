@@ -88,7 +88,7 @@ def hairdresser():
     return render_template('reservationHairDresser.html')
 
 
-@app.route('/employees/')
+@app.route('/employees')
 def employees():
     return render_template('employees.html')
 

@@ -148,6 +148,7 @@ def login():
             elif email == 'emp@employments.com':
                 return redirect(url_for('employees'))
             else:
+                print('sono in login')
                 # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
                 return redirect(url_for('choose', email=email))
 
@@ -157,7 +158,7 @@ def login():
     return render_template('login.html')
 
 
-# Pagina di login
+# Pagina di home
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -175,7 +176,8 @@ def home():
             elif email == 'emp@employments.com':
                 return redirect(url_for('employees'))
             else:
-                # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
+                print('sono in home')
+                # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
                 return redirect(url_for('homePage'))
 
         else:
@@ -186,8 +188,8 @@ def home():
 
 @app.route('/homePage')
 def homePage():
+    print('sono in homePage')
     return render_template('homePage.html')
-
 
 
 @app.route('/success')

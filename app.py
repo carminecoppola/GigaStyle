@@ -20,6 +20,7 @@ except Exception as e:
 
 db = client['utenti']
 collection = db['utenti']
+collection2 = db['booking']
 
 
 # Routes
@@ -125,5 +126,3 @@ def logout():
 
 if __name__ == '__main__':
     app.run()
-
-

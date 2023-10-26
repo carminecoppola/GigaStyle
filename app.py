@@ -123,11 +123,5 @@ def logout():
     return 'Sei stato disconnesso. <a href="/">Torna alla pagina principale</a>'
 
 
-#@app.route('/logout')
-#def logout():
- #   session.pop('email', None)
-#  return 'Sei stato disconnesso. <a href="/">Torna alla pagina principale</a>'
-
-
 if __name__ == '__main__':
     app.run()

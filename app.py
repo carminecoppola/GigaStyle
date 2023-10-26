@@ -20,6 +20,7 @@ except Exception as e:
 
 db = client['utenti']
 collection = db['utenti']
+collection2 = db['booking']
 
 
 # Routes

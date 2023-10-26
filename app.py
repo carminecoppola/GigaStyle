@@ -157,6 +157,39 @@ def login():
     return render_template('login.html')
 
 
+# Pagina di login
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        user = collection.find_one({'email': email, 'password': password})
+
+        if user:
+            # Login riuscito, creiamo una sessione
+            session['email'] = email
+
+            if email == 'admin@admin.com':
+                return redirect(url_for('admin'))
+            elif email == 'emp@employments.com':
+                return redirect(url_for('employees'))
+            else:
+                # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
+                return redirect(url_for('homePage'))
+
+        else:
+            return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>.'
+
+    return render_template('login.html')
+
+
+@app.route('/homePage')
+def homePage():
+    return render_template('homePage.html')
+
+
+
 @app.route('/success')
 def success():
     return render_template('success.html')

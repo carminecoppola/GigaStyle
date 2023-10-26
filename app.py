@@ -34,7 +34,7 @@ def choose():
     return render_template('choose.html')
 
 
-@app.route('/barber/', methods=['GET', 'POST'])
+@app.route('/barber', methods=['GET', 'POST'])
 def barber():
     if request.method == 'POST':
         # Ottieni i dati del modulo di prenotazione
@@ -61,7 +61,7 @@ def barber():
     return render_template('reservationBarber.html')
 
 
-@app.route('/hairdresser/', methods=['GET', 'POST'])
+@app.route('/hairdresser', methods=['GET', 'POST'])
 def hairdresser():
     if request.method == 'POST':
         # Ottieni i dati del modulo di prenotazione
@@ -157,7 +157,7 @@ def login():
     return render_template('login.html')
 
 
-@app.route('success')
+@app.route('/success')
 def success():
     return render_template('success.html')
 

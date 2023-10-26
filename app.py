@@ -41,6 +41,28 @@ def barber():
 
 @app.route('/hairdresser/', methods=['GET', 'POST'])
 def hairdresser():
+    if request.method == 'POST':
+        # Ottieni i dati del modulo di prenotazione
+        full_name = request.form['full_name']
+        phone = request.form['phone']
+        time = request.form['time']
+        date = request.form['date']
+        hdresser = request.form['hdresser']
+        typeS = request.form['typeS']
+
+        # Inserisci la prenotazione nel database
+        new_booking = {
+            'full_name': full_name,
+            'phone': phone,
+            'time': time,
+            'date': date,
+            'hdresser': hdresser,
+            'typeS': typeS
+        }
+
+        collection2.insert_one(new_booking)
+        return render_template('success.html')
+
     return render_template('reservationHairDresser.html')
 
 

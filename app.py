@@ -48,6 +48,11 @@ def hairdresser():
     return render_template('reservationHairDresser.html')
 
 
+@app.route('/admin/')
+def admin():
+    return render_template('admin.html')
+
+
 @app.route('/registrazione', methods=['GET', 'POST'])
 def registrazione():
     if request.method == 'POST':
@@ -92,8 +97,12 @@ def login():
         if user:
             # Login riuscito, creiamo una sessione
             session['email'] = email
-            # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
-            return redirect(url_for('choose', email=email))
+
+            if email == 'admin@admin.com':
+                return redirect(url_for('admin'))
+            else:
+                # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
+                return redirect(url_for('choose', email=email))
 
         else:
             return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>.'

@@ -148,7 +148,6 @@ def login():
             elif email == 'emp@employments.com':
                 return redirect(url_for('employees'))
             else:
-                print('sono in login')
                 # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
                 return redirect(url_for('choose', email=email))
 
@@ -176,14 +175,13 @@ def home():
             elif email == 'emp@employments.com':
                 return redirect(url_for('employees'))
             else:
-                print('sono in home')
                 # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
                 return redirect(url_for('homePage'))
 
         else:
             return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>.'
 
-    return render_template('login.html')
+    return render_template('loginHome.html')
 
 
 @app.route('/homePage')

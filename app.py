@@ -36,6 +36,28 @@ def choose():
 
 @app.route('/barber/', methods=['GET', 'POST'])
 def barber():
+    if request.method == 'POST':
+        # Ottieni i dati del modulo di prenotazione
+        full_name = request.form['full_name']
+        phone = request.form['phone']
+        time = request.form['time']
+        date = request.form['date']
+        chooseBarber = request.form['chooseBarber']
+        typeS = request.form['typeS']
+
+        # Inserisci la prenotazione nel database
+        new_booking = {
+            'full_name': full_name,
+            'phone': phone,
+            'time': time,
+            'date': date,
+            'chooseBarber': chooseBarber,
+            'typeS': typeS
+        }
+
+        collection2.insert_one(new_booking)
+        return render_template('success.html')
+
     return render_template('reservationBarber.html')
 
 
@@ -146,13 +168,5 @@ def logout():
     return 'Sei stato disconnesso. <a href="/">Torna alla pagina principale</a>'
 
 
-
-
-
-
-
 if __name__ == '__main__':
     app.run()
-
-
-

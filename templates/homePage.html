@@ -1,75 +1,91 @@
 {% extends "template.html" %}
 
 {% block content %}
-    <div class="d-flex justify-content-between">
-        <div class="timeline-container timeline-container-left">
-            <div class="timeline-content">
-                <div class="reviews-block">
-                    <div class="reviews-block-image-wrap d-flex align-items-center">
-                        <img src="../static/images/reviews/young-woman-with-round-glasses-yellow-sweater.jpg" class="reviews-block-image img-fluid" alt="">
 
-                        <div class="">
-                            <h6 class="text-white mb-0">Sandra</h6>
-                            <em class="text-white">Customers</em>
-                        </div>
-                    </div>
+    <link href="../static/styleHome.css" rel="stylesheet">
 
-                    <div class="reviews-block-info">
-                        <p>
-                            I had an amazing experience at GigaStyle! I opted for a haircut and styling before a special event, and I was left speechless.
-                            My hairstylist exceeded my expectations, creating a spectacular hairstyle. The staff was very friendly, and the service was
-                            punctual. I highly recommend GigaStyle to all women looking for quality service.
-                        </p>
+    <style>
+        .card.card-profile {
+          margin-bottom: 20px; !important; /* Aggiungi il margine desiderato qui */
+        }
+    </style>
 
-                        <div class="d-flex border-top pt-3 mt-4">
-                            <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
-
-                            <div class="reviews-group ms-auto">
-                                <i class="bi-star-fill"></i>
-                                <i class="bi-star-fill"></i>
-                                <i class="bi-star-fill"></i>
-                                <i class="bi-star-fill"></i>
-                                <i class="bi-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 200px; background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white" style="color: #bc6c25 !important;">Hello Jesse</h1>
+            <p class="text-white mt-0 mb-5" style="color: #bc6c25 !important;">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+          </div>
         </div>
-
-        <!-- Card duplicata -->
-        <div class="timeline-container timeline-container-left">
-            <div class="timeline-content">
-                <div class="reviews-block">
-                    <div class="reviews-block-image-wrap d-flex align-items-center">
-                        <img src="../static/images/reviews/young-woman-with-round-glasses-yellow-sweater.jpg" class="reviews-block-image img-fluid" alt="">
-
-                        <div class="">
-                            <h6 class="text-white mb-0">Sandra</h6>
-                            <em class="text-white">Customers</em>
-                        </div>
-                    </div>
-
-                    <div class="reviews-block-info">
-                        <p>
-                            I had an amazing experience at GigaStyle! I opted for a haircut and styling before a special event, and I was left speechless.
-                            My hairstylist exceeded my expectations, creating a spectacular hairstyle. The staff was very friendly, and the service was
-                            punctual. I highly recommend GigaStyle to all women looking for quality service.
-                        </p>
-
-                        <div class="d-flex border-top pt-3 mt-4">
-                            <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
-
-                            <div class="reviews-group ms-auto">
-                                <i class="bi-star-fill"></i>
-                                <i class="bi-star-fill"></i>
-                                <i class="bi-star-fill"></i>
-                                <i class="bi-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+          <div class="card card-profile shadow">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#">
+                    <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="rounded-circle">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+              <div class="d-flex justify-content-between">
+                <a href="#" class="btn btn-sm btn-info mr-4">Settings</a>
+              </div>
+            </div>
+            <div class="card-body pt-0 pt-md-4">
+              <div class="row">
+                <div class="col">
+                  <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <h3>
+                  Jessica Jones<span class="font-weight-light">, 27</span>
+                </h3>
+                <div class="h5 font-weight-300">
+                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                </div>
+                <div class="h5 mt-4">
+                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                </div>
+                <div>
+                  <i class="ni education_hat mr-2"></i>University of Computer Science
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">My Reservations</h3>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

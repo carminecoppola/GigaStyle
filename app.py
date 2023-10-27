@@ -93,6 +93,11 @@ def employees():
     return render_template('employees.html')
 
 
+@app.route('/reservationEmployees')
+def reservationEmployees():
+    return render_template('reservationEmployees.html')
+
+
 @app.route('/admin/')
 def admin():
     return render_template('admin.html')

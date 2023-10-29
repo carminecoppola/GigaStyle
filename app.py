@@ -186,8 +186,7 @@ def login():
     return render_template('login.html')
 
 
-
-# Pagina di home
+# Pagina di home (Si deve copiare il metodo login e apportare solo le modifiche di redirect)
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':

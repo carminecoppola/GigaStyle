@@ -1,5 +1,6 @@
 import secrets
 
+import bcrypt
 from flask import Flask, request, render_template, redirect, url_for, session
 from pymongo import MongoClient
 
@@ -29,9 +30,12 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/choose/')
+@app.route('/choose')
 def choose():
-    return render_template('choose.html')
+    if 'email' in session:
+        return render_template('choose.html')
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/barber', methods=['GET', 'POST'])
@@ -105,8 +109,9 @@ def admin():
 
 @app.route('/registrazione', methods=['GET', 'POST'])
 def registrazione():
+    # Verifica se la richiesta è di tipo POST, ovvero se è stata inviata una form
     if request.method == 'POST':
-        # Ottieni i dati del modulo di registrazione
+        # Ottieni i dati del modulo di registrazione dalla form inviata
         email = request.form['email']
         password = request.form['password']
         first_name = request.form['first_name']
@@ -114,14 +119,17 @@ def registrazione():
         phone = request.form['phone']
         gender = request.form['gender']
 
-        # Verifica se l'utente esiste già
+        # Crea un hash della password prima di archiviarlo nel database per migliorare la sicurezza delle password
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+        # Verifica se l'utente esiste già nel database in base all'email fornita
         if collection.find_one({'email': email}):
             return 'Questa email esiste già. Scegli un altra email.'
 
-        # Inserisci l'utente nel database con tutti i campi
+        # Crea un nuovo utente con i dati forniti
         new_user = {
             'email': email,
-            'password': password,
+            'password': hashed_password,
             'first_name': first_name,
             'last_name': last_name,
             'phone': phone,
@@ -129,37 +137,54 @@ def registrazione():
         }
         collection.insert_one(new_user)
 
+        # Imposta la sessione con l'email dell'utente dopo la registrazione
+        session['email'] = email
+
         # Reindirizza l'utente alla pagina "choose.html" dopo la registrazione
         return redirect(url_for('choose'))
 
+    # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di registrazione
     return render_template('registration.html')
 
 
 # Pagina di login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # Verifica se la richiesta è di tipo POST, ovvero se è stata inviata una form
     if request.method == 'POST':
+        # Ottieni l'email e la password dalla form inviata
         email = request.form['email']
         password = request.form['password']
 
-        user = collection.find_one({'email': email, 'password': password})
+        # Cerca l'utente nel database in base all'email fornita
+        user = collection.find_one({'email': email})
 
+        # Se l'utente esiste
         if user:
-            # Login riuscito, creiamo una sessione
-            session['email'] = email
+            # Verifica se la password fornita corrisponde all'hash della password memorizzata
+            if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
+                # Login riuscito, crea una sessione con l'email dell'utente
+                session['email'] = email
 
-            if email == 'admin@admin.com':
-                return redirect(url_for('admin'))
-            elif email == 'emp@employments.com':
-                return redirect(url_for('employees'))
+                # Se l'utente è un amministratore, reindirizzalo alla pagina "admin"
+                if email == 'admin@admin.com':
+                    return redirect(url_for('admin'))
+                # Se l'utente è un dipendente, reindirizzalo alla pagina "employees"
+                elif email == 'emp@employments.com':
+                    return redirect(url_for('employees'))
+                else:
+                    # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile
+                    return redirect(url_for('choose', email=email))
             else:
-                # Reindirizza l'utente alla pagina "choose.html" e passa l'informazione dell'email come variabile
-                return redirect(url_for('choose', email=email))
-
+                # Password errata, mostra un messaggio di errore
+                return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
         else:
-            return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>.'
+            # L'utente non esiste, mostra un messaggio di errore
+            return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
 
+    # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di login
     return render_template('login.html')
+
 
 
 # Pagina di home

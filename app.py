@@ -1,5 +1,5 @@
 import secrets
-
+import hashlib
 import bcrypt
 from flask import Flask, request, render_template, redirect, url_for, session
 from pymongo import MongoClient
@@ -193,20 +193,23 @@ def home():
         email = request.form['email']
         password = request.form['password']
 
-        user = collection.find_one({'email': email, 'password': password})
-
+        user = collection.find_one({'email': email})
         if user:
-            # Login riuscito, creiamo una sessione
-            session['email'] = email
+            # Verifica se la password fornita corrisponde all'hash della password memorizzata
+            if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
+                # Login riuscito, creiamo una sessione
+                session['email'] = email
 
-            if email == 'admin@admin.com':
-                return redirect(url_for('admin'))
-            elif email == 'emp@employments.com':
-                return redirect(url_for('employees'))
+                if email == 'admin@admin.com':
+                    return redirect(url_for('admin'))
+                elif email == 'emp@employments.com':
+                    return redirect(url_for('employees'))
+                else:
+                    # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
+                    return redirect(url_for('homePage', email=email))
             else:
-                # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
-                return redirect(url_for('homePage'))
-
+                # Password errata, mostra un messaggio di errore
+                return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
         else:
             return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>.'
 
@@ -215,7 +218,6 @@ def home():
 
 @app.route('/homePage')
 def homePage():
-    print('sono in homePage')
     return render_template('homePage.html')
 
 

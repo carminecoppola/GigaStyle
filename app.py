@@ -199,13 +199,11 @@ def login():
 # Pagina di home (Si deve copiare il metodo login e apportare solo le modifiche di redirect)
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
-        if 'user' in session:
-            redirect(url_for('homePage'))
-        else:
-            redirect(url_for('login'))
-
-    return render_template('login.html')
+    if 'user' in session:
+        print("sono nell'if")
+        return redirect(url_for('homePage'))
+    else:
+        return redirect(url_for('login'))
 
 
 

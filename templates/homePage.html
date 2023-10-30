@@ -19,8 +19,10 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white" style="color: #bc6c25 !important;">Hello ...</h1>
-            <p class="text-white mt-0 mb-5" style="color: #bc6c25 !important;">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+              {% if session %}
+                <h1 class="display-2 text-white" style="color: #bc6c25 !important;">Hello {{session['user']['first_name']}}</h1>
+              {% endif %}
+              <p class="text-white mt-0 mb-5" style="color: #bc6c25 !important;">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
           </div>
         </div>
       </div>
@@ -53,18 +55,18 @@
                 </div>
               </div>
               <div class="text-center">
-                <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
-                </h3>
-                <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
-                </div>
-                <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
-                </div>
-                <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer Science
-                </div>
+                {% if session %}
+                    <h3>
+                      {{ session['user']['first_name'] }} {{ session['user']['last_name'] }}<span class="font-weight-light"></span>
+                    </h3>
+                    <div class="h5 font-weight-300">
+                      <i class="ni location_pin mr-2"></i> {{ session['user']['phone'] }}
+                    </div>
+                    <div class="h5 mt-4">
+                      <i class="ni business_briefcase-24 mr-2"></i> {{ session['user']['email'] }}
+                    </div>
+
+                {% endif %}
               </div>
             </div>
           </div>

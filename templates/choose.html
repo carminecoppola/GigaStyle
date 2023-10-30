@@ -13,8 +13,8 @@
     <div class="row">
         <div class="container" style="max-width: 90% !important;">
             <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
-            {% if email %}
-                <em style="color: rgba(188,108,37,0.73) !important;">Hi, {{first_name}} choose your saloon</em>
+            {% if session %}
+                <em style="color: rgba(188,108,37,0.73) !important;">Hi, {{session['user']['first_name']}} choose your saloon</em>
             {% endif %}
                 <h2 style="color: rgba(188,108,37,0.73) !important;">Saloon</h2>
             </div>

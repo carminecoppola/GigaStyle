@@ -167,7 +167,7 @@ def login():
         # Se l'utente esiste
         if user:
             session['user'] = json.loads(json_util.dumps(user))
-
+            url = request.referrer
             # Verifica se la password fornita corrisponde all'hash della password memorizzata
             if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
                 # Login riuscito, crea una sessione con l'email dell'utente
@@ -179,7 +179,10 @@ def login():
                     return redirect(url_for('employees'))
                 else:
                     # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile
-                    return redirect(url_for('choose'))
+                    if url.endswith('/login'):
+                        return redirect(url_for('choose'))
+                    elif url.endswith('/home'):
+                        return redirect(url_for('homePage'))
             else:
                 # Password errata, mostra un messaggio di errore
                 flash('Credenziali errate','alert alert-danger')
@@ -197,28 +200,12 @@ def login():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        user = collection.find_one({'email': email})
-        if user:
-            session['user'] = json.loads(json_util.dumps(user))
-            email = session['user']['email']
-
-            # Verifica se la password fornita corrisponde all'hash della password memorizzata
-            if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
-                if email == 'admin@admin.com':
-                    return redirect(url_for('admin'))
-                elif email == 'emp@employments.com':
-                    return redirect(url_for('employees'))
-                else:
-                    # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
-                    return redirect(url_for('homePage'))
+        if 'user' in session:
+            redirect(url_for('homePage'))
         else:
-            flash('Credenziali errate','alert alert-danger')
-            return redirect(url_for('home'))
+            redirect(url_for('login'))
 
-    return render_template('loginHome.html')
+    return render_template('login.html')
 
 
 

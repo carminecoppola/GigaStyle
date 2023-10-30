@@ -128,7 +128,8 @@ def registrazione():
 
         # Verifica se l'utente esiste già nel database in base all'email fornita
         if collection.find_one({'email': email}):
-            return 'Questa email esiste già. Scegli un altra email.'
+            flash('Questa email esiste già. Scegli un altra email.','alert alert-danger')
+            return redirect(url_for('registrazione'))
 
         # Crea un nuovo utente con i dati forniti
         new_user = {

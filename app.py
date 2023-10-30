@@ -1,8 +1,9 @@
 import secrets
-
+from bson import json_util
 import bcrypt
 from flask import Flask, request, render_template, redirect, url_for, session
 from pymongo import MongoClient
+import json
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -27,7 +28,7 @@ collection2 = db['booking']
 # Routes
 @app.route('/')
 def index():
-    if 'email' in session:
+    if 'user' in session:
         return render_template('homePage.html')
     else:
         return render_template('index.html')
@@ -35,8 +36,8 @@ def index():
 
 @app.route('/choose')
 def choose():
-    if 'email' in session:
-        return render_template('choose.html', email=session['email'], first_name=session['first_name'])
+    if 'user' in session:
+        return render_template('choose.html', email=session['user']['email'], first_name=session['user']['first_name'])
     else:
         return redirect(url_for('login'))
 
@@ -142,7 +143,7 @@ def registrazione():
         collection.insert_one(new_user)
 
         # Imposta la sessione con l'email dell'utente dopo la registrazione
-        session['email'] = email
+        session['user'] = json.loads(json_util.dumps(new_user))
 
         # Reindirizza l'utente alla pagina "choose.html" dopo la registrazione
         return redirect(url_for('choose', email=email))
@@ -165,9 +166,10 @@ def login():
 
         # Se l'utente esiste
         if user:
-            session['email'] = email
-            session['first_name'] = user['first_name']
-            session['last_name'] = user['last_name']
+            # session['email'] = email
+            # session['first_name'] = user['first_name']
+            # session['last_name'] = user['last_name']
+            session['user'] = json.loads(json_util.dumps(user))
             # Verifica se la password fornita corrisponde all'hash della password memorizzata
             if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
                 # Login riuscito, crea una sessione con l'email dell'utente
@@ -196,29 +198,29 @@ def login():
 def home():
     if request.method == 'POST':
         if 'email' in session:
-            if session['email'] == 'admin@admin.com':
+            if session['user']['email'] == 'admin@admin.com':
                 return redirect(url_for('admin'))
-            elif session['email'] == 'emp@employments.com':
+            elif session['user']['email'] == 'emp@employments.com':
                 return redirect(url_for('employees'))
             else:
                 # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
-                return redirect(url_for('homePage', email=session['email']))
+                return redirect(url_for('homePage', email=session['user']['email']))
         else:
             email = request.form['email']
             password = request.form['password']
 
             user = collection.find_one({'email': email})
             if user:
-                session['email'] = email
+                session['user']['email'] = email
                 # Verifica se la password fornita corrisponde all'hash della password memorizzata
                 if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
-                    if session['email'] == 'admin@admin.com':
+                    if session['user']['email'] == 'admin@admin.com':
                         return redirect(url_for('admin'))
-                    elif session['email'] == 'emp@employments.com':
+                    elif session['user']['email'] == 'emp@employments.com':
                         return redirect(url_for('employees'))
                     else:
                         # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
-                        return redirect(url_for('homePage', email=session['email']))
+                        return redirect(url_for('homePage', email=session['user']['email']))
             else:
                 return render_template('loginHome.html')
 

@@ -170,6 +170,7 @@ def login():
         if user:
             session['user'] = json.loads(json_util.dumps(user))
             url = request.referrer
+
             # Verifica se la password fornita corrisponde all'hash della password memorizzata
             if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
                 # Login riuscito, crea una sessione con l'email dell'utente
@@ -182,8 +183,10 @@ def login():
                 else:
                     # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile
                     if url.endswith('/login'):
+                        print("sto entrando nel logiiiinnn")
                         return redirect(url_for('choose'))
                     elif url.endswith('/home'):
+                        print("sto entrando della hooome")
                         return redirect(url_for('homePage'))
             else:
                 # Password errata, mostra un messaggio di errore
@@ -202,9 +205,11 @@ def login():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
-        redirect(url_for('homePage'))
+        print("sono nell'if")
+        return redirect(url_for('homePage'))
     else:
-        redirect(url_for('login'))
+        print("sono nell'else")
+        return redirect(url_for('login'))
 
 
 

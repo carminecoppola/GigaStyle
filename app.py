@@ -1,5 +1,5 @@
 import secrets
-import hashlib
+
 import bcrypt
 from flask import Flask, request, render_template, redirect, url_for, session
 from pymongo import MongoClient
@@ -27,13 +27,16 @@ collection2 = db['booking']
 # Routes
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if 'email' in session:
+        return render_template('homePage.html')
+    else:
+        return render_template('index.html')
 
 
 @app.route('/choose')
 def choose():
     if 'email' in session:
-        return render_template('choose.html')
+        return render_template('choose.html', email=session['email'], first_name=session['first_name'])
     else:
         return redirect(url_for('login'))
 
@@ -62,7 +65,7 @@ def barber():
         collection2.insert_one(new_booking)
         return render_template('success.html')
 
-    return render_template('reservationBarber.html')
+    return render_template('reservationBarber.html', first_name=session['first_name'], last_name=session['last_name'])
 
 
 @app.route('/hairdresser', methods=['GET', 'POST'])
@@ -135,13 +138,14 @@ def registrazione():
             'phone': phone,
             'gender': gender
         }
+        #json_user = json.dumps(new_user)
         collection.insert_one(new_user)
 
         # Imposta la sessione con l'email dell'utente dopo la registrazione
         session['email'] = email
 
         # Reindirizza l'utente alla pagina "choose.html" dopo la registrazione
-        return redirect(url_for('choose'))
+        return redirect(url_for('choose', email=email))
 
     # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di registrazione
     return render_template('registration.html')
@@ -155,17 +159,18 @@ def login():
         # Ottieni l'email e la password dalla form inviata
         email = request.form['email']
         password = request.form['password']
-
         # Cerca l'utente nel database in base all'email fornita
         user = collection.find_one({'email': email})
 
+
         # Se l'utente esiste
         if user:
+            session['email'] = email
+            session['first_name'] = user['first_name']
+            session['last_name'] = user['last_name']
             # Verifica se la password fornita corrisponde all'hash della password memorizzata
             if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
                 # Login riuscito, crea una sessione con l'email dell'utente
-                session['email'] = email
-
                 # Se l'utente è un amministratore, reindirizzalo alla pagina "admin"
                 if email == 'admin@admin.com':
                     return redirect(url_for('admin'))
@@ -190,30 +195,35 @@ def login():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        user = collection.find_one({'email': email})
-        if user:
-            # Verifica se la password fornita corrisponde all'hash della password memorizzata
-            if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
-                # Login riuscito, creiamo una sessione
-                session['email'] = email
-
-                if email == 'admin@admin.com':
-                    return redirect(url_for('admin'))
-                elif email == 'emp@employments.com':
-                    return redirect(url_for('employees'))
-                else:
-                    # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
-                    return redirect(url_for('homePage', email=email))
+        if 'email' in session:
+            if session['email'] == 'admin@admin.com':
+                return redirect(url_for('admin'))
+            elif session['email'] == 'emp@employments.com':
+                return redirect(url_for('employees'))
             else:
-                # Password errata, mostra un messaggio di errore
-                return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
+                # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
+                return redirect(url_for('homePage', email=session['email']))
         else:
-            return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>.'
+            email = request.form['email']
+            password = request.form['password']
+
+            user = collection.find_one({'email': email})
+            if user:
+                session['email'] = email
+                # Verifica se la password fornita corrisponde all'hash della password memorizzata
+                if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
+                    if session['email'] == 'admin@admin.com':
+                        return redirect(url_for('admin'))
+                    elif session['email'] == 'emp@employments.com':
+                        return redirect(url_for('employees'))
+                    else:
+                        # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
+                        return redirect(url_for('homePage', email=session['email']))
+            else:
+                return render_template('loginHome.html')
 
     return render_template('loginHome.html')
+
 
 
 @app.route('/homePage')
@@ -229,7 +239,7 @@ def success():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
-    return 'Sei stato disconnesso. <a href="/">Torna alla pagina principale</a>'
+    return render_template('index.html')
 
 
 if __name__ == '__main__':

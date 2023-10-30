@@ -79,6 +79,14 @@
               <div class="row align-items-center">
                 <div class="col-8">
                   <h3 class="mb-0">My Reservations</h3>
+                    <ul>
+                        {% for var in cursor %}
+                            <li>
+                                <h3>{{ var.get("email") }}</h3>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
                 </div>
               </div>
             </div>

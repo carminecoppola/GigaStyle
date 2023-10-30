@@ -52,6 +52,8 @@ def barber():
         date = request.form['date']
         chooseBarber = request.form['chooseBarber']
         typeS = request.form['typeS']
+        email = session['user']['email']
+
 
         # Inserisci la prenotazione nel database
         new_booking = {
@@ -60,7 +62,8 @@ def barber():
             'time': time,
             'date': date,
             'chooseBarber': chooseBarber,
-            'typeS': typeS
+            'typeS': typeS,
+            'email': email
         }
 
         collection2.insert_one(new_booking)
@@ -79,6 +82,7 @@ def hairdresser():
         date = request.form['date']
         hdresser = request.form['hdresser']
         typeS = request.form['typeS']
+        email = session['user']['email']
 
         # Inserisci la prenotazione nel database
         new_booking = {
@@ -87,7 +91,8 @@ def hairdresser():
             'time': time,
             'date': date,
             'hdresser': hdresser,
-            'typeS': typeS
+            'typeS': typeS,
+            'email': email
         }
 
         collection2.insert_one(new_booking)
@@ -209,8 +214,13 @@ def home():
                 elif email == 'emp@employments.com':
                     return redirect(url_for('employees'))
                 else:
-                    # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
-                    return redirect(url_for('homePage'))
+                    cursor = db.booking.find({"email": email})
+                    for doc in cursor:
+                        print(doc.get("email"))
+
+
+                    # Reindirizza l'utente alla pagina "homePage.html"
+                    return redirect(url_for('homePage', cursor=cursor))
         else:
             return render_template('loginHome.html')
 

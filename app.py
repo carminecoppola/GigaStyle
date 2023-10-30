@@ -93,7 +93,7 @@ def hairdresser():
         collection2.insert_one(new_booking)
         return render_template('success.html')
 
-    return render_template('reservationHairDresser.html')
+    return render_template('reservationHairDresser.html', first_name=session['user']['first_name'], last_name=session['user']['last_name'])
 
 
 @app.route('/employees')

@@ -162,7 +162,6 @@ def login():
         # Cerca l'utente nel database in base all'email fornita
         user = collection.find_one({'email': email})
 
-
         # Se l'utente esiste
         if user:
             session['user'] = json.loads(json_util.dumps(user))
@@ -207,7 +206,8 @@ def home():
 
             user = collection.find_one({'email': email})
             if user:
-                session['user']['email'] = email
+                session['user'] = json.loads(json_util.dumps(user))
+
                 # Verifica se la password fornita corrisponde all'hash della password memorizzata
                 if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
                     if session['user']['email'] == 'admin@admin.com':

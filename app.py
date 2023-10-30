@@ -183,10 +183,8 @@ def login():
                 else:
                     # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile
                     if url.endswith('/login'):
-                        print("sto entrando nel logiiiinnn")
                         return redirect(url_for('choose'))
                     elif url.endswith('/home'):
-                        print("sto entrando della hooome")
                         return redirect(url_for('homePage'))
             else:
                 # Password errata, mostra un messaggio di errore

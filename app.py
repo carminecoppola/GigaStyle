@@ -1,7 +1,7 @@
 import secrets
 from bson import json_util
 import bcrypt
-from flask import Flask, request, render_template, redirect, url_for, session
+from flask import Flask, request, render_template, redirect, url_for, session,flash
 from pymongo import MongoClient
 import json
 
@@ -52,8 +52,6 @@ def barber():
         date = request.form['date']
         chooseBarber = request.form['chooseBarber']
         typeS = request.form['typeS']
-        email = session['user']['email']
-
 
         # Inserisci la prenotazione nel database
         new_booking = {
@@ -62,8 +60,7 @@ def barber():
             'time': time,
             'date': date,
             'chooseBarber': chooseBarber,
-            'typeS': typeS,
-            'email': email
+            'typeS': typeS
         }
 
         collection2.insert_one(new_booking)
@@ -82,7 +79,6 @@ def hairdresser():
         date = request.form['date']
         hdresser = request.form['hdresser']
         typeS = request.form['typeS']
-        email = session['user']['email']
 
         # Inserisci la prenotazione nel database
         new_booking = {
@@ -91,8 +87,7 @@ def hairdresser():
             'time': time,
             'date': date,
             'hdresser': hdresser,
-            'typeS': typeS,
-            'email': email
+            'typeS': typeS
         }
 
         collection2.insert_one(new_booking)
@@ -133,7 +128,8 @@ def registrazione():
 
         # Verifica se l'utente esiste già nel database in base all'email fornita
         if collection.find_one({'email': email}):
-            return 'Questa email esiste già. Scegli un altra email.'
+            flash('Questa email esiste già. Scegli un altra email.','alert alert-danger')
+            return redirect(url_for('registrazione'))
 
         # Crea un nuovo utente con i dati forniti
         new_user = {
@@ -171,7 +167,7 @@ def login():
         # Se l'utente esiste
         if user:
             session['user'] = json.loads(json_util.dumps(user))
-
+            url = request.referrer
             # Verifica se la password fornita corrisponde all'hash della password memorizzata
             if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
                 # Login riuscito, crea una sessione con l'email dell'utente
@@ -183,13 +179,18 @@ def login():
                     return redirect(url_for('employees'))
                 else:
                     # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile
-                    return redirect(url_for('choose'))
+                    if url.endswith('/login'):
+                        return redirect(url_for('choose'))
+                    elif url.endswith('/home'):
+                        return redirect(url_for('homePage'))
             else:
                 # Password errata, mostra un messaggio di errore
-                return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
+                flash('Credenziali errate','alert alert-danger')
+                return redirect(url_for('login'))
         else:
             # L'utente non esiste, mostra un messaggio di errore
-            return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
+            flash('Credenziali errate','alert alert-danger')
+            return redirect(url_for('login'))
 
     # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di login
     return render_template('login.html')
@@ -199,32 +200,12 @@ def login():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        user = collection.find_one({'email': email})
-        if user:
-            session['user'] = json.loads(json_util.dumps(user))
-            email = session['user']['email']
-
-            # Verifica se la password fornita corrisponde all'hash della password memorizzata
-            if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
-                if email == 'admin@admin.com':
-                    return redirect(url_for('admin'))
-                elif email == 'emp@employments.com':
-                    return redirect(url_for('employees'))
-                else:
-                    cursor = db.booking.find({"email": email})
-                    for doc in cursor:
-                        print(doc.get("email"))
-
-
-                    # Reindirizza l'utente alla pagina "homePage.html"
-                    return redirect(url_for('homePage', cursor=cursor))
+        if 'user' in session:
+            redirect(url_for('homePage'))
         else:
-            return render_template('loginHome.html')
+            redirect(url_for('login'))
 
-    return render_template('loginHome.html')
+    return render_template('login.html')
 
 
 

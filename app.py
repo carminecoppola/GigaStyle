@@ -60,7 +60,8 @@ def barber():
             'time': time,
             'date': date,
             'chooseBarber': chooseBarber,
-            'typeS': typeS
+            'typeS': typeS,
+            'email': session['user']['email']
         }
 
         collection2.insert_one(new_booking)
@@ -87,7 +88,8 @@ def hairdresser():
             'time': time,
             'date': date,
             'hdresser': hdresser,
-            'typeS': typeS
+            'typeS': typeS,
+            'email': session['user']['email']
         }
 
         collection2.insert_one(new_booking)
@@ -200,16 +202,26 @@ def login():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
-        print("sono nell'if")
-        return redirect(url_for('homePage'))
+        redirect(url_for('homePage'))
     else:
-        return redirect(url_for('login'))
+        redirect(url_for('login'))
+
 
 
 
 @app.route('/homePage')
 def homePage():
-    return render_template('homePage.html')
+    cursor = db.booking.find({"email": session['user']['email']})
+    arr = []
+
+    for doc in cursor:
+        #print(doc)
+        #print(doc.get("email"))
+        arr.append(doc.get("time"))
+        arr.append(doc.get("date"))
+        arr.append(doc.get("typeS"))
+        print(arr)
+    return render_template('homePage.html', cursor=arr)
 
 
 @app.route('/success')

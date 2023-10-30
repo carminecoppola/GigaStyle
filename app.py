@@ -1,7 +1,7 @@
 import secrets
 from bson import json_util
 import bcrypt
-from flask import Flask, request, render_template, redirect, url_for, session
+from flask import Flask, request, render_template, redirect, url_for, session,flash
 from pymongo import MongoClient
 import json
 
@@ -181,10 +181,12 @@ def login():
                     return redirect(url_for('choose'))
             else:
                 # Password errata, mostra un messaggio di errore
-                return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
+                flash('Credenziali errate','alert alert-danger')
+                return redirect(url_for('login'))
         else:
             # L'utente non esiste, mostra un messaggio di errore
-            return 'Credenziali errate. Riprova o <a href="/registrazione">registrati</a>'
+            flash('Credenziali errate','alert alert-danger')
+            return redirect(url_for('login'))
 
     # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di login
     return render_template('login.html')
@@ -212,7 +214,8 @@ def home():
                     # Reindirizza l'utente alla pagina "home.html" e passa l'informazione dell'email come variabile
                     return redirect(url_for('homePage'))
         else:
-            return render_template('loginHome.html')
+            flash('Credenziali errate','alert alert-danger')
+            return redirect(url_for('home'))
 
     return render_template('loginHome.html')
 

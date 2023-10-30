@@ -31,6 +31,17 @@
                                         <div class="text-center mt-2">
                                             <a href="{{url_for('registrazione')}}" class="text-secondary">Sign in</a>
                                         </div>
+                                        {% with messages = get_flashed_messages(with_categories=true) %}
+                                        {% if messages %}
+                                          <div class=flashes>
+                                          {% for category, message in messages %}
+                                          <div class="m-2">
+                                            <p class="{{ category }} fs-6">{{ message }} </p>
+                                          </div>
+                                          {% endfor %}
+                                          </div>
+                                        {% endif %}
+                                      {% endwith %}
                                     </div>
                                 </div>
                             </div>

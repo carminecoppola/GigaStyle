@@ -33,7 +33,9 @@ def index():
 @app.route('/choose')
 def choose():
     if 'email' in session:
-        return render_template('choose.html')
+        email = session.get('email')
+        first_name = session.get('first_name')
+        return render_template('choose.html', email=email, first_name=first_name)
     else:
         return redirect(url_for('login'))
 
@@ -41,8 +43,16 @@ def choose():
 @app.route('/barber', methods=['GET', 'POST'])
 def barber():
     if request.method == 'POST':
-        # Ottieni i dati del modulo di prenotazione
-        full_name = request.form['full_name']
+        # Ottieni l'email dell'utente dalla sessione
+        email = session.get('email')
+
+        # Ottieni il nome completo dell'utente (first_name e last_name) dal database
+        user = collection.find_one({'email': email})
+        if user:
+            full_name = f"{user['first_name']} {user['last_name']}"
+        else:
+            full_name = ""
+
         phone = request.form['phone']
         time = request.form['time']
         date = request.form['date']
@@ -137,8 +147,10 @@ def registrazione():
         }
         collection.insert_one(new_user)
 
-        # Imposta la sessione con l'email dell'utente dopo la registrazione
+        # Imposta la sessione con l'email e il nome dell'utente dopo la registrazione
         session['email'] = email
+        session['first_name'] = first_name
+        session['last_name'] = last_name
 
         # Reindirizza l'utente alla pagina "choose.html" dopo la registrazione
         return redirect(url_for('choose'))
@@ -165,6 +177,8 @@ def login():
             if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:
                 # Login riuscito, crea una sessione con l'email dell'utente
                 session['email'] = email
+                session['first_name'] = user['first_name']
+                session['last_name'] = user['last_name']
 
                 # Se l'utente è un amministratore, reindirizzalo alla pagina "admin"
                 if email == 'admin@admin.com':
@@ -215,8 +229,9 @@ def home():
 
 @app.route('/homePage')
 def homePage():
-    print('sono in homePage')
-    return render_template('homePage.html')
+    email = session.get('email')
+    first_name = session.get('first_name')
+    return render_template('homePage.html', email=email, first_name=first_name)
 
 
 @app.route('/success')
@@ -227,7 +242,7 @@ def success():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
-    return 'Sei stato disconnesso. <a href="/">Torna alla pagina principale</a>'
+    return render_template('index.html')
 
 
 if __name__ == '__main__':

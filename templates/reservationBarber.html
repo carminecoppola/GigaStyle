@@ -20,7 +20,9 @@
                                 <div class="booking-form-body">
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
-                                            <input type="text" name="full_name" id="booking-form-name" class="form-control" placeholder="Full Name" required>
+                                            {% if email %}
+                                                <input type="text" name="full_name" id="booking-form-name" class="form-control" placeholder="Full Name" value="{{ first_name }} {{ last_name }}" readonly>
+                                            {% endif %}
                                         </div>
 
                                         <div class="col-lg-6 col-12">

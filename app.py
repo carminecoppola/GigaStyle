@@ -209,7 +209,7 @@ def home():
         return redirect(url_for('homePage'))
     else:
         print("sono nell'else")
-        return redirect(url_for('login'))
+        return render_template('login.html')
 
 
 

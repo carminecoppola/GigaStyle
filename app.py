@@ -205,10 +205,8 @@ def login():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
-        print("sono nell'if")
         return redirect(url_for('homePage'))
     else:
-        print("sono nell'else")
         return render_template('login.html')
 
 

@@ -66,7 +66,7 @@ def barber():
         collection2.insert_one(new_booking)
         return render_template('success.html')
 
-    return render_template('reservationBarber.html', first_name=session['first_name'], last_name=session['last_name'])
+    return render_template('reservationBarber.html', first_name=session['user']['first_name'], last_name=session['user']['last_name'])
 
 
 @app.route('/hairdresser', methods=['GET', 'POST'])
@@ -139,7 +139,6 @@ def registrazione():
             'phone': phone,
             'gender': gender
         }
-        #json_user = json.dumps(new_user)
         collection.insert_one(new_user)
 
         # Imposta la sessione con l'email dell'utente dopo la registrazione
@@ -166,9 +165,6 @@ def login():
 
         # Se l'utente esiste
         if user:
-            # session['email'] = email
-            # session['first_name'] = user['first_name']
-            # session['last_name'] = user['last_name']
             session['user'] = json.loads(json_util.dumps(user))
             # Verifica se la password fornita corrisponde all'hash della password memorizzata
             if bcrypt.hashpw(password.encode('utf-8'), user['password']) == user['password']:

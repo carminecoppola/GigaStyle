@@ -230,7 +230,7 @@ def success():
 
 @app.route('/logout')
 def logout():
-    session.pop('email', None)
+    session.pop('user', None)
     return render_template('index.html')
 
 

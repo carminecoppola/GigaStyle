@@ -51,7 +51,7 @@ def barber():
         phone = request.form['phone']
         time = request.form['time']
         date = request.form['date']
-        chooseBarber = request.form['chooseBarber']
+        employe = request.form['chooseBarber']
         typeS = request.form['typeS']
 
         # Inserisci la prenotazione nel database
@@ -60,7 +60,7 @@ def barber():
             'phone': phone,
             'time': time,
             'date': date,
-            'chooseBarber': chooseBarber,
+            'employe': employe,
             'typeS': typeS,
             'email': session['user']['email']
         }
@@ -79,7 +79,7 @@ def hairdresser():
         phone = request.form['phone']
         time = request.form['time']
         date = request.form['date']
-        hdresser = request.form['hdresser']
+        employe = request.form['hdresser']
         typeS = request.form['typeS']
 
         # Inserisci la prenotazione nel database
@@ -88,7 +88,7 @@ def hairdresser():
             'phone': phone,
             'time': time,
             'date': date,
-            'hdresser': hdresser,
+            'employe': employe,
             'typeS': typeS,
             'email': session['user']['email']
         }
@@ -109,13 +109,22 @@ def employees():
         return redirect(url_for('login'))
 
 
-@app.route('/reservationEmployees', methods=['GET', 'POST'])
+
+@app.route('/reservationEmployees')
 def reservationEmployees():
-    if request.method == 'POST':
-        full_name = request.form['full_name']
-        print(full_name)
-    print("get")
-    return render_template('reservationEmployees.html')
+    cursor = db.booking.find({"employe": session['user']['first_name']})
+    reservations = {}
+
+    for d in cursor:
+        print(d.get("employe"))
+
+    for doc in cursor:
+        reservations[str(doc['_id'])] = {
+            "time": doc.get("time"),
+            "date": doc.get("date"),
+            "typeS": doc.get("typeS")
+        }
+    return render_template('reservationEmployees.html', cursor=reservations)
 
 
 @app.route('/admin/')
@@ -229,8 +238,9 @@ def homePage():
             "time": doc.get("time"),
             "date": doc.get("date"),
             "typeS": doc.get("typeS"),
-            "chooseBarber": doc.get("chooseBarber")
+            "employe": doc.get("employe")
         }
+
     return render_template('homePage.html', cursor=booking)
 
 

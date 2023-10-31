@@ -188,7 +188,7 @@ def login():
                 if email == 'admin@admin.com':
                     return redirect(url_for('admin'))
                 # Se l'utente è un dipendente, reindirizzalo alla pagina "employees"
-                elif email == 'emp@employments.com':
+                elif '@employments.com' in email:
                     return redirect(url_for('employees'))
                 else:
                     # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile

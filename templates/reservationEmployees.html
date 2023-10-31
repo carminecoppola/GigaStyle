@@ -2,27 +2,30 @@
 
 {% block content %}
 
-    <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
+    <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2" style="background-color: rgba(233,233,231,0.68)!important;">
         <h3 style="color: rgba(188,108,37,0.73) !important;">Check reservations</h3>
-    </div>
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>Full Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Service</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for booking_id, booking_data in cursor.items() %}
+
+
+        <div class="container"> <!-- Aggiunto un container -->
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
                 <tr>
-                    <td>{{ booking_data.full_name }}</td>
-                    <td>{{ booking_data.date }}</td>
-                    <td>{{ booking_data.time }}</td>
-                    <td>{{ booking_data.typeS }}</td>
+                    <th>Full Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Service</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Ciao </td>
+                        <td>Lota</td>
+                        <td>Negro</td>
+                        <td>Ebreo</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
 {% endblock %}

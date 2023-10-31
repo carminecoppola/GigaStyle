@@ -8,19 +8,19 @@
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Età</th>
+                <th>Full Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Service</th>
             </tr>
         </thead>
         <tbody>
-            {% for persona in persone %}
+            {% for booking_id, booking_data in cursor.items() %}
                 <tr>
-                    <td>{{ persona.id }}</td>
-                    <td>{{ persona.nome }}</td>
-                    <td>{{ persona.cognome }}</td>
-                    <td>{{ persona.eta }}</td>
+                    <td>{{ booking_data.full_name }}</td>
+                    <td>{{ booking_data.date }}</td>
+                    <td>{{ booking_data.time }}</td>
+                    <td>{{ booking_data.typeS }}</td>
                 </tr>
             {% endfor %}
         </tbody>

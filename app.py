@@ -106,7 +106,17 @@ def employees():
 
 @app.route('/reservationEmployees')
 def reservationEmployees():
-    return render_template('reservationEmployees.html')
+    cursor = db.booking.find({"email": session['user']['email']})
+    booking = {}
+
+    for doc in cursor:
+        booking[str(doc['_id'])] = {
+            "full_name": doc.get("full_name"),
+            "date": doc.get("date"),
+            "time": doc.get("time"),
+            "typeS": doc.get("typeS"),
+    }
+    return render_template('reservationEmployees.html', cursor=booking)
 
 
 @app.route('/admin/')
@@ -131,7 +141,7 @@ def registrazione():
 
         # Verifica se l'utente esiste già nel database in base all'email fornita
         if collection.find_one({'email': email}):
-            flash('Questa email esiste già. Scegli un altra email.','alert alert-danger')
+            flash('Questa email esiste già. Scegli un altra email.', 'alert alert-danger')
             return redirect(url_for('registrazione'))
 
         # Crea un nuovo utente con i dati forniti
@@ -189,11 +199,11 @@ def login():
                         return redirect(url_for('homePage'))
             else:
                 # Password errata, mostra un messaggio di errore
-                flash('Credenziali errate','alert alert-danger')
+                flash('Credenziali errate', 'alert alert-danger')
                 return redirect(url_for('login'))
         else:
             # L'utente non esiste, mostra un messaggio di errore
-            flash('Credenziali errate','alert alert-danger')
+            flash('Credenziali errate', 'alert alert-danger')
             return redirect(url_for('login'))
 
     # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di login
@@ -209,22 +219,20 @@ def home():
         return render_template('login.html')
 
 
-
-
 @app.route('/homePage')
 def homePage():
     cursor = db.booking.find({"email": session['user']['email']})
-    dict = {}
+    booking = {}
 
     for doc in cursor:
-        dict[str(doc['_id'])] = {
+        booking[str(doc['_id'])] = {
             "email": doc.get("email"),
             "time": doc.get("time"),
             "date": doc.get("date"),
             "typeS": doc.get("typeS"),
-            "chooseBarber" : doc.get("chooseBarber")
+            "chooseBarber": doc.get("chooseBarber")
         }
-    return render_template('homePage.html', cursor=dict)
+    return render_template('homePage.html', cursor=booking)
 
 
 @app.route('/success')

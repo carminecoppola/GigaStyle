@@ -110,13 +110,22 @@ def employees():
 
 
 
-@app.route('/reservationEmployees', methods=['GET', 'POST'])
+@app.route('/reservationEmployees')
 def reservationEmployees():
-    if request.method == 'POST':
-        full_name = request.form['full_name']
-        print(full_name)
-    print("get")
-    return render_template('reservationEmployees.html')
+    cursor = db.booking.find({"hdresser": session['user']['first_name']})
+    reservations = {}
+
+    for d in cursor:
+        print(d.get("hdresser"))
+
+    for doc in cursor:
+        reservations[str(doc['_id'])] = {
+            "time": doc.get("time"),
+            "date": doc.get("date"),
+            "typeS": doc.get("typeS")
+        }
+
+    return render_template('reservationEmployees.html', cursor=reservations)
 
 
 @app.route('/admin/')
@@ -189,7 +198,7 @@ def login():
                 if email == 'admin@admin.com':
                     return redirect(url_for('admin'))
                 # Se l'utente è un dipendente, reindirizzalo alla pagina "employees"
-                elif email == 'emp@employments.com':
+                elif '@employments.com' in email:
                     return redirect(url_for('employees'))
                 else:
                     # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile

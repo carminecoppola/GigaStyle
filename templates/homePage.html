@@ -20,9 +20,11 @@
         <div class="row">
           <div class="col-lg-7 col-md-10">
               {% if session %}
-                <h1 class="display-2 text-white" style="color: #bc6c25 !important;">Hello {{session['user']['first_name']}}</h1>
+                <h1 class="display-2" style="color: #bc6c25 !important;">Hello {{session['user']['first_name']}}</h1>
               {% endif %}
-              <p class="text-white mt-0 mb-5" style="color: #bc6c25 !important;">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+              <p class="mt-0 mb-5" style="color: black !important;">Welcome to your profile, here you will be
+                  able to view your personal information and the reservations that have been made with all the
+                  information imported</p>
           </div>
         </div>
       </div>
@@ -36,7 +38,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="rounded-circle">
+                    <img src="../static/images/icon/smile.jpg.avif" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -78,15 +80,15 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">My Reservations</h3>
+                  <h2 class="mb-0" style="color: #bc6c25; font-size: large!important;">My Reservations</h2>
 
                     <ul id="cursor">
                         {% for booking_id, booking_data in cursor.items() %}
-                            <li>
-                                <h3>Email: {{ booking_data.email }}</h3>
-                                <h3>Time: {{ booking_data.time }}</h3>
-                                <h3>Date: {{ booking_data.date }}</h3>
-                                <h3>Type: {{ booking_data.typeS }}</h3>
+                            <li style="color: rgb(188,108,37)!important;">
+                                <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-calendar2-week"></i>  {{ booking_data.date }} <i class="bi bi-clock-history"></i>{{ booking_data.time }} </h4>
+                                <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-scissors"></i>{{ booking_data.typeS }}</h4>
+                                <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-person-circle"></i> {{ booking_data.chooseBarber }}</h4>
+                                <hr style="color: black">
                             </li>
                         {% endfor %}
                     </ul>

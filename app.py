@@ -1,9 +1,10 @@
-import secrets
-from bson import json_util
-import bcrypt
-from flask import Flask, request, render_template, redirect, url_for, session,flash
-from pymongo import MongoClient
 import json
+import secrets
+
+import bcrypt
+from bson import json_util
+from flask import Flask, request, render_template, redirect, url_for, session, flash
+from pymongo import MongoClient
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -220,7 +221,8 @@ def homePage():
             "email": doc.get("email"),
             "time": doc.get("time"),
             "date": doc.get("date"),
-            "typeS": doc.get("typeS")
+            "typeS": doc.get("typeS"),
+            "chooseBarber" : doc.get("chooseBarber")
         }
     return render_template('homePage.html', cursor=dict)
 

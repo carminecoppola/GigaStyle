@@ -671,8 +671,8 @@ textarea.form-control {
 
 .btn-info:hover {
   color: #fff;
-  border-color: #11cdef;
-  background-color: #11cdef;
+  border-color: #bc6c25;
+  background-color: #bc6c25;
 }
 
 .btn-info:focus {
@@ -681,18 +681,18 @@ textarea.form-control {
 
 .btn-info:disabled {
   color: #fff;
-  border-color: #11cdef;
-  background-color: #11cdef;
+  border-color: #bc6c25;
+  background-color: #bc6c25;
 }
 
 .btn-info:not(:disabled):not(.disabled):active {
   color: #fff;
-  border-color: #11cdef;
-  background-color: #0da5c0;
+  border-color: #bc6c25;
+  background-color: #bc6c25;
 }
 
 .btn-info:not(:disabled):not(.disabled):active:focus {
-  box-shadow: 0 0 0 0 rgba(17, 205, 239, .5);
+  box-shadow: 0 0 0 0 rgba(188, 108, 37, 0.71);
 }
 
 .btn-default {

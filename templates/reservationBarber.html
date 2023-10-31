@@ -21,12 +21,12 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
                                             {% if session %}
-                                                <input type="text" name="full_name" id="booking-form-name" class="form-control" placeholder="Full Name" value="{{ session['user']['first_name'] }} {{ session['user']['last_name'] }}" readonly>
+                                                <input type="text" name="full_name" id="booking-form-name" class="form-control  text-muted" placeholder="Full Name" value="{{ session['user']['first_name'] }} {{ session['user']['last_name'] }}" readonly>
                                             {% endif %}
                                         </div>
 
                                         <div class="col-lg-6 col-12">
-                                            <input type="tel" class="form-control" name="phone" placeholder="Phone: {{ session['user']['phone'] }}" pattern="[0-9]{10}" required="">
+                                            <input type="tel" class="form-control text-muted" name="phone" placeholder="{{ session['user']['phone'] }}" pattern="[0-9]{10}" readonly>
                                         </div>
 
                                         <div class="col-lg-6 col-12">

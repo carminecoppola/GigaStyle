@@ -213,16 +213,16 @@ def home():
 @app.route('/homePage')
 def homePage():
     cursor = db.booking.find({"email": session['user']['email']})
-    arr = []
+    dict = {}
 
     for doc in cursor:
-        #print(doc)
-        #print(doc.get("email"))
-        arr.append(doc.get("time"))
-        arr.append(doc.get("date"))
-        arr.append(doc.get("typeS"))
-        print(arr)
-    return render_template('homePage.html', cursor=arr)
+        dict[str(doc['_id'])] = {
+            "email": doc.get("email"),
+            "time": doc.get("time"),
+            "date": doc.get("date"),
+            "typeS": doc.get("typeS")
+        }
+    return render_template('homePage.html', cursor=dict)
 
 
 @app.route('/success')

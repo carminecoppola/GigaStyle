@@ -81,9 +81,12 @@
                   <h3 class="mb-0">My Reservations</h3>
 
                     <ul id="cursor">
-                        {% for var in cursor %}
+                        {% for booking_id, booking_data in cursor.items() %}
                             <li>
-                                <h3>{{ var }}</h3>
+                                <h3>Email: {{ booking_data.email }}</h3>
+                                <h3>Time: {{ booking_data.time }}</h3>
+                                <h3>Date: {{ booking_data.date }}</h3>
+                                <h3>Type: {{ booking_data.typeS }}</h3>
                             </li>
                         {% endfor %}
                     </ul>

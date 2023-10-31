@@ -124,7 +124,6 @@ def reservationEmployees():
             "date": doc.get("date"),
             "typeS": doc.get("typeS")
         }
-
     return render_template('reservationEmployees.html', cursor=reservations)
 
 

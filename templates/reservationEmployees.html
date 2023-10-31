@@ -5,24 +5,18 @@
     <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
         <h3 style="color: rgba(188,108,37,0.73) !important;">Check reservations</h3>
     </div>
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>Full Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Service</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for booking_id, booking_data in cursor.items() %}
+    <form class="custom-form booking-form" action="#" method="post" role="form">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
                 <tr>
-                    <td>{{ booking_data.full_name }}</td>
-                    <td>{{ booking_data.date }}</td>
-                    <td>{{ booking_data.time }}</td>
-                    <td>{{ booking_data.typeS }}</td>
+                    <th>Full Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Service</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </form>
 {% endblock %}

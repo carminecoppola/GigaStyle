@@ -101,22 +101,21 @@ def hairdresser():
 
 @app.route('/employees')
 def employees():
-    return render_template('employees.html')
+    if 'user' in session:
+        print("stiamo andando dal barbiere")
+        return render_template('employees.html')
+    else:
+        print("noooooo")
+        return redirect(url_for('login'))
 
 
-@app.route('/reservationEmployees')
+@app.route('/reservationEmployees', methods=['GET', 'POST'])
 def reservationEmployees():
-    cursor = db.booking.find({"email": session['user']['email']})
-    booking = {}
-
-    for doc in cursor:
-        booking[str(doc['_id'])] = {
-            "full_name": doc.get("full_name"),
-            "date": doc.get("date"),
-            "time": doc.get("time"),
-            "typeS": doc.get("typeS"),
-    }
-    return render_template('reservationEmployees.html', cursor=booking)
+    if request.method == 'POST':
+        full_name = request.form['full_name']
+        print(full_name)
+    print("get")
+    return render_template('reservationEmployees.html')
 
 
 @app.route('/admin/')

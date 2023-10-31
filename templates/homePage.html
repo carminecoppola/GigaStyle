@@ -78,15 +78,18 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-3">My Reservations</h3>
+                  <h3 class="mb-0">My Reservations</h3>
 
-                   <tr id="cursor">
-                        {% for var in cursor %}
+                    <ul id="cursor">
+                        {% for booking_id, booking_data in cursor.items() %}
                             <li>
-                                <h3>{{ var|replace("/", " ") }}</h3>
+                                <h3>Email: {{ booking_data.email }}</h3>
+                                <h3>Time: {{ booking_data.time }}</h3>
+                                <h3>Date: {{ booking_data.date }}</h3>
+                                <h3>Type: {{ booking_data.typeS }}</h3>
                             </li>
                         {% endfor %}
-                   </tr>
+                    </ul>
 
                 </div>
               </div>

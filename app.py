@@ -1,10 +1,9 @@
-import json
 import secrets
-
-import bcrypt
 from bson import json_util
-from flask import Flask, request, render_template, redirect, url_for, session, flash
+import bcrypt
+from flask import Flask, request, render_template, redirect, url_for, session,flash
 from pymongo import MongoClient
+import json
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -131,7 +130,7 @@ def registrazione():
 
         # Verifica se l'utente esiste già nel database in base all'email fornita
         if collection.find_one({'email': email}):
-            flash('Questa email esiste già. Scegli un altra email.', 'alert alert-danger')
+            flash('Questa email esiste già. Scegli un altra email.','alert alert-danger')
             return redirect(url_for('registrazione'))
 
         # Crea un nuovo utente con i dati forniti
@@ -189,11 +188,11 @@ def login():
                         return redirect(url_for('homePage'))
             else:
                 # Password errata, mostra un messaggio di errore
-                flash('Credenziali errate', 'alert alert-danger')
+                flash('Credenziali errate','alert alert-danger')
                 return redirect(url_for('login'))
         else:
             # L'utente non esiste, mostra un messaggio di errore
-            flash('Credenziali errate', 'alert alert-danger')
+            flash('Credenziali errate','alert alert-danger')
             return redirect(url_for('login'))
 
     # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di login
@@ -209,20 +208,21 @@ def home():
         return render_template('login.html')
 
 
+
+
 @app.route('/homePage')
 def homePage():
     cursor = db.booking.find({"email": session['user']['email']})
-    arr = []
+    dict = {}
 
     for doc in cursor:
-        # print(doc)
-        # print(doc.get("email"))
-        arr.append(doc.get("time"))
-        arr.append(doc.get("date"))
-        arr.append(doc.get("typeS"))
-        arr.append("/")
-        print(arr)
-    return render_template('homePage.html', cursor=arr)
+        dict[str(doc['_id'])] = {
+            "email": doc.get("email"),
+            "time": doc.get("time"),
+            "date": doc.get("date"),
+            "typeS": doc.get("typeS")
+        }
+    return render_template('homePage.html', cursor=dict)
 
 
 @app.route('/success')

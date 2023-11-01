@@ -109,7 +109,6 @@ def employees():
         return redirect(url_for('login'))
 
 
-
 @app.route('/reservationEmployees')
 def reservationEmployees():
     cursor = db.booking.find({"employe": session['user']['first_name']})

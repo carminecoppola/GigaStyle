@@ -35,97 +35,6 @@ def index():
         return render_template('index.html')
 
 
-@app.route('/choose')
-def choose():
-    if 'user' in session:
-        return render_template('choose.html')
-    else:
-        return redirect(url_for('login'))
-
-
-@app.route('/barber', methods=['GET', 'POST'])
-def barber():
-    if request.method == 'POST':
-        # Ottieni i dati del modulo di prenotazione
-        full_name = request.form['full_name']
-        phone = request.form['phone']
-        time = request.form['time']
-        date = request.form['date']
-        employe = request.form['chooseBarber']
-        typeS = request.form['typeS']
-
-        # Inserisci la prenotazione nel database
-        new_booking = {
-            'full_name': full_name,
-            'phone': phone,
-            'time': time,
-            'date': date,
-            'employe': employe,
-            'typeS': typeS,
-            'email': session['user']['email']
-        }
-
-        collection2.insert_one(new_booking)
-        return render_template('success.html')
-
-    return render_template('reservationBarber.html')
-
-
-@app.route('/hairdresser', methods=['GET', 'POST'])
-def hairdresser():
-    if request.method == 'POST':
-        # Ottieni i dati del modulo di prenotazione
-        full_name = request.form['full_name']
-        phone = request.form['phone']
-        time = request.form['time']
-        date = request.form['date']
-        employe = request.form['hdresser']
-        typeS = request.form['typeS']
-
-        # Inserisci la prenotazione nel database
-        new_booking = {
-            'full_name': full_name,
-            'phone': phone,
-            'time': time,
-            'date': date,
-            'employe': employe,
-            'typeS': typeS,
-            'email': session['user']['email']
-        }
-
-        collection2.insert_one(new_booking)
-        return render_template('success.html')
-
-    return render_template('reservationHairDresser.html')
-
-
-@app.route('/employees')
-def employees():
-    if 'user' in session:
-        return render_template('employees.html')
-    else:
-        return redirect(url_for('login'))
-
-
-@app.route('/reservationEmployees')
-def reservationEmployees():
-    cursor = db.booking.find({"employe": session['user']['first_name']})
-    reservation = {}
-
-    for doc in cursor:
-        reservation[str(doc['_id'])] = {
-            "time": doc.get("time"),
-            "date": doc.get("date"),
-            "typeS": doc.get("typeS")
-        }
-    return render_template('reservationEmployees.html', cursor=reservation)
-
-
-@app.route('/admin/')
-def admin():
-    return render_template('admin.html')
-
-
 @app.route('/registrazione', methods=['GET', 'POST'])
 def registrazione():
     # Verifica se la richiesta è di tipo POST, ovvero se è stata inviata una form
@@ -167,7 +76,6 @@ def registrazione():
     return render_template('registration.html')
 
 
-# Pagina di login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     # Verifica se la richiesta è di tipo POST, ovvero se è stata inviata una form
@@ -212,7 +120,106 @@ def login():
     return render_template('login.html')
 
 
-# Pagina di home (Si deve copiare il metodo login e apportare solo le modifiche di redirect)
+@app.route('/admin/')
+def admin():
+    return render_template('admin.html')
+
+
+@app.route('/employees')
+def employees():
+    if 'user' in session:
+        return render_template('employees.html')
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return render_template('index.html')
+
+
+@app.route('/choose')
+def choose():
+    if 'user' in session:
+        return render_template('choose.html')
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/barber', methods=['GET', 'POST'])
+def barber():
+    if request.method == 'POST':
+        # Ottieni i dati del modulo di prenotazione
+        full_name = request.form['full_name']
+        phone = request.form['phone']
+        time = request.form['time']
+        date = request.form['date']
+        employe = request.form['chooseBarber']
+        typeS = request.form['typeS']
+
+        # Inserisci la prenotazione nel database
+        new_booking = {
+            'full_name': full_name,
+            'phone': phone,
+            'time': time,
+            'date': date,
+            'employe': employe,
+            'typeS': typeS,
+            'email': session['user']['email']
+        }
+
+        collection2.insert_one(new_booking)
+        return render_template('confirmed.html')
+
+    return render_template('reservationBarber.html')
+
+
+@app.route('/hairdresser', methods=['GET', 'POST'])
+def hairdresser():
+    if request.method == 'POST':
+        # Ottieni i dati del modulo di prenotazione
+        full_name = request.form['full_name']
+        phone = request.form['phone']
+        time = request.form['time']
+        date = request.form['date']
+        employe = request.form['hdresser']
+        typeS = request.form['typeS']
+
+        # Inserisci la prenotazione nel database
+        new_booking = {
+            'full_name': full_name,
+            'phone': phone,
+            'time': time,
+            'date': date,
+            'employe': employe,
+            'typeS': typeS,
+            'email': session['user']['email']
+        }
+
+        collection2.insert_one(new_booking)
+        return render_template('confirmed.html')
+
+    return render_template('reservationHairDresser.html')
+
+
+@app.route('/reservationEmployees')
+def reservationEmployees():
+    cursor = db.booking.find({"employe": session['user']['first_name']})
+    reservation = {}
+
+    for doc in cursor:
+        reservation[str(doc['_id'])] = {
+            "full_name": doc.get("full_name"),
+            "time": doc.get("time"),
+            "date": doc.get("date"),
+            "typeS": doc.get("typeS"),
+            "phone": doc.get("phone")
+        }
+
+    return render_template('reservationEmployees.html', cursor=reservation)
+
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
@@ -238,15 +245,9 @@ def homePage():
     return render_template('homePage.html', cursor=booking)
 
 
-@app.route('/success')
-def success():
-    return render_template('success.html')
-
-
-@app.route('/logout')
-def logout():
-    session.pop('user', None)
-    return render_template('index.html')
+@app.route('/confirmed')
+def confirmed():
+    return render_template('confirmed.html')
 
 
 if __name__ == '__main__':

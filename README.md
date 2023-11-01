@@ -1,4 +1,4 @@
-![HomePage](https://github.com/carminecoppola/GigaStyle/assets/74236426/bcc29e79-7ce0-42c2-a1f2-ba792dce0943)# GigaStyle
+# GigaStyle
 
 GigaStyle is a web application that allows users to book appointments with their favorite barbers and hairdressers in a smart and convenient way. Users can also browse through the price list and available services offered by various barbershops and hair salons. This README provides an overview of the project, how to set it up, and some key features.
 

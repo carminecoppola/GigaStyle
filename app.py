@@ -185,7 +185,7 @@ def hairdresser():
         date = request.form['date']
         employe = request.form['hdresser']
         typeS = request.form['typeS']
-        print(phone)
+
 
         # Inserisci la prenotazione nel database
         new_booking = {

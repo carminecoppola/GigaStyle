@@ -102,10 +102,8 @@ def hairdresser():
 @app.route('/employees')
 def employees():
     if 'user' in session:
-        print("stiamo andando dal barbiere")
         return render_template('employees.html')
     else:
-        print("noooooo")
         return redirect(url_for('login'))
 
 
@@ -117,6 +115,7 @@ def reservationEmployees():
 
     for d in cursor:
         print(d.get("employe"))
+        print(d.get("date"))
 
     for doc in cursor:
         reservations[str(doc['_id'])] = {

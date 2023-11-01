@@ -111,19 +111,15 @@ def employees():
 @app.route('/reservationEmployees')
 def reservationEmployees():
     cursor = db.booking.find({"employe": session['user']['first_name']})
-    reservations = {}
-
-    for d in cursor:
-        print(d.get("employe"))
-        print(d.get("date"))
+    reservation = {}
 
     for doc in cursor:
-        reservations[str(doc['_id'])] = {
+        reservation[str(doc['_id'])] = {
             "time": doc.get("time"),
             "date": doc.get("date"),
             "typeS": doc.get("typeS")
         }
-    return render_template('reservationEmployees.html', cursor=reservations)
+    return render_template('reservationEmployees.html', cursor=reservation)
 
 
 @app.route('/admin/')

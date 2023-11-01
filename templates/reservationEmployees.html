@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                     <tr>
-                        <ul id="cursor">
+                       <ul id="cursor">
                         {% for booking_id, booking_data in cursor.items() %}
                             <li style="color: rgb(188,108,37)!important;">
                                 <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-calendar2-week"></i>  {{ booking_data.date }} <i class="bi bi-clock-history"></i>{{ booking_data.time }} </h4>
@@ -27,6 +27,7 @@
                             </li>
                         {% endfor %}
                     </ul>
+
                     </tr>
             </tbody>
         </table>

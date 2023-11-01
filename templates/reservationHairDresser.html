@@ -37,11 +37,13 @@
                                         </div>
 
                                         <div class="col-lg-6 col-12">
-                                            <input type="tel" class="form-control" name="phone" placeholder="Phone: {{ session['user']['phone'] }}" pattern="[0-9]{10}" required="">
+                                            {% if session %}
+                                                <input type="text" class="form-control text-muted" name="phone" placeholder="{{ session['user']['phone'] }}" pattern="[0-9]{10}" readonly>
+                                            {% endif %}
                                         </div>
 
                                         <div class="col-lg-6 col-12">
-                                            <input class="form-control" type="time" name="time" value="18:30">
+                                            <input class="form-control" type="time" id="time" name="time" value="18:30" required="">
                                         </div>
 
                                         <div class="col-lg-6 col-12">

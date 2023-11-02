@@ -33,8 +33,9 @@ def index():
     session['visited'] = True
     return render_template('index.html')
 
-@app.route('/registrazione', methods=['GET', 'POST'])
-def registrazione():
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signUp():
     # Verifica se la richiesta è di tipo POST, ovvero se è stata inviata una form
     if request.method == 'POST':
         # Ottieni i dati del modulo di registrazione dalla form inviata
@@ -51,7 +52,7 @@ def registrazione():
         # Verifica se l'utente esiste già nel database in base all'email fornita
         if collection.find_one({'email': email}):
             flash('Questa email esiste già. Scegli un altra email.', 'alert alert-danger')
-            return redirect(url_for('registrazione'))
+            return redirect(url_for('signUp'))
 
         # Crea un nuovo utente con i dati forniti
         new_user = {
@@ -71,7 +72,7 @@ def registrazione():
         return redirect(url_for('choose'))
 
     # Se la richiesta non è di tipo POST (ad esempio, una richiesta GET), visualizza la pagina di registrazione
-    return render_template('registration.html')
+    return render_template('signup.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])

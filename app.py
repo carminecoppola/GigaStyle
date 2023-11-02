@@ -255,9 +255,9 @@ def confirmed():
     return render_template('confirmed.html')
 
 
-@app.route('/delete')
-def delete():
-
+@app.route('/delete/<string:booking_id>', methods=['GET'])
+def delete(booking_id):
+    print(booking_id)
     return render_template('delete.html')
 
 

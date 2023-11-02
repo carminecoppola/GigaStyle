@@ -30,7 +30,7 @@ collection2 = db['booking']
 @app.route('/')
 def index():
     if 'user' in session:
-        return render_template('homePage.html')
+        return render_template('index.html')
     else:
         return render_template('index.html')
 

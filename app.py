@@ -26,11 +26,11 @@ collection = db['utenti']
 collection2 = db['booking']
 
 
-# Routes
+# Routes - credo che qui sia inutile il controllo sulle sessioni
 @app.route('/')
 def index():
     if 'user' in session:
-        return render_template('homePage.html')
+        return render_template('index.html')
     else:
         return render_template('index.html')
 
@@ -224,7 +224,12 @@ def reservationEmployees():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
-        return redirect(url_for('homePage'))
+        if '@employments.com' in session['user']['email']:
+            return render_template('employees.html')
+        elif session['user']['email'] == 'admin@admin.com':
+            return render_template('admin.html')
+        else:
+            return redirect(url_for('homePage'))
     else:
         return render_template('login.html')
 

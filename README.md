@@ -84,11 +84,9 @@ To successfully run the GigaStyle project, you need the following requirements:
 ## Running the Project
 
 To start the GigaStyle web server, run the following command in the project's root directory:
-
     ```
     flask run
     ```
-
 
 The application will be available at `http://localhost:5000` in your web browser.
 

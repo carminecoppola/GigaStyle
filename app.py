@@ -186,7 +186,6 @@ def hairdresser():
         employe = request.form['hdresser']
         typeS = request.form['typeS']
 
-
         # Inserisci la prenotazione nel database
         new_booking = {
             'full_name': full_name,
@@ -254,6 +253,7 @@ def homePage():
 @app.route('/confirmed')
 def confirmed():
     return render_template('confirmed.html')
+
 
 @app.route('/delete')
 def delete():

@@ -24,16 +24,14 @@ except Exception as e:
 db = client['utenti']
 collection = db['utenti']
 collection2 = db['booking']
+collection3 = db['services']
 
 
 # Routes - credo che qui sia inutile il controllo sulle sessioni
 @app.route('/')
 def index():
-    if 'user' in session:
-        return render_template('index.html')
-    else:
-        return render_template('index.html')
-
+    session['visited'] = True
+    return render_template('index.html')
 
 @app.route('/registrazione', methods=['GET', 'POST'])
 def registrazione():
@@ -97,11 +95,14 @@ def login():
                 # Login riuscito, crea una sessione con l'email dell'utente
                 # Se l'utente è un amministratore, reindirizzalo alla pagina "admin"
                 if email == 'admin@admin.com':
+                    session['visited'] = False
                     return redirect(url_for('admin'))
                 # Se l'utente è un dipendente, reindirizzalo alla pagina "employees"
                 elif '@employments.com' in email:
+                    session['visited'] = False
                     return redirect(url_for('employees'))
                 else:
+                    session['visited'] = True
                     # Altrimenti, reindirizza l'utente alla pagina "choose.html" e passa l'email come variabile
                     if url.endswith('/login'):
                         return redirect(url_for('choose'))
@@ -120,9 +121,15 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/admin/')
+@app.route('/admin')
 def admin():
-    return render_template('admin.html')
+    if 'user' in session:
+
+        db.services.update_one({"type": "barber"}, {"$set": {"hbeard": "17.00"}})
+        db.services.update_one({"type": "barber"}, {"$set": {"shave": "7.00"}})
+        return render_template('admin.html')
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/employees')
@@ -136,6 +143,7 @@ def employees():
 @app.route('/logout')
 def logout():
     session.pop('user', None)
+    session['visited'] = True
     return render_template('index.html')
 
 

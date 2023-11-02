@@ -87,7 +87,7 @@
                                 <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-calendar2-week"></i>  {{ booking_data.date }} <i class="bi bi-clock-history"></i>{{ booking_data.time }} </h4>
                                 <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-scissors"></i>{{ booking_data.typeS }}</h4>
                                 <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-person-circle"></i> {{ booking_data.employe }}</h4>
-                                <button type="submit" class="btn btn-danger btn-sm "><i class="bi bi-trash"></i> Delete Reservation</button>
+                                <button type="submit" class="btn btn-danger btn-sm" href={{url_for('delete')}}><i class="bi bi-trash"></i> Delete Reservation</button>
                                 <hr style="color: black!important;">
                             </li>
                         {% endfor %}

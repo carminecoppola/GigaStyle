@@ -250,6 +250,10 @@ def homePage():
 def confirmed():
     return render_template('confirmed.html')
 
+@app.route('')
+def delete():
+    return render_template('delete.html')
+
 
 if __name__ == '__main__':
     app.run()

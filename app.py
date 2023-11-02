@@ -2,7 +2,7 @@ import json
 import secrets
 
 import bcrypt
-from bson import json_util
+from bson import json_util, ObjectId
 from flask import Flask, request, render_template, redirect, url_for, session, flash
 from pymongo import MongoClient
 
@@ -257,7 +257,9 @@ def confirmed():
 
 @app.route('/delete/<string:booking_id>', methods=['GET'])
 def delete(booking_id):
-    print(booking_id)
+    booking_id_object = ObjectId(booking_id)
+    db.booking.delete_one({"_id": booking_id_object})
+
     return render_template('delete.html')
 
 

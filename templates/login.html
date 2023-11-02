@@ -10,8 +10,8 @@
                     <div class="col-12 p-0">
                         <form class="custom-form booking-form" action="/login" method="POST">
                             <div class="text-center mb-4 pb-lg-2">
-                                <em class="text-white">Log in to your account to book GigaStyle services</em>
-                                <h2 class="text-white">Login</h2>
+                                <em class="text-white">Sign in to your account to book GigaStyle services</em>
+                                <h2 class="text-white">Sign in</h2>
                             </div>
 
                             <div class="booking-form-body">
@@ -27,9 +27,9 @@
                                     </div>
 
                                     <div class="col-12 mt-2">
-                                        <input type="submit" value="Login" class="form-control">
+                                        <input type="submit" value="Sign in" class="form-control">
                                         <div class="text-center mt-2">
-                                            <a href="{{url_for('registrazione')}}" class="text-secondary">Sign in</a>
+                                            <a href="{{url_for('registrazione')}}" class="text-secondary">Sign up</a>
                                         </div>
                                         {% with messages = get_flashed_messages(with_categories=true) %}
                                         {% if messages %}

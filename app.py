@@ -26,7 +26,7 @@ collection = db['utenti']
 collection2 = db['booking']
 
 
-# Routes
+# Routes - credo che qui sia inutile il controllo sulle sessioni
 @app.route('/')
 def index():
     if 'user' in session:

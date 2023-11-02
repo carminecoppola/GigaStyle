@@ -255,7 +255,7 @@ def homePage():
 def confirmed():
     return render_template('confirmed.html')
 
-@app.route('')
+@app.route('/delete')
 def delete():
     return render_template('delete.html')
 

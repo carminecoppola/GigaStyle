@@ -257,6 +257,7 @@ def confirmed():
 
 @app.route('/delete')
 def delete():
+
     return render_template('delete.html')
 
 

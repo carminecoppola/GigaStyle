@@ -263,7 +263,7 @@ def delete(booking_id):
     return render_template('delete.html')
 
 
-@app.route('/modifyUser')
+@app.route('/modifyUser', methods=['GET', 'POST'])
 def modify():
     user = session['user']['email']
     if request.method == 'POST':

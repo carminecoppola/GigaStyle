@@ -33,7 +33,8 @@
                                     confidence.
                                 </p>
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2" style="max-width: 15.0%!important;">
-                                    <a class="btn custom-btn custom-border-btn" href="{{ url_for('barber') }}"><i
+                                    <a class="btn custom-btn custom-border-btn"
+                                       href={{ url_for('reservation', type="barber") }}><i
                                             class="bi bi-calendar-check-fill"></i></a>
                                 </div>
                             </div>
@@ -53,7 +54,8 @@
                                     you.
                                 </p>
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2" style="max-width: 15.0%!important;">
-                                    <a class="btn custom-btn custom-border-btn" href="{{ url_for('hairdresser') }}"><i
+                                    <a class="btn custom-btn custom-border-btn"
+                                       href={{ url_for('reservation', type="hairdresser") }}><i
                                             class="bi bi-calendar-check-fill"></i></a>
                                 </div>
                             </div>

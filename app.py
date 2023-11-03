@@ -156,60 +156,29 @@ def choose():
         return redirect(url_for('login'))
 
 
-@app.route('/barber', methods=['GET', 'POST'])
-def barber():
+@app.route('/reservation/<string:type>', methods=['GET', 'POST'])
+def reservation(type):
     if request.method == 'POST':
         # Ottieni i dati del modulo di prenotazione
-        full_name = request.form['full_name']
-        phone = request.form['phone']
-        time = request.form['time']
-        date = request.form['date']
-        employe = request.form['chooseBarber']
-        typeS = request.form['typeS']
-
         # Inserisci la prenotazione nel database
         new_booking = {
-            'full_name': full_name,
-            'phone': phone,
-            'time': time,
-            'date': date,
-            'employe': employe,
-            'typeS': typeS,
+            'full_name': request.form['full_name'],
+            'phone': request.form['phone'],
+            'time': request.form['time'],
+            'date': request.form['date'],
+            'employe': request.form['chooseBarber'],
+            'typeS': request.form['typeS'],
             'email': session['user']['email']
         }
-
         collection2.insert_one(new_booking)
         return render_template('confirmed.html')
+    else:
+        if type == "barber":
+            return render_template('reservationBarber.html')
+        elif type == "hairdresser":
+            return render_template('reservationHairDresser.html')
 
-    return render_template('reservationBarber.html')
 
-
-@app.route('/hairdresser', methods=['GET', 'POST'])
-def hairdresser():
-    if request.method == 'POST':
-        # Ottieni i dati del modulo di prenotazione
-        full_name = request.form['full_name']
-        phone = request.form['phone']
-        time = request.form['time']
-        date = request.form['date']
-        employe = request.form['hdresser']
-        typeS = request.form['typeS']
-
-        # Inserisci la prenotazione nel database
-        new_booking = {
-            'full_name': full_name,
-            'phone': phone,
-            'time': time,
-            'date': date,
-            'employe': employe,
-            'typeS': typeS,
-            'email': session['user']['email']
-        }
-
-        collection2.insert_one(new_booking)
-        return render_template('confirmed.html')
-
-    return render_template('reservationHairDresser.html')
 
 
 @app.route('/reservationEmployees')
@@ -292,7 +261,6 @@ def modifyPrice(type):
             }
 
         if request.method == 'POST':
-
             haircut = request.form['haircut']
             beard = request.form['beard']
             hbeard = request.form['hbeard']
@@ -318,7 +286,6 @@ def modifyPrice(type):
             }
 
         if request.method == 'POST':
-
             haircut = request.form['haircut']
             styling = request.form['styling']
             coloring = request.form['coloring']

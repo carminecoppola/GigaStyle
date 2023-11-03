@@ -9,9 +9,9 @@
                     <div class="booking-form-wrap" style="max-width: 600px;">
                         <!-- Aumenta la larghezza massima come preferisci -->
                         <div class="col-12 p-0">
-                            <form class="custom-form booking-form" action="#" method="POST">
+                            <form class="custom-form booking-form" action="/modifyUser" method="POST">
                                 <div class="text-center mb-4 pb-lg-2">
-                                    <em class="text-white">Sign up to be able to book GigaStyle services</em>
+                                    <em class="text-white">Here you can edit your personal information</em>
                                     <h2 class="text-white">Modify your profile</h2>
                                 </div>
 
@@ -20,37 +20,36 @@
                                         <div class="col-lg-6 col-12">
                                             <label for="first_name" style="color: white">First Name</label>
                                             <input type="text" name="first_name" id="first_name" class="form-control"
-                                                   style="width: 100%;" required>
+                                                   style="width: 100%;" value="{{ session['user']['first_name'] }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">
                                             <label for="last_name" style="color: white">Last Name</label>
                                             <input type="text" name="last_name" id="last_name" class="form-control"
-                                                   style="width: 100%;" required>
+                                                   style="width: 100%;" value="{{ session['user']['last_name'] }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">
                                             <label for="email" style="color: white">E-mail</label>
                                             <input type="email" name="email" id="email" class="form-control"
-                                                   style="width: 100%;" required>
+                                                   style="width: 100%;" value="{{ session['user']['email'] }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">
                                             <label for="password" style="color: white">Password</label>
                                             <input type="password" name="password" id="password" class="form-control"
-                                                   style="width: 100%;" required>
+                                                   style="width: 100%;" value="{{ session['user']['password'] }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">
                                             <label for="phone" style="color: white">Cellular</label>
                                             <input type="tel" class="form-control" name="phone" id="phone"
-                                                   style="width: 100%;" pattern="[0-9]{10}" required="">
+                                                   style="width: 100%;" pattern="[0-9]{10}" value="{{ session['user']['phone'] }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">
                                             <label for="gender" style="color: white">Gender</label>
-                                            <select class="form-control" name="gender" id="gender" style="width: 100%;"
-                                                    required>
+                                            <select class="form-control" name="gender" id="gender" style="width: 100%;">
                                                 <option value="">--select--</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
@@ -59,10 +58,10 @@
                                         </div>
 
                                         <div class="col-12 mt-2">
-                                            <input type="submit" value="Sign up" class="form-control"
+                                            <input type="submit" value="Modify" class="form-control"
                                                    style="width: 100%;">
                                             <div class="text-center mt-2">
-                                                <a href="{{ url_for('login') }}" class="text-secondary">Sign in</a>
+                                                <a href="" class="text-secondary" style="color: #8f1616!important;">Delete your profile</a>
                                             </div>
                                         </div>
                                     </div>

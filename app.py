@@ -279,7 +279,18 @@ def modify():
 
 @app.route('/modifyPrice/<string:type>', methods=['GET', 'POST'])
 def modifyPrice(type):
+    cursor = db.services.find({"type": type})
+    prices = {}
     if type == "barber":
+        for doc in cursor:
+            prices[str(doc['_id'])] = {
+                "haircut": doc.get("haircut"),
+                "beard": doc.get("beard"),
+                "hbeard": doc.get("hbeard"),
+                "shave": doc.get("shave"),
+                "chaircut": doc.get("chaircut")
+            }
+
         if request.method == 'POST':
 
             haircut = request.form['haircut']
@@ -293,10 +304,19 @@ def modifyPrice(type):
             db.services.update_one({"type": "barber"}, {"$set": {"hbeard": hbeard}})
             db.services.update_one({"type": "barber"}, {"$set": {"shave": shave}})
             db.services.update_one({"type": "barber"}, {"$set": {"chaircut": chaircut}})
-            return render_template('modifyPriceB.html')
+            return render_template('confirmed.html')
 
-        return render_template('modifyPriceB.html')
+        return render_template('modifyPriceB.html', cursor=prices)
     elif type == "hairdresser":
+        for doc in cursor:
+            prices[str(doc['_id'])] = {
+                "haircut": doc.get("haircut"),
+                "styling": doc.get("styling"),
+                "coloring": doc.get("coloring"),
+                "extensions": doc.get("extensions"),
+                "keratin": doc.get("keratin")
+            }
+
         if request.method == 'POST':
 
             haircut = request.form['haircut']
@@ -310,9 +330,9 @@ def modifyPrice(type):
             db.services.update_one({"type": "hairdresser"}, {"$set": {"coloring": coloring}})
             db.services.update_one({"type": "hairdresser"}, {"$set": {"extensions": extensions}})
             db.services.update_one({"type": "hairdresser"}, {"$set": {"keratin": keratin}})
-            return render_template('modifyPriceHD.html')
+            return render_template('confirmed.html')
 
-        return render_template('modifyPriceHD.html')
+        return render_template('modifyPriceHD.html', cursor=prices)
 
 
 if __name__ == '__main__':

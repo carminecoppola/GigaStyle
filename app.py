@@ -335,5 +335,11 @@ def modifyPrice(type):
         return render_template('modifyPriceHD.html', cursor=prices)
 
 
+@app.route('/viewEmployees')
+def viewEmployees():
+    return render_template('viewB.html')
+    # return render_template('viewHD.html')
+
+
 if __name__ == '__main__':
     app.run()

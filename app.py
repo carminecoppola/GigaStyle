@@ -277,19 +277,20 @@ def modify():
     return render_template('modifyUser.html')
 
 
-@app.route('/modifyPrice')
-def modifyPrice():
-    haircut = request.form['haircut']
-    beard = request.form['beard']
-    hbeard = request.form['hbeard']
-    shave = request.form['shave']
-    chaircut = request.form['chaircut']
+@app.route('/modifyPriceB')
+def modifyPriceB():
+    if request.method == 'POST':
+        haircut = request.form['haircut']
+        beard = request.form['beard']
+        hbeard = request.form['hbeard']
+        shave = request.form['shave']
+        chaircut = request.form['chaircut']
 
-    db.services.update_one({"type": "barber"}, {"$set": {"haircut": haircut}})
-    db.services.update_one({"type": "barber"}, {"$set": {"beard": beard}})
-    db.services.update_one({"type": "barber"}, {"$set": {"hbeard": hbeard}})
-    db.services.update_one({"type": "barber"}, {"$set": {"shave": shave}})
-    db.services.update_one({"type": "barber"}, {"$set": {"chaircut": chaircut}})
+        db.services.update_one({"type": "barber"}, {"$set": {"haircut": haircut}})
+        db.services.update_one({"type": "barber"}, {"$set": {"beard": beard}})
+        db.services.update_one({"type": "barber"}, {"$set": {"hbeard": hbeard}})
+        db.services.update_one({"type": "barber"}, {"$set": {"shave": shave}})
+        db.services.update_one({"type": "barber"}, {"$set": {"chaircut": chaircut}})
 
     return render_template('modifyPriceB.html')
 

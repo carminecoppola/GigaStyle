@@ -263,9 +263,26 @@ def delete(booking_id):
     return render_template('delete.html')
 
 
-# si potrebbe togliere
 @app.route('/modifyUser')
 def modify():
+    user = session['user']['email']
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        phone = request.form['phone']
+        gender = request.form['gender']
+
+        db.utenti.update_one({"email": user}, {"$set": {"email": email}})
+        db.utenti.update_one({"email": user}, {"$set": {"password": password}})
+        db.utenti.update_one({"email": user}, {"$set": {"first_name": first_name}})
+        db.utenti.update_one({"email": user}, {"$set": {"last_name": last_name}})
+        db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
+        db.utenti.update_one({"email": user}, {"$set": {"gender": gender}})
+
+        return render_template('homePage.html')
+
     return render_template('modifyUser.html')
 
 

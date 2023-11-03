@@ -286,7 +286,6 @@ def modifyUser():
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
         db.utenti.update_one({"email": user}, {"$set": {"gender": gender}})
 
-
         return redirect(url_for('home'))
 
     return render_template('modifyUser.html')

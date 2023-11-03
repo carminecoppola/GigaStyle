@@ -125,12 +125,10 @@ def login():
 @app.route('/admin')
 def admin():
     if 'user' in session:
-
-        # db.services.update_one({"type": "barber"}, {"$set": {"hbeard": "17.00"}})
-        # db.services.update_one({"type": "barber"}, {"$set": {"shave": "7.00"}})
         numBarber = db.utenti.count_documents({"role": "barber"})
         numHair = db.utenti.count_documents({"role": "hairdresser"})
-
+        # db.services.update_one({"type": "barber"}, {"$set": {"hbeard": "17.00"}})
+        # db.services.update_one({"type": "barber"}, {"$set": {"shave": "7.00"}})
         return render_template('admin.html', numBarber=numBarber, numHair=numHair)
     else:
         return redirect(url_for('login'))
@@ -238,7 +236,7 @@ def home():
         if '@employments.com' in session['user']['email']:
             return render_template('employees.html')
         elif session['user']['email'] == 'admin@admin.com':
-            return render_template('admin.html')
+            return redirect(url_for('admin'))
         else:
             return redirect(url_for('homePage'))
     else:

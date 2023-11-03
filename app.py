@@ -278,5 +278,10 @@ def modify():
     render_template('modifyUseer.html')
 
 
+@app.route('/modifyPrice')
+def modifyPrice():
+    render_template('modifyPrice.html')
+
+
 if __name__ == '__main__':
     app.run()

@@ -16,38 +16,44 @@
                                     <h2 class="text-white">Modify the prices</h2>
                                 </div>
 
-                                <div class="booking-form-body">
+                                <div class="booking-form-body" id="cursor">
                                     <div class="row">
-                                        <div class="col-lg-6 col-12">
-                                            <label for="haircut" style="color: white">Haircut</label>
-                                            <input type="number" name="haircut" id="haircut" class="form-control"
-                                                   style="width: 100%;">
-                                        </div>
+                                        {% for prices_id, prices_data in cursor.items() %}
+                                            <div class="col-lg-6 col-12">
+                                                <label for="haircut" style="color: white">Haircut</label>
+                                                <input type="number" name="haircut" id="haircut"
+                                                       value="{{ prices_data.haircut }}" class="form-control"
+                                                       style="width: 100%;">
+                                            </div>
 
-                                        <div class="col-lg-6 col-12">
-                                            <label for="styling" style="color: white">Styling</label>
-                                            <input type="number" name="styling" id="styling" class="form-control"
-                                                   style="width: 100%;">
-                                        </div>
+                                            <div class="col-lg-6 col-12">
+                                                <label for="styling" style="color: white">Styling</label>
+                                                <input type="number" name="styling" id="styling"
+                                                       value="{{ prices_data.styling }}" class="form-control"
+                                                       style="width: 100%;">
+                                            </div>
 
-                                        <div class="col-lg-6 col-12">
-                                            <label for="coloring" style="color: white">Hair Coloring</label>
-                                            <input type="number" name="coloring" id="coloring" class="form-control"
-                                                   style="width: 100%;">
-                                        </div>
+                                            <div class="col-lg-6 col-12">
+                                                <label for="coloring" style="color: white">Hair Coloring</label>
+                                                <input type="number" name="coloring" id="coloring"
+                                                       value="{{ prices_data.coloring }}" class="form-control"
+                                                       style="width: 100%;">
+                                            </div>
 
-                                        <div class="col-lg-6 col-12">
-                                            <label for="extensions" style="color: white">Extensions</label>
-                                            <input type="number" name="extensions" id="extensions" class="form-control"
-                                                   style="width: 100%;">
-                                        </div>
+                                            <div class="col-lg-6 col-12">
+                                                <label for="extensions" style="color: white">Extensions</label>
+                                                <input type="number" name="extensions" id="extensions"
+                                                       value="{{ prices_data.extensions }}" class="form-control"
+                                                       style="width: 100%;">
+                                            </div>
 
-                                        <div class="col-lg-6 col-12">
-                                            <label for="keratin" style="color: white">Keratin Treatments</label>
-                                            <input type="number" class="form-control" name="keratin" id="keratin"
-                                                   style="width: 100%;">
-                                        </div>
-
+                                            <div class="col-lg-6 col-12">
+                                                <label for="keratin" style="color: white">Keratin Treatments</label>
+                                                <input type="number" class="form-control" name="keratin"
+                                                       value="{{ prices_data.keratin }}" id="keratin"
+                                                       style="width: 100%;">
+                                            </div>
+                                        {% endfor %}
                                         <div class="col-12 mt-2">
                                             <input type="submit" value="Modify" class="form-control"
                                                    style="width: 100%;">

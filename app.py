@@ -293,9 +293,25 @@ def modifyPrice(type):
             db.services.update_one({"type": "barber"}, {"$set": {"hbeard": hbeard}})
             db.services.update_one({"type": "barber"}, {"$set": {"shave": shave}})
             db.services.update_one({"type": "barber"}, {"$set": {"chaircut": chaircut}})
+            return render_template('modifyPriceB.html')
 
         return render_template('modifyPriceB.html')
     elif type == "hairdresser":
+        if request.method == 'POST':
+
+            haircut = request.form['haircut']
+            styling = request.form['styling']
+            coloring = request.form['coloring']
+            extensions = request.form['extensions']
+            keratin = request.form['keratin']
+
+            db.services.update_one({"type": "hairdresser"}, {"$set": {"haircut": haircut}})
+            db.services.update_one({"type": "hairdresser"}, {"$set": {"styling": styling}})
+            db.services.update_one({"type": "hairdresser"}, {"$set": {"coloring": coloring}})
+            db.services.update_one({"type": "hairdresser"}, {"$set": {"extensions": extensions}})
+            db.services.update_one({"type": "hairdresser"}, {"$set": {"keratin": keratin}})
+            return render_template('modifyPriceHD.html')
+
         return render_template('modifyPriceHD.html')
 
 

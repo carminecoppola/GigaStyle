@@ -290,6 +290,7 @@ def modifyPrice():
     db.services.update_one({"type": "barber"}, {"$set": {"hbeard": hbeard}})
     db.services.update_one({"type": "barber"}, {"$set": {"shave": shave}})
     db.services.update_one({"type": "barber"}, {"$set": {"chaircut": chaircut}})
+
     return render_template('modifyPriceB.html')
 
 

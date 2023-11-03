@@ -225,6 +225,17 @@ def home():
         elif session['user']['email'] == 'admin@admin.com':
             return redirect(url_for('admin'))
         else:
+            # Ottenere i dati dell'utente dal database
+            user_data = db.utenti.find_one({"email": session['user']['email']})
+
+            if user_data:
+                # Aggiornare la sessione con i dati del database
+                session['user']['email'] = user_data['email']
+                session['user']['first_name'] = user_data['first_name']
+                session['user']['last_name'] = user_data['last_name']
+                session['user']['phone'] = user_data['phone']
+                session['user']['gender'] = user_data['gender']
+
             cursor = db.booking.find({"email": session['user']['email']})
             booking = {}
 
@@ -239,24 +250,6 @@ def home():
             return render_template('homePage.html', cursor=booking)
     else:
         return render_template('login.html')
-
-
-@app.route('/homePage')
-def homePage():
-    print(session['user']['first_name'])
-    cursor = db.booking.find({"email": session['user']['email']})
-    booking = {}
-
-    for doc in cursor:
-        booking[str(doc['_id'])] = {
-            "email": doc.get("email"),
-            "time": doc.get("time"),
-            "date": doc.get("date"),
-            "typeS": doc.get("typeS"),
-            "employe": doc.get("employe")
-        }
-
-    return render_template('homePage.html', cursor=booking)
 
 
 @app.route('/confirmed')
@@ -292,6 +285,7 @@ def modifyUser():
         db.utenti.update_one({"email": user}, {"$set": {"last_name": last_name}})
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
         db.utenti.update_one({"email": user}, {"$set": {"gender": gender}})
+
 
         return redirect(url_for('home'))
 

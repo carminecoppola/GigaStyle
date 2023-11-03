@@ -127,8 +127,7 @@ def admin():
     if 'user' in session:
         numBarber = db.utenti.count_documents({"role": "barber"})
         numHair = db.utenti.count_documents({"role": "hairdresser"})
-        # db.services.update_one({"type": "barber"}, {"$set": {"hbeard": "17.00"}})
-        # db.services.update_one({"type": "barber"}, {"$set": {"shave": "7.00"}})
+
         return render_template('admin.html', numBarber=numBarber, numHair=numHair)
     else:
         return redirect(url_for('login'))
@@ -280,7 +279,19 @@ def modify():
 
 @app.route('/modifyPrice')
 def modifyPrice():
-    return render_template('modifyPrice.html')
+    haircut = request.form['haircut']
+    beard = request.form['beard']
+    hbeard = request.form['hbeard']
+    shave = request.form['shave']
+    chaircut = request.form['chaircut']
+
+    db.services.update_one({"type": "barber"}, {"$set": {"haircut": haircut}})
+    db.services.update_one({"type": "barber"}, {"$set": {"beard": beard}})
+    db.services.update_one({"type": "barber"}, {"$set": {"hbeard": hbeard}})
+    db.services.update_one({"type": "barber"}, {"$set": {"shave": shave}})
+    db.services.update_one({"type": "barber"}, {"$set": {"chaircut": chaircut}})
+
+    return render_template('modifyPriceB.html')
 
 
 if __name__ == '__main__':

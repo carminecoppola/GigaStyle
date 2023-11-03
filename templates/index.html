@@ -306,89 +306,89 @@
                                 <em class="text-white">Barber Service</em>
                                 <h4 class="text-white">Barber Shop</h4>
                             </div>
+                            {% for bSaloon_id, bSaloon_data in cursor1.items() %}
+                                <div class="menu-block">
+                                    <div class="d-flex">
+                                        <h6>Haircut</h6>
 
-                            <div class="menu-block">
-                                <div class="d-flex">
-                                    <h6>Haircut</h6>
+                                        <span class="underline"></span>
 
-                                    <span class="underline"></span>
+                                        <strong class="ms-auto">${{ bSaloon_data.haircut }}</strong>
+                                    </div>
 
-                                    <strong class="ms-auto">$15.00</strong>
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Include standard cuts, trendy styles, and custom cuts</small>
+                                    </div>
                                 </div>
 
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Include standard cuts, trendy styles, and custom cuts</small>
-                                </div>
-                            </div>
+                                <div class="menu-block my-4">
+                                    <div class="d-flex">
+                                        <h6>Beard</h6>
 
-                            <div class="menu-block my-4">
-                                <div class="d-flex">
-                                    <h6>Beard</h6>
+                                        <span class="underline"></span>
 
-                                    <span class="underline"></span>
+                                        <strong class="text-white ms-auto">
+                                            <del>$6.50</del>
+                                        </strong>
 
-                                    <strong class="text-white ms-auto">
-                                        <del>$6.50</del>
-                                    </strong>
+                                        <strong class="ms-2">${{ bSaloon_data.beard }}</strong>
+                                    </div>
 
-                                    <strong class="ms-2">$4.00</strong>
-                                </div>
-
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Beard grooming services such as shaving, trimming, and styling</small>
-                                </div>
-                            </div>
-
-                            <div class="menu-block my-4">
-                                <div class="d-flex">
-                                    <h6>Haircut & Beard
-                                        <span class="badge ms-3">Favourite</span>
-                                    </h6>
-
-                                    <span class="underline"></span>
-
-                                    <strong class="ms-auto">$17.99</strong>
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Beard grooming services such as shaving, trimming, and styling</small>
+                                    </div>
                                 </div>
 
-                                <div class="border-top mt-2 pt-2">
-                                    <small>A combination of a haircut and beard services</small>
-                                </div>
-                            </div>
+                                <div class="menu-block my-4">
+                                    <div class="d-flex">
+                                        <h6>Haircut & Beard
+                                            <span class="badge ms-3">Favourite</span>
+                                        </h6>
 
-                            <div class="menu-block">
-                                <div class="d-flex">
-                                    <h6>Traditional Shave
-                                        <span class="badge ms-3">Recommend</span>
-                                    </h6>
+                                        <span class="underline"></span>
 
-                                    <span class="underline"></span>
+                                        <strong class="ms-auto">${{ bSaloon_data.hbeard }}</strong>
+                                    </div>
 
-                                    <strong class="text-white ms-auto">
-                                        <del>$9.99</del>
-                                    </strong>
-
-                                    <strong class="ms-2">$7.99</strong>
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>A combination of a haircut and beard services</small>
+                                    </div>
                                 </div>
 
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Classic wet shaving with a razor, shaving cream, and hot towel</small>
+                                <div class="menu-block">
+                                    <div class="d-flex">
+                                        <h6>Traditional Shave
+                                            <span class="badge ms-3">Recommend</span>
+                                        </h6>
+
+                                        <span class="underline"></span>
+
+                                        <strong class="text-white ms-auto">
+                                            <del>$9.99</del>
+                                        </strong>
+
+                                        <strong class="ms-2">${{ bSaloon_data.shave }}</strong>
+                                    </div>
+
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Classic wet shaving with a razor, shaving cream, and hot towel</small>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="menu-block my-4">
-                                <div class="d-flex">
-                                    <h6>Children's Haircut</h6>
+                                <div class="menu-block my-4">
+                                    <div class="d-flex">
+                                        <h6>Children's Haircut</h6>
 
-                                    <span class="underline"></span>
+                                        <span class="underline"></span>
 
-                                    <strong class="ms-auto">$5.99</strong>
+                                        <strong class="ms-auto">${{ bSaloon_data.chaircut }}</strong>
+                                    </div>
+
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Haircut services for kids</small>
+                                    </div>
                                 </div>
-
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Haircut services for kids</small>
-                                </div>
-                            </div>
-
+                            {% endfor %}
                         </div>
                     </div>
 
@@ -399,86 +399,87 @@
                                 <em class="text-white">Hairdressing Service</em>
                                 <h4 class="text-white">Hair Salon</h4>
                             </div>
+                            {% for hSaloon_id, hSaloon_data in cursor2.items() %}
+                                <div class="menu-block">
+                                    <div class="d-flex">
+                                        <h6>Haircut
+                                            <span class="badge ms-3">Special Price</span>
+                                        </h6>
 
-                            <div class="menu-block">
-                                <div class="d-flex">
-                                    <h6>Haircut
-                                        <span class="badge ms-3">Special Price</span>
-                                    </h6>
+                                        <span class="underline"></span>
 
-                                    <span class="underline"></span>
+                                        <strong class="text-white ms-auto">
+                                            <del>$15.50</del>
+                                        </strong>
 
-                                    <strong class="text-white ms-auto">
-                                        <del>$15.50</del>
-                                    </strong>
+                                        <strong class="ms-2">${{ hSaloon_data.haircut }}</strong>
+                                    </div>
 
-                                    <strong class="ms-2">$10.00</strong>
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Cuts for women, men, and children, including classic and trendy cuts</small>
+                                    </div>
                                 </div>
 
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Cuts for women, men, and children, including classic and trendy cuts</small>
-                                </div>
-                            </div>
+                                <div class="menu-block my-4">
+                                    <div class="d-flex">
+                                        <h6>
+                                            Styling
+                                            <span class="badge ms-3">Recommend</span>
+                                        </h6>
 
-                            <div class="menu-block my-4">
-                                <div class="d-flex">
-                                    <h6>
-                                        Styling
-                                        <span class="badge ms-3">Recommend</span>
-                                    </h6>
+                                        <span class="underline"></span>
 
-                                    <span class="underline"></span>
+                                        <strong class="ms-auto">${{ hSaloon_data.styling }}</strong>
+                                    </div>
 
-                                    <strong class="ms-auto">$8.00</strong>
-                                </div>
-
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Styling services, which may include blow-drying and hairstyling</small>
-                                </div>
-                            </div>
-
-                            <div class="menu-block">
-                                <div class="d-flex">
-                                    <h6>Hair Coloring</h6>
-
-                                    <span class="underline"></span>
-
-                                    <strong class="ms-auto">$12.00</strong>
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Styling services, which may include blow-drying and hairstyling</small>
+                                    </div>
                                 </div>
 
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Hair dye, highlights, balayage, foils, and more</small>
-                                </div>
-                            </div>
+                                <div class="menu-block">
+                                    <div class="d-flex">
+                                        <h6>Hair Coloring</h6>
 
-                            <div class="menu-block my-4">
-                                <div class="d-flex">
-                                    <h6>Extensions</h6>
+                                        <span class="underline"></span>
 
-                                    <span class="underline"></span>
+                                        <strong class="ms-auto">${{ hSaloon_data.coloring }}</strong>
+                                    </div>
 
-                                    <strong class="ms-auto">$45.00</strong>
-                                </div>
-
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Hair extension application (the price indicated is for a single
-                                        strand)</small>
-                                </div>
-                            </div>
-
-                            <div class="menu-block">
-                                <div class="d-flex">
-                                    <h6>Keratin Treatments</h6>
-
-                                    <span class="underline"></span>
-
-                                    <strong class="ms-auto">$27.99</strong>
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Hair dye, highlights, balayage, foils, and more</small>
+                                    </div>
                                 </div>
 
-                                <div class="border-top mt-2 pt-2">
-                                    <small>Treatments for smoothing and straightening hair</small>
+                                <div class="menu-block my-4">
+                                    <div class="d-flex">
+                                        <h6>Extensions</h6>
+
+                                        <span class="underline"></span>
+
+                                        <strong class="ms-auto">${{ hSaloon_data.extensions }}</strong>
+                                    </div>
+
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Hair extension application (the price indicated is for a single
+                                            strand)</small>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="menu-block">
+                                    <div class="d-flex">
+                                        <h6>Keratin Treatments</h6>
+
+                                        <span class="underline"></span>
+
+                                        <strong class="ms-auto">${{ hSaloon_data.keratin }}</strong>
+                                    </div>
+
+                                    <div class="border-top mt-2 pt-2">
+                                        <small>Treatments for smoothing and straightening hair</small>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
 

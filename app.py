@@ -31,7 +31,29 @@ collection3 = db['services']
 @app.route('/')
 def index():
     session['visited'] = True
-    return render_template('index.html')
+    barber = db.services.find({"type": "barber"})
+    bSaloon = {}
+    hairdresser = db.services.find({"type": "hairdresser"})
+    hSaloon = {}
+
+    for doc in barber:
+        bSaloon[str(doc['_id'])] = {
+            "haircut": doc.get("haircut"),
+            "beard": doc.get("beard"),
+            "hbeard": doc.get("hbeard"),
+            "shave": doc.get("shave"),
+            "chaircut": doc.get("chaircut")
+        }
+
+    for doc in hairdresser:
+        hSaloon[str(doc['_id'])] = {
+            "haircut": doc.get("haircut"),
+            "styling": doc.get("styling"),
+            "coloring": doc.get("coloring"),
+            "extensions": doc.get("extensions"),
+            "keratin": doc.get("keratin")
+        }
+    return render_template('index.html', cursor1=bSaloon, cursor2=hSaloon)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -144,8 +166,7 @@ def employees():
 @app.route('/logout')
 def logout():
     session.pop('user', None)
-    session['visited'] = True
-    return render_template('index.html')
+    return redirect(url_for('index'))
 
 
 @app.route('/choose')
@@ -228,6 +249,7 @@ def homePage():
     return render_template('homePage.html', cursor=booking)
 
 
+# si potrebbe togliere
 @app.route('/confirmed')
 def confirmed():
     return render_template('confirmed.html')
@@ -241,6 +263,7 @@ def delete(booking_id):
     return render_template('delete.html')
 
 
+# si potrebbe togliere
 @app.route('/modifyUser')
 def modify():
     return render_template('modifyUser.html')

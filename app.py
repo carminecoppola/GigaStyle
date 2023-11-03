@@ -1,9 +1,7 @@
-
 import json
 import secrets
 
 import bcrypt
-
 from bson import json_util, ObjectId
 from flask import Flask, request, render_template, redirect, url_for, session, flash
 from pymongo import MongoClient
@@ -202,8 +200,6 @@ def reservation(type):
             return render_template('reservationHairDresser.html')
 
 
-
-
 @app.route('/reservationEmployees')
 def reservationEmployees():
     cursor = db.booking.find({"employe": session['user']['first_name']})
@@ -224,12 +220,22 @@ def reservationEmployees():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
-        print(session['user']['first_name'])
         if '@employments.com' in session['user']['email']:
             return render_template('employees.html')
         elif session['user']['email'] == 'admin@admin.com':
             return redirect(url_for('admin'))
         else:
+            # Ottenere i dati dell'utente dal database
+            user_data = db.utenti.find_one({"email": session['user']['email']})
+
+            if user_data:
+                # Aggiornare la sessione con i dati del database
+                session['user']['email'] = user_data['email']
+                session['user']['first_name'] = user_data['first_name']
+                session['user']['last_name'] = user_data['last_name']
+                session['user']['phone'] = user_data['phone']
+                session['user']['gender'] = user_data['gender']
+
             cursor = db.booking.find({"email": session['user']['email']})
             booking = {}
 
@@ -246,7 +252,6 @@ def home():
         return render_template('login.html')
 
 
-# si potrebbe togliere
 @app.route('/confirmed')
 def confirmed():
     return render_template('confirmed.html')
@@ -262,22 +267,20 @@ def delete(booking_id):
 
 @app.route('/modifyUser', methods=['GET', 'POST'])
 def modifyUser():
+    user = session['user']['email']
     if request.method == 'POST':
-        user = session['user']['email']
-
         email = request.form['email']
-        #password = request.form['password']
+        # password = request.form['password']
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         phone = request.form['phone']
         gender = request.form['gender']
 
-
         # crea hash della password
-        #hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        # hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
         db.utenti.update_one({"email": user}, {"$set": {"email": email}})
-        #db.utenti.update_one({"email": user}, {"$set": {"password": hashed_password}})
+        # db.utenti.update_one({"email": user}, {"$set": {"password": hashed_password}})
         db.utenti.update_one({"email": user}, {"$set": {"first_name": first_name}})
         db.utenti.update_one({"email": user}, {"$set": {"last_name": last_name}})
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})

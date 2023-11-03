@@ -277,8 +277,8 @@ def modify():
     return render_template('modifyUser.html')
 
 
-@app.route('/modifyPriceB/<string:type>', methods=['GET', 'POST'])
-def modifyPriceB(type):
+@app.route('/modifyPrice/<string:type>', methods=['GET', 'POST'])
+def modifyPrice(type):
     if type == "barber":
         if request.method == 'POST':
 
@@ -295,6 +295,8 @@ def modifyPriceB(type):
             db.services.update_one({"type": "barber"}, {"$set": {"chaircut": chaircut}})
 
         return render_template('modifyPriceB.html')
+    elif type == "hairdresser":
+        return render_template('modifyPriceHD.html')
 
 
 if __name__ == '__main__':

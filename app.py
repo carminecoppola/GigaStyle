@@ -130,7 +130,7 @@ def login():
                     if url.endswith('/login'):
                         return redirect(url_for('choose'))
                     elif url.endswith('/home'):
-                        return redirect(url_for('homePage'))
+                        return redirect(url_for('home'))
             else:
                 # Password errata, mostra un messaggio di errore
                 flash('Credenziali errate', 'alert alert-danger')
@@ -225,13 +225,25 @@ def home():
         elif session['user']['email'] == 'admin@admin.com':
             return redirect(url_for('admin'))
         else:
-            return redirect(url_for('homePage'))
+            cursor = db.booking.find({"email": session['user']['email']})
+            booking = {}
+
+            for doc in cursor:
+                booking[str(doc['_id'])] = {
+                    "email": doc.get("email"),
+                    "time": doc.get("time"),
+                    "date": doc.get("date"),
+                    "typeS": doc.get("typeS"),
+                    "employe": doc.get("employe")
+                }
+            return render_template('homePage.html', cursor=booking)
     else:
         return render_template('login.html')
 
 
 @app.route('/homePage')
 def homePage():
+    print(session['user']['first_name'])
     cursor = db.booking.find({"email": session['user']['email']})
     booking = {}
 
@@ -281,7 +293,7 @@ def modifyUser():
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
         db.utenti.update_one({"email": user}, {"$set": {"gender": gender}})
 
-        return render_template('confirmed.html')
+        return redirect(url_for('home'))
 
     return render_template('modifyUser.html')
 

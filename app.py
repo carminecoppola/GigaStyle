@@ -288,6 +288,15 @@ def modifyUser():
 
         return redirect(url_for('home'))
 
+    user_data = db.utenti.find_one({"email": session['user']['email']})
+
+    if user_data:
+        # Aggiornare la sessione con i dati del database
+        session['user']['email'] = user_data['email']
+        session['user']['first_name'] = user_data['first_name']
+        session['user']['last_name'] = user_data['last_name']
+        session['user']['phone'] = user_data['phone']
+        session['user']['gender'] = user_data['gender']
     return render_template('modifyUser.html')
 
 

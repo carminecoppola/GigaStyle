@@ -3,105 +3,118 @@
 {% block content %}
     <link href="../static/styleAdmin.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+          integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"/>
 
     <style>
         .btn-info {
-          color: rgba(0, 0, 0, 0.35);
-          border-color: #f6f6f5;
-          background-color: #f6f6f5;
-          box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+            color: rgba(0, 0, 0, 0.35);
+            border-color: #f6f6f5;
+            background-color: #f6f6f5;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
         }
 
-            .btn-info {
-                --bs-btn-hover-bg: rgba(233, 233, 231, 0.68);
-                --bs-btn-hover-border-color: rgba(233, 233, 231, 0.68);
-            }
+        .btn-info {
+            --bs-btn-hover-bg: rgba(233, 233, 231, 0.68);
+            --bs-btn-hover-border-color: rgba(233, 233, 231, 0.68);
+        }
 
     </style>
 
-<section style="background-color: rgba(233,233,231,0.68)!important;">
-<div class="container">
-    <div class="row ">
-        <div class="col-xl-6 col-lg-6 movable-card">
-            <div class="card l-bg-blue-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="bi bi-currency-euro" style="font-size: 6em"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0" style="color: white!important;">Barber Shop</h5>
-                        <small>You can modify rates for the Barber Shop here</small>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8 text-right">
-                            <h2 class="d-flex align-items-center mb-0" style="color: white!important;">
-                            </h2>
+    <section style="background-color: rgba(233,233,231,0.68)!important;">
+        <div class="container">
+            <div class="row ">
+                <div class="col-xl-6 col-lg-6 movable-card">
+                    <div class="card l-bg-blue-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="bi bi-currency-euro"
+                                                                      style="font-size: 6em"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0" style="color: white!important;">Barber Shop</h5>
+                                <small>You can modify rates for the Barber Shop here</small>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8 text-right">
+                                    <h2 class="d-flex align-items-center mb-0" style="color: white!important;">
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
+                                       style="color: black"> Modify</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-4 text-right">
-                            <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4" style="color: black"> Modify</a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 movable-card">
+                    <div class="card l-bg-cherry">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="bi bi-currency-euro"
+                                                                      style="font-size: 6em"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0" style="color: white!important;">Hairdresser Salon</h5>
+                                <small>You can modify rates for the Hair Salon here</small>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8 text-right">
+                                    <h2 class="d-flex align-items-center mb-0" style="color: white!important;">
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
+                                       style="color: black"> Modify</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 movable-card">
+                    <div class="card l-bg-green-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="bi bi-scissors" style="font-size: 6em"></i>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0" style="color: white!important;">Barbers</h5>
+                                <small>Here you can view the employees of the Barbers Shop</small>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0"
+                                        style="color: white!important;"> {{ numBarber }} </h2> <small
+                                        style="color: white!important;">Barbers</small>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
+                                       style="color: black"> View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 movable-card">
+                    <div class="card l-bg-orange-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="bi bi-scissors" style="font-size: 6em"></i>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0" style="color: white!important;">Hairdressers</h5>
+                                <small>Here you can view the employees of the Hairdressers Salon</small>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0"
+                                        style="color: white!important;"> {{ numHair }} </h2> <small
+                                        style="color: white!important;">Hairdressers</small>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
+                                       style="color: black"> View</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 col-lg-6 movable-card" >
-            <div class="card l-bg-cherry">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="bi bi-currency-euro" style="font-size: 6em"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0" style="color: white!important;">Hairdresser Salon</h5>
-                        <small>You can modify rates for the Hair Salon here</small>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8 text-right">
-                            <h2 class="d-flex align-items-center mb-0" style="color: white!important;">
-                            </h2>
-                        </div>
-                        <div class="col-4 text-right">
-                            <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4" style="color: black"> Modify</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 col-lg-6 movable-card">
-            <div class="card l-bg-green-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="bi bi-scissors" style="font-size: 6em"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0" style="color: white!important;">Barbers</h5>
-                        <small>Here you can view the employees of the Barbers Shop</small>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0" style="color: white!important;"> {{ numBarber }} </h2> <small style="color: white!important;">Barbers</small>
-                        </div>
-                         <div class="col-4 text-right">
-                            <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4" style="color: black"> View</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 col-lg-6 movable-card">
-            <div class="card l-bg-orange-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="bi bi-scissors" style="font-size: 6em"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0" style="color: white!important;">Hairdressers</h5>
-                        <small>Here you can view the employees of the Hairdressers Salon</small>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0" style="color: white!important;"> {{ numHair }} </h2> <small style="color: white!important;">Hairdressers</small>
-                        </div>
-                         <div class="col-4 text-right">
-                            <a href="#" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4" style="color: black"> View</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
+    </section>
 {% endblock %}

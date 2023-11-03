@@ -6,101 +6,112 @@
 
     <style>
         .card.card-profile {
-          margin-bottom: 20px; !important; /* Aggiungi il margine desiderato qui */
+            margin-bottom: 20px;
+        !important; /* Aggiungi il margine desiderato qui */
         }
     </style>
 
-  <div class="main-content">
-    <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 200px; background-size: cover; background-position: center top;">
-      <!-- Mask -->
-      <span class="mask bg-gradient-default opacity-8"></span>
-      <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-lg-7 col-md-10">
-              {% if session %}
-                <h1 class="display-2" style="color: #bc6c25 !important;">Hello {{session['user']['first_name']}}</h1>
-              {% endif %}
-              <p class="mt-0 mb-5" style="color: black !important;">Welcome to your profile, here you will be
-                  able to view your personal information and the reservations that have been made with all the
-                  information imported</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Page content -->
-    <div class="container-fluid mt--7">
-      <div class="row">
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img src="../static/images/icon/smile.jpg.avif" class="rounded-circle">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-              <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-sm btn-info mr-4">Settings</a>
-              </div>
-            </div>
-            <div class="card-body pt-0 pt-md-4">
-              <div class="row">
-                <div class="col">
-                  <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-
-                  </div>
-                </div>
-              </div>
-              <div class="text-center">
-                {% if session %}
-                    <h3>
-                      {{ session['user']['first_name'] }} {{ session['user']['last_name'] }}<span class="font-weight-light"></span>
-                    </h3>
-                    <div class="h5 font-weight-300">
-                        <i class="bi bi-phone bi-lg"></i> {{ session['user']['phone'] }}
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+             style="min-height: 200px; background-size: cover; background-position: center top;">
+            <!-- Mask -->
+            <span class="mask bg-gradient-default opacity-8"></span>
+            <!-- Header container -->
+            <div class="container-fluid d-flex align-items-center">
+                <div class="row">
+                    <div class="col-lg-7 col-md-10">
+                        {% if session %}
+                            <h1 class="display-2" style="color: #bc6c25 !important;">
+                                Hello {{ session['user']['first_name'] }}</h1>
+                        {% endif %}
+                        <p class="mt-0 mb-5" style="color: black !important;">Welcome to your profile, here you will be
+                            able to view your personal information and the reservations that have been made with all the
+                            information imported</p>
                     </div>
-                    <div class="h5 mt-4">
-                        <i class="bi bi-envelope bi-lg"></i> {{ session['user']['email'] }}
-                    </div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-xl-8 order-xl-1">
-          <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h2 class="mb-0" style="color: #bc6c25; font-size: large!important;">My Reservations</h2>
-
-                    <ul id="cursor">
-                        {% for booking_id, booking_data in cursor.items() %}
-                            <li style="color: rgb(188,108,37)!important;">
-                                <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-calendar2-week"></i>  {{ booking_data.date }} <i class="bi bi-clock-history"></i>{{ booking_data.time }} </h4>
-                                <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-scissors"></i>{{ booking_data.typeS }}</h4>
-                                <h4 class="text-black" style="font-size: small!important;"> <i class="bi bi-person-circle"></i> {{ booking_data.employe }}</h4>
-                                <a class="btn btn-danger btn-sm" href={{url_for('delete', booking_id=booking_id)}}><i class="bi bi-trash"></i> Delete Reservation</a>
-                                <hr style="color: black!important;">
-                            </li>
-                        {% endfor %}
-                    </ul>
                 </div>
-              </div>
             </div>
-            <div class="card-body">
-
-            </div>
-          </div>
         </div>
-      </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--7">
+            <div class="row">
+                <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                    <div class="card card-profile shadow">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3 order-lg-2">
+                                <div class="card-profile-image">
+                                    <a href="#">
+                                        <img src="../static/images/icon/smile.jpg.avif" class="rounded-circle">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-sm btn-info mr-4">Settings</a>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 pt-md-4">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                {% if session %}
+                                    <h3>
+                                        {{ session['user']['first_name'] }} {{ session['user']['last_name'] }}<span
+                                            class="font-weight-light"></span>
+                                    </h3>
+                                    <div class="h5 font-weight-300">
+                                        <i class="bi bi-phone bi-lg"></i> {{ session['user']['phone'] }}
+                                    </div>
+                                    <div class="h5 mt-4">
+                                        <i class="bi bi-envelope bi-lg"></i> {{ session['user']['email'] }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-8 order-xl-1">
+                    <div class="card bg-secondary shadow">
+                        <div class="card-header bg-white border-0">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <h2 class="mb-0" style="color: #bc6c25; font-size: large!important;">My
+                                        Reservations</h2>
+
+                                    <ul id="cursor">
+                                        {% for booking_id, booking_data in cursor.items() %}
+                                            <li style="color: rgb(188,108,37)!important;">
+                                                <h4 class="text-black" style="font-size: small!important;"><i
+                                                        class="bi bi-calendar2-week"></i> {{ booking_data.date }} <i
+                                                        class="bi bi-clock-history"></i>{{ booking_data.time }} </h4>
+                                                <h4 class="text-black" style="font-size: small!important;"><i
+                                                        class="bi bi-scissors"></i>{{ booking_data.typeS }}</h4>
+                                                <h4 class="text-black" style="font-size: small!important;"><i
+                                                        class="bi bi-person-circle"></i> {{ booking_data.employe }}</h4>
+                                                <a class="btn btn-danger btn-sm"
+                                                   href={{ url_for('delete', booking_id=booking_id) }}><i
+                                                        class="bi bi-trash"></i> Delete Reservation</a>
+                                                <hr style="color: black!important;">
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 {% endblock %}

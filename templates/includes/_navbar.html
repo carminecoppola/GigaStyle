@@ -1,55 +1,58 @@
 <header>
-        <nav class="navbar navbar-expand-lg ">
-                    <div class="container nav">
-                        <a class="navbar-brand d-flex align-items-center" href="{{url_for('index')}}">
-                            <img src="../static/images/icon/logo.svg" class="navbar-brand-image img-fluid" alt="Barista Cafe Template">
-                              GigaStyle
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container nav">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
+                <img src="../static/images/icon/logo.svg" class="navbar-brand-image img-fluid"
+                     alt="Barista Cafe Template">
+                GigaStyle
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href={{ url_for('home') }}>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{{ url_for('index') }}#section_2">About us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{{ url_for('index') }}#section_3">Service</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{{ url_for('index') }}#section_4">Testimonials</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{{ url_for('index') }}#section_5">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="ms-lg-3">
+                    {% if session['visited'] %}
+                        <a class="btn custom-btn custom-border-btn" href="{{ url_for('choose') }}">
+                            Reservation
+                            <i class="bi-arrow-up-right ms-2"></i>
                         </a>
+                    {% endif %}
+                </div>
 
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav ms-lg-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link click-scroll" href={{url_for('home')}}>Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link click-scroll" href="{{url_for('index')}}#section_2">About us</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link click-scroll" href="{{url_for('index')}}#section_3">Service</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link click-scroll" href="{{url_for('index')}}#section_4">Testimonials</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link click-scroll" href="{{url_for('index')}}#section_5">Contact</a>
-                                </li>
-                            </ul>
-
-                            <div class="ms-lg-3">
-                                {% if session['visited']  %}
-                                    <a class="btn custom-btn custom-border-btn" href="{{ url_for('choose') }}">
-                                        Reservation
-                                        <i class="bi-arrow-up-right ms-2"></i>
-                                    </a>
-                                {% endif %}
-                            </div>
-
-                            {% if session %}
-                                <div class="nav-item">
-                                    <a class="nav-link click-scroll" href="{{url_for('logout')}}" style="color: white;">
-                                        <i class="bi bi-box-arrow-right" style="font-size: 1.5rem; font-weight: bold; color: white;"></i>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
+                {% if session %}
+                    <div class="nav-item">
+                        <a class="nav-link click-scroll" href="{{ url_for('logout') }}" style="color: white;">
+                            <i class="bi bi-box-arrow-right"
+                               style="font-size: 1.5rem; font-weight: bold; color: white;"></i>
+                        </a>
                     </div>
-                </nav>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
 
-    </header>
+</header>

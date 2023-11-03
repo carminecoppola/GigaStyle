@@ -1,508 +1,611 @@
 {% extends "template.html" %}
 
 {% block content %}
-<main>
-    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <main>
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
 
-        <div class="container">
-            <div class="row align-items-center">
+            <div class="container">
+                <div class="row align-items-center">
 
-                <div class="col-lg-6 col-12 mx-auto">
-                    <em class="small-text">welcome to GigaStyle.co</em>
+                    <div class="col-lg-6 col-12 mx-auto">
+                        <em class="small-text">welcome to GigaStyle.co</em>
 
-                    <h1>GigaStyle</h1>
+                        <h1>GigaStyle</h1>
 
-                    <p class="text-white mb-4 pb-lg-2">
-                        Sculpting <em>styles</em>  in the Digital Age.
-                    </p>
+                        <p class="text-white mb-4 pb-lg-2">
+                            Sculpting <em>styles</em> in the Digital Age.
+                        </p>
 
-                    <a class="btn custom-btn smoothscroll me-2 mb-2" href="{{ url_for('home') }}"><strong>Sign in</strong></a>
-                </div>
-
-            </div>
-        </div>
-
-        <img src="../static/images/salonImage/wallpaper.jpg" class="hero-slides">
-
-        <div class="hero-slides"></div>
-    </section>
-
-    <!--Lato Maschile-->
-    <section class="about-section section-padding" id="section_2">
-        <div class="section-overlay"></div>
-        <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-lg-6 col-12">
-                    <div class="ratio ratio-1x1">
-
-                        <img src="../static/images/team/desBeard.jpg" style="box-sizing: border-box" class="custom-video">
-
-                        <div class="about-video-info d-flex flex-column">
-                            <h4 class="mt-auto">We Started Since 2023.</h4>
-
-                            <h4>Best Barber in Naples.</h4>
-                        </div>
+                        <a class="btn custom-btn smoothscroll me-2 mb-2" href="{{ url_for('home') }}"><strong>Sign
+                            in</strong></a>
                     </div>
-                </div>
 
-                <div class="col-lg-5 col-12 mt-4 mt-lg-0 mx-auto">
-                    <em class="text-white">GigaStyle.co</em>
-
-                    <h2 class="text-white mb-3">Barber</h2>
-
-                    <p class="text-white"> Welcome to GigaStyle, your haven for style and personal grooming.
-                                           Here at our salon, your look and comfort matter most to us. We are
-                                           here to provide you with an impeccable grooming experience that will
-                                           make you feel confident and stylish at all times.
-
-                    <p class="text-white"> Our barbers are masters in the art of shaving, hairstyling, and beard
-                                           care. We are passionate about precision, style, and attention to detail,
-                                           and we work to ensure that your appearance is always top-notch.
-                    <p class="text-white"> Our mission is to make you feel confident, handsome, and ready to take
-                                           on the world with style.
-                    </p><a rel="nofollow" href="https://www.tooplate.com" target="_blank">Equipment</a>.</p>
-
-                    <a href="#barista-team" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4">Select your Barber</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!--Lato femminile-->
-    <section class="about-section section-padding" id="section_2">
-        <div class="section-overlay"></div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-12 mt-4 mt-lg-0 mx-auto">
-                    <em class="text-white">GigaStyle.co</em>
-
-                    <h2 class="text-white mb-3">Hairdresser</h2>
-
-                    <p class="text-white"> You have entered a world of beauty, elegance and style, the world
-                                           of GigaStyle's hairdressers. Here at our salon, your well-being
-                                           and beauty are our top priority. We are here to meet your personal
-                                           care needs flawlessly and professionally. </p>
-
-                    <p class="text-white"> GigaStyle's hairdressers are passionate, experienced, and dedicated
-                                           to making you beautiful at all times. Every cut, color, or treatment
-                                           is customized for you because we know there's nothing more gratifying
-                                           than feeling your confidence grow when you look in the mirror. </p>
-
-                    <p class="text-white"> Our mission is to make you feel beautiful, confident, and happy.
-                                           Be assured that your time at GigaStyle will be an extraordinary
-                                           experience, entirely dedicated to you.</p>
-
-                    <p class="text-white"><a rel="nofollow" href="https://www.tooplate.com" target="_blank">Equipment</a>.</p>
-                    <a href="#barista-team" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4">Select your HairDresser</a>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="ratio ratio-1x1">
-                        <img src="../static/images/team/acconcDonna.jpg" style="box-sizing: border-box" class="custom-video">
-                        <div class="about-video-info d-flex flex-column">
-                            <h4 class="mt-auto">We Started Since 2023.</h4>
-                            <h4>Best Hairdresser in Naples.</h4>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
+            <img src="../static/images/salonImage/wallpaper.jpg" class="hero-slides">
 
-    <!-- Team-->
-    <section class="barista-section section-padding section-bg" id="barista-team">
-        <div class="container">
-            <div class="row justify-content-center">
+            <div class="hero-slides"></div>
+        </section>
 
-                <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
-                    <em class="text-white">Creative Barber</em>
+        <!--Lato Maschile-->
+        <section class="about-section section-padding" id="section_2">
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="row align-items-center">
 
-                    <h2 class="text-white">Meet our team</h2>
-                </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="ratio ratio-1x1">
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Carmine</h4>
+                            <img src="../static/images/team/desBeard.jpg" style="box-sizing: border-box"
+                                 class="custom-video">
 
-                                <p class="badge ms-4"><em>Boss</em></p>
+                            <div class="about-video-info d-flex flex-column">
+                                <h4 class="mt-auto">We Started Since 2023.</h4>
+
+                                <h4>Best Barber in Naples.</h4>
                             </div>
-
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite cut daily lives tempor.</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/barb4.jpg" class="team-block-image img-fluid" alt="">
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Camilla</h4>
+                    <div class="col-lg-5 col-12 mt-4 mt-lg-0 mx-auto">
+                        <em class="text-white">GigaStyle.co</em>
 
-                                <p class="badge ms-4"><em>Hairdresser</em></p>
-                            </div>
+                        <h2 class="text-white mb-3">Barber</h2>
 
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite hairstyle daily consectetur.</p>
-                        </div>
+                        <p class="text-white"> Welcome to GigaStyle, your haven for style and personal grooming.
+                            Here at our salon, your look and comfort matter most to us. We are
+                            here to provide you with an impeccable grooming experience that will
+                            make you feel confident and stylish at all times.
 
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/parrucc1.jpg" class="team-block-image img-fluid" alt="">
-                        </div>
+                        <p class="text-white"> Our barbers are masters in the art of shaving, hairstyling, and beard
+                            care. We are passionate about precision, style, and attention to detail,
+                            and we work to ensure that your appearance is always top-notch.
+                        <p class="text-white"> Our mission is to make you feel confident, handsome, and ready to take
+                            on the world with style.
+                        </p><a rel="nofollow" href="https://www.tooplate.com" target="_blank">Equipment</a>.</p>
+
+                        <a href="#barista-team" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4">Select
+                            your Barber</a>
                     </div>
+
                 </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Lorenzo</h4>
-
-                                <p class="badge ms-4"><em>Senior</em></p>
-                            </div>
-
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite beard daily lives.</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/barb1.jpg" class="team-block-image img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Vincenzo</h4>
-
-                                <p class="badge ms-4"><em>Young</em></p>
-                            </div>
-
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite shaving  daily lives.</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/barb3.jpg" class="team-block-image img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </div>
+        </section>
 
-        <!-- Secondo team-->
-        <div class="container">
-            <div class="row justify-content-center">
+        <!--Lato femminile-->
+        <section class="about-section section-padding" id="section_2">
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-12 mt-4 mt-lg-0 mx-auto">
+                        <em class="text-white">GigaStyle.co</em>
 
+                        <h2 class="text-white mb-3">Hairdresser</h2>
 
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Attilio</h4>
+                        <p class="text-white"> You have entered a world of beauty, elegance and style, the world
+                            of GigaStyle's hairdressers. Here at our salon, your well-being
+                            and beauty are our top priority. We are here to meet your personal
+                            care needs flawlessly and professionally. </p>
 
-                                <p class="badge ms-4"><em>Manager</em></p>
+                        <p class="text-white"> GigaStyle's hairdressers are passionate, experienced, and dedicated
+                            to making you beautiful at all times. Every cut, color, or treatment
+                            is customized for you because we know there's nothing more gratifying
+                            than feeling your confidence grow when you look in the mirror. </p>
+
+                        <p class="text-white"> Our mission is to make you feel beautiful, confident, and happy.
+                            Be assured that your time at GigaStyle will be an extraordinary
+                            experience, entirely dedicated to you.</p>
+
+                        <p class="text-white"><a rel="nofollow" href="https://www.tooplate.com" target="_blank">Equipment</a>.
+                        </p>
+                        <a href="#barista-team" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4">Select
+                            your HairDresser</a>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="ratio ratio-1x1">
+                            <img src="../static/images/team/acconcDonna.jpg" style="box-sizing: border-box"
+                                 class="custom-video">
+                            <div class="about-video-info d-flex flex-column">
+                                <h4 class="mt-auto">We Started Since 2023.</h4>
+                                <h4>Best Hairdresser in Naples.</h4>
                             </div>
-
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite cut daily lives tempor.</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/attilio.jpg" class="team-block-image img-fluid" alt="">
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Jessica</h4>
-
-                                <p class="badge ms-4"><em>Beautician</em></p>
-                            </div>
-
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite hairstyle daily consectetur.</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/jessica.jpg" class="team-block-image img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Mario</h4>
-
-                                <p class="badge ms-4"><em>Junior</em></p>
-                            </div>
-
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite beard daily lives.</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/mario.jpg" class="team-block-image img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">Mariacarla</h4>
-
-                                <p class="badge ms-4"><em>Stylist</em></p>
-                            </div>
-
-                            <p class="text-white mb-0" style="font-size: small!important;">your favourite shaving  daily lives.</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="../static/images/team/parrucchiere-2.jpg" class="team-block-image img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <!--Services & Price-->
-    <section class="menu-section section-padding" id="section_3">
-        <div class="container">
-            <div class="row">
-                <!-- Price Man-->
-                <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-                    <div class="menu-block-wrap">
-                        <div class="text-center mb-4 pb-lg-2">
-                            <em class="text-white">Barber Service</em>
-                            <h4 class="text-white">Barber Shop</h4>
-                        </div>
+        <!-- Team-->
+        <section class="barista-section section-padding section-bg" id="barista-team">
+            <div class="container">
+                <div class="row justify-content-center">
 
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Haircut</h6>
+                    <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
+                        <em class="text-white">Creative Barber</em>
 
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$15.00</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Include standard cuts, trendy styles, and custom cuts</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>Beard</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="text-white ms-auto"><del>$6.50</del></strong>
-
-                                <strong class="ms-2">$4.00</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Beard grooming services such as shaving, trimming, and styling</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>Haircut & Beard
-                                    <span class="badge ms-3">Favourite</span>
-                                </h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$17.99</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>A combination of a haircut and beard services</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Traditional Shave
-                                    <span class="badge ms-3">Recommend</span>
-                                </h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="text-white ms-auto"><del>$9.99</del></strong>
-
-                                <strong class="ms-2">$7.99</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Classic wet shaving with a razor, shaving cream, and hot towel</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>Children's Haircut</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$5.99</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Haircut services for kids</small>
-                            </div>
-                        </div>
-
+                        <h2 class="text-white">Meet our team</h2>
                     </div>
-                </div>
 
-                <!-- Price Woman-->
-                <div class="col-lg-6 col-12">
-                    <div class="menu-block-wrap">
-                        <div class="text-center mb-4 pb-lg-2">
-                            <em class="text-white">Hairdressing Service</em>
-                            <h4 class="text-white">Hair Salon</h4>
-                        </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Carmine</h4>
 
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Haircut
-                                    <span class="badge ms-3">Special Price</span>
-                                </h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="text-white ms-auto"><del>$15.50</del></strong>
-
-                                <strong class="ms-2">$10.00</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Cuts for women, men, and children, including classic and trendy cuts</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>
-                                    Styling
-                                    <span class="badge ms-3">Recommend</span>
-                                </h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$8.00</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Styling services, which may include blow-drying and hairstyling</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Hair Coloring</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$12.00</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Hair dye, highlights, balayage, foils, and more</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>Extensions</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$45.00</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Hair extension application (the price indicated is for a single strand)</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Keratin Treatments</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$27.99</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Treatments for smoothing and straightening hair</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!--Testimonian-->
-    <section class="reviews-section section-padding section-bg" id="section_4">
-        <div class="container">
-            <div class="row justify-content-center">
-
-                <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
-                    <em class="text-white">Reviews by Customers</em>
-
-                    <h2 class="text-white">Testimonials</h2>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-container timeline-container-left">
-                        <div class="timeline-content">
-                            <div class="reviews-block">
-                                <div class="reviews-block-image-wrap d-flex align-items-center">
-                                    <img src="../static/images/reviews/young-woman-with-round-glasses-yellow-sweater.jpg" class="reviews-block-image img-fluid" alt="">
-
-                                    <div class="">
-                                        <h6 class="text-white mb-0">Sandra</h6>
-                                        <em class="text-white"> Customers</em>
-                                    </div>
+                                    <p class="badge ms-4"><em>Boss</em></p>
                                 </div>
 
-                                <div class="reviews-block-info">
-                                    <p>
-                                        I had an amazing experience at GigaStyle! I opted for a haircut and styling before a special event, and I was left speechless.
-                                        My hairstylist exceeded my expectations, creating a spectacular hairstyle. The staff was very friendly, and the service was
-                                        punctual. I highly recommend GigaStyle to all women looking for quality service.
-                                    </p>
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite cut daily
+                                    lives tempor.</p>
+                            </div>
 
-                                    <div class="d-flex border-top pt-3 mt-4">
-                                        <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/barb4.jpg" class="team-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
 
-                                        <div class="reviews-group ms-auto">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Camilla</h4>
+
+                                    <p class="badge ms-4"><em>Hairdresser</em></p>
+                                </div>
+
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite hairstyle
+                                    daily consectetur.</p>
+                            </div>
+
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/parrucc1.jpg" class="team-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Lorenzo</h4>
+
+                                    <p class="badge ms-4"><em>Senior</em></p>
+                                </div>
+
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite beard
+                                    daily lives.</p>
+                            </div>
+
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/barb1.jpg" class="team-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Vincenzo</h4>
+
+                                    <p class="badge ms-4"><em>Young</em></p>
+                                </div>
+
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite shaving
+                                    daily lives.</p>
+                            </div>
+
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/barb3.jpg" class="team-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Secondo team-->
+            <div class="container">
+                <div class="row justify-content-center">
+
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Attilio</h4>
+
+                                    <p class="badge ms-4"><em>Manager</em></p>
+                                </div>
+
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite cut daily
+                                    lives tempor.</p>
+                            </div>
+
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/attilio.jpg" class="team-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Jessica</h4>
+
+                                    <p class="badge ms-4"><em>Beautician</em></p>
+                                </div>
+
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite hairstyle
+                                    daily consectetur.</p>
+                            </div>
+
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/jessica.jpg" class="team-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Mario</h4>
+
+                                    <p class="badge ms-4"><em>Junior</em></p>
+                                </div>
+
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite beard
+                                    daily lives.</p>
+                            </div>
+
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/mario.jpg" class="team-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4">
+                        <div class="team-block-wrap">
+                            <div class="team-block-info d-flex flex-column">
+                                <div class="d-flex mt-auto mb-3">
+                                    <h4 class="text-white mb-0">Mariacarla</h4>
+
+                                    <p class="badge ms-4"><em>Stylist</em></p>
+                                </div>
+
+                                <p class="text-white mb-0" style="font-size: small!important;">your favourite shaving
+                                    daily lives.</p>
+                            </div>
+
+                            <div class="team-block-image-wrap">
+                                <img src="../static/images/team/parrucchiere-2.jpg" class="team-block-image img-fluid"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!--Services & Price-->
+        <section class="menu-section section-padding" id="section_3">
+            <div class="container">
+                <div class="row">
+                    <!-- Price Man-->
+                    <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                        <div class="menu-block-wrap">
+                            <div class="text-center mb-4 pb-lg-2">
+                                <em class="text-white">Barber Service</em>
+                                <h4 class="text-white">Barber Shop</h4>
+                            </div>
+
+                            <div class="menu-block">
+                                <div class="d-flex">
+                                    <h6>Haircut</h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="ms-auto">$15.00</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Include standard cuts, trendy styles, and custom cuts</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block my-4">
+                                <div class="d-flex">
+                                    <h6>Beard</h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="text-white ms-auto">
+                                        <del>$6.50</del>
+                                    </strong>
+
+                                    <strong class="ms-2">$4.00</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Beard grooming services such as shaving, trimming, and styling</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block my-4">
+                                <div class="d-flex">
+                                    <h6>Haircut & Beard
+                                        <span class="badge ms-3">Favourite</span>
+                                    </h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="ms-auto">$17.99</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>A combination of a haircut and beard services</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block">
+                                <div class="d-flex">
+                                    <h6>Traditional Shave
+                                        <span class="badge ms-3">Recommend</span>
+                                    </h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="text-white ms-auto">
+                                        <del>$9.99</del>
+                                    </strong>
+
+                                    <strong class="ms-2">$7.99</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Classic wet shaving with a razor, shaving cream, and hot towel</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block my-4">
+                                <div class="d-flex">
+                                    <h6>Children's Haircut</h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="ms-auto">$5.99</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Haircut services for kids</small>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Price Woman-->
+                    <div class="col-lg-6 col-12">
+                        <div class="menu-block-wrap">
+                            <div class="text-center mb-4 pb-lg-2">
+                                <em class="text-white">Hairdressing Service</em>
+                                <h4 class="text-white">Hair Salon</h4>
+                            </div>
+
+                            <div class="menu-block">
+                                <div class="d-flex">
+                                    <h6>Haircut
+                                        <span class="badge ms-3">Special Price</span>
+                                    </h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="text-white ms-auto">
+                                        <del>$15.50</del>
+                                    </strong>
+
+                                    <strong class="ms-2">$10.00</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Cuts for women, men, and children, including classic and trendy cuts</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block my-4">
+                                <div class="d-flex">
+                                    <h6>
+                                        Styling
+                                        <span class="badge ms-3">Recommend</span>
+                                    </h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="ms-auto">$8.00</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Styling services, which may include blow-drying and hairstyling</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block">
+                                <div class="d-flex">
+                                    <h6>Hair Coloring</h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="ms-auto">$12.00</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Hair dye, highlights, balayage, foils, and more</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block my-4">
+                                <div class="d-flex">
+                                    <h6>Extensions</h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="ms-auto">$45.00</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Hair extension application (the price indicated is for a single
+                                        strand)</small>
+                                </div>
+                            </div>
+
+                            <div class="menu-block">
+                                <div class="d-flex">
+                                    <h6>Keratin Treatments</h6>
+
+                                    <span class="underline"></span>
+
+                                    <strong class="ms-auto">$27.99</strong>
+                                </div>
+
+                                <div class="border-top mt-2 pt-2">
+                                    <small>Treatments for smoothing and straightening hair</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--Testimonian-->
+        <section class="reviews-section section-padding section-bg" id="section_4">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
+                        <em class="text-white">Reviews by Customers</em>
+
+                        <h2 class="text-white">Testimonials</h2>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-container timeline-container-left">
+                            <div class="timeline-content">
+                                <div class="reviews-block">
+                                    <div class="reviews-block-image-wrap d-flex align-items-center">
+                                        <img src="../static/images/reviews/young-woman-with-round-glasses-yellow-sweater.jpg"
+                                             class="reviews-block-image img-fluid" alt="">
+
+                                        <div class="">
+                                            <h6 class="text-white mb-0">Sandra</h6>
+                                            <em class="text-white"> Customers</em>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-block-info">
+                                        <p>
+                                            I had an amazing experience at GigaStyle! I opted for a haircut and styling
+                                            before a special event, and I was left speechless.
+                                            My hairstylist exceeded my expectations, creating a spectacular hairstyle.
+                                            The staff was very friendly, and the service was
+                                            punctual. I highly recommend GigaStyle to all women looking for quality
+                                            service.
+                                        </p>
+
+                                        <div class="d-flex border-top pt-3 mt-4">
+                                            <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
+
+                                            <div class="reviews-group ms-auto">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-container timeline-container-right">
+                            <div class="timeline-content">
+                                <div class="reviews-block">
+                                    <div class="reviews-block-image-wrap d-flex align-items-center">
+                                        <img src="../static/images/reviews/senior-man-white-sweater-eyeglasses.jpg"
+                                             class="reviews-block-image img-fluid" alt="">
+
+                                        <div class="">
+                                            <h6 class="text-white mb-0">Don</h6>
+                                            <em class="text-white"> Customers</em>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-block-info">
+                                        <p>
+                                            GigaStyle is an exceptional place for men in search of a haircut and a
+                                            traditional shave.
+                                            I went for a classic shave, and my barber did an impeccable job. The
+                                            atmosphere in the
+                                            barbershop is authentic and welcoming, and the staff made me feel
+                                            comfortable. I have no
+                                            doubt: I'll be returning to GigaStyle for all my grooming needs.
+                                        </p>
+                                        <div class="d-flex border-top pt-3 mt-4">
+                                            <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
+
+                                            <div class="reviews-group ms-auto">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-container timeline-container-left">
+                            <div class="timeline-content">
+                                <div class="reviews-block">
+                                    <div class="reviews-block-image-wrap d-flex align-items-center">
+                                        <img src="../static/images/reviews/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair.jpg"
+                                             class="reviews-block-image img-fluid" alt="">
+
+                                        <div class="">
+                                            <h6 class="text-white mb-0">Olivia</h6>
+                                            <em class="text-white"> Customers</em>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews-block-info">
+                                        <p>
+                                            GigaStyle is my go-to place for hair treatments. I've tried both hair
+                                            coloring and perms, and every time the result has been incredible.
+                                            My hairstylist has a natural talent and executed exactly what I wanted. The
+                                            salon is clean and welcoming, and the staff is truly professional.
+                                            I can't wait to return for more services!
+                                        </p>
+                                        <div class="d-flex border-top pt-3 mt-4">
+                                            <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
+
+                                            <div class="reviews-group ms-auto">
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star-fill"></i>
+                                                <i class="bi-star"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -510,124 +613,56 @@
                         </div>
                     </div>
 
-                    <div class="timeline-container timeline-container-right">
-                        <div class="timeline-content">
-                            <div class="reviews-block">
-                                <div class="reviews-block-image-wrap d-flex align-items-center">
-                                    <img src="../static/images/reviews/senior-man-white-sweater-eyeglasses.jpg" class="reviews-block-image img-fluid" alt="">
-
-                                    <div class="">
-                                        <h6 class="text-white mb-0">Don</h6>
-                                        <em class="text-white"> Customers</em>
-                                    </div>
-                                </div>
-
-                                <div class="reviews-block-info">
-                                    <p>
-                                        GigaStyle is an exceptional place for men in search of a haircut and a traditional shave.
-                                        I went for a classic shave, and my barber did an impeccable job. The atmosphere in the
-                                        barbershop is authentic and welcoming, and the staff made me feel comfortable. I have no
-                                        doubt: I'll be returning to GigaStyle for all my grooming needs.
-                                    </p>
-                                    <div class="d-flex border-top pt-3 mt-4">
-                                        <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
-
-                                        <div class="reviews-group ms-auto">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-container timeline-container-left">
-                        <div class="timeline-content">
-                            <div class="reviews-block">
-                                <div class="reviews-block-image-wrap d-flex align-items-center">
-                                    <img src="../static/images/reviews/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair.jpg" class="reviews-block-image img-fluid" alt="">
-
-                                    <div class="">
-                                        <h6 class="text-white mb-0">Olivia</h6>
-                                        <em class="text-white"> Customers</em>
-                                    </div>
-                                </div>
-
-                                <div class="reviews-block-info">
-                                    <p>
-                                        GigaStyle is my go-to place for hair treatments. I've tried both hair coloring and perms, and every time the result has been incredible.
-                                        My hairstylist has a natural talent and executed exactly what I wanted. The salon is clean and welcoming, and the staff is truly professional.
-                                        I can't wait to return for more services!
-                                    </p>
-                                    <div class="d-flex border-top pt-3 mt-4">
-                                        <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
-
-                                        <div class="reviews-group ms-auto">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!--Contact-->
-    <section class="contact-section section-padding" id="section_5">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-12 col-12">
-                    <em class="text-white">Say Hello</em>
-                    <h2 class="text-white mb-4 pb-lg-2">Contact</h2>
-                </div>
-
-                <div class="col-lg-6 col-12">
-                    <form action="#" method="post" class="custom-form contact-form" role="form">
-
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12">
-                            <label for="name" class="form-label">Name <sup class="text-danger">*</sup></label>
-
-                            <input type="text" name="name" id="name" class="form-control" required="">
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <label for="email" class="form-label">Email Address</label>
-
-                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" required="">
-                        </div>
-
-                        <div class="col-12">
-                            <label for="message" class="form-label">How can we help?</label>
-
-                            <textarea name="message" rows="4" class="form-control" id="message" placeholder="Message" required=""></textarea>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-5 col-12 mx-auto mt-3">
-                        <button type="submit" class="form-control">Send Message</button>
-                    </div>
-                </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-</main>
+
+        <!--Contact-->
+        <section class="contact-section section-padding" id="section_5">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12">
+                        <em class="text-white">Say Hello</em>
+                        <h2 class="text-white mb-4 pb-lg-2">Contact</h2>
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+                        <form action="#" method="post" class="custom-form contact-form" role="form">
+
+                            <div class="row">
+
+                                <div class="col-lg-6 col-12">
+                                    <label for="name" class="form-label">Name <sup class="text-danger">*</sup></label>
+
+                                    <input type="text" name="name" id="name" class="form-control" required="">
+                                </div>
+
+                                <div class="col-lg-6 col-12">
+                                    <label for="email" class="form-label">Email Address</label>
+
+                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*"
+                                           class="form-control" required="">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="message" class="form-label">How can we help?</label>
+
+                                    <textarea name="message" rows="4" class="form-control" id="message"
+                                              placeholder="Message" required=""></textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-12 mx-auto mt-3">
+                                <button type="submit" class="form-control">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 {% endblock %}

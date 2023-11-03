@@ -2,99 +2,108 @@
 
 {% block content %}
 
-     <style>
+    <style>
         .booking-section3 {
-          background-image: url('../static/images/salonImage/wallpaper.jpg');
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          position: relative;
-}
+            background-image: url('../static/images/salonImage/wallpaper.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
     </style>
 
-<main>
-    <section class="booking-section3 section-padding">
-    <div class="container">
-        <div class="row">
+    <main>
+        <section class="booking-section3 section-padding">
+            <div class="container">
+                <div class="row">
 
-            <div class="col-lg-10 col-12 mx-auto">
-                <div class="booking-form-wrap">
-                    <div class="row">
-                        <div class="col-lg-7 col-12 p-0">
-                            <form class="custom-form booking-form" action="#" method="post" role="form">
-                                <div class="text-center mb-4 pb-lg-2">
-                                    <em class="text-white">Fill out the booking form</em>
+                    <div class="col-lg-10 col-12 mx-auto">
+                        <div class="booking-form-wrap">
+                            <div class="row">
+                                <div class="col-lg-7 col-12 p-0">
+                                    <form class="custom-form booking-form" action="#" method="post" role="form">
+                                        <div class="text-center mb-4 pb-lg-2">
+                                            <em class="text-white">Fill out the booking form</em>
 
-                                    <h2 class="text-white">Book a service</h2>
+                                            <h2 class="text-white">Book a service</h2>
+                                        </div>
+
+                                        <div class="booking-form-body">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-12">
+                                                    {% if session %}
+                                                        <input type="text" name="full_name" id="booking-form-name"
+                                                               class="form-control text-muted"
+                                                               value="{{ session['user']['first_name'] }} {{ session['user']['last_name'] }}"
+                                                               readonly>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="col-lg-6 col-12">
+                                                    {% if session %}
+                                                        <input type="text" class="form-control text-muted" name="phone"
+                                                               value="{{ session['user']['phone'] }}"
+                                                               pattern="[0-9]{10}" readonly>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="col-lg-6 col-12">
+                                                    <input class="form-control" type="time" id="time" name="time"
+                                                           value="18:30" required="">
+                                                </div>
+
+                                                <div class="col-lg-6 col-12">
+                                                    <input type="date" name="date" id="booking-form-date"
+                                                           class="form-control" placeholder="Date" required="">
+                                                </div>
+
+
+                                                <div class="col-lg-6 col-12">
+                                                    <label name="hdresser" style="color: white">Select Hair
+                                                        stylist</label>
+                                                    <select class="form-control" name="hdresser" required>
+                                                        <option value="">--select--</option>
+                                                        <option type="hidden" name="hdresser">Camilla</option>
+                                                        <option type="hidden" name="hdresser">Mariacarla</option>
+                                                        <option type="hidden" name="hdresser">Mario</option>
+                                                        <option type="hidden" name="hdresser">Jessica</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-lg-6 col-12">
+                                                    <label name="typeS" style="color: white">Service</label>
+                                                    <select class="form-control" name="typeS" required>
+                                                        <option value="">--select--</option>
+                                                        <option type="hidden" name="typeS">Haircut</option>
+                                                        <option type="hidden" name="typeS">Styling</option>
+                                                        <option type="hidden" name="typeS">Hair Coloring</option>
+                                                        <option type="hidden" name="typeS">Extensions</option>
+                                                        <option type="hidden" name="typeS">Keratin Treatments</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
+                                                    <button type="submit" class="form-control">Reservation</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
 
-                                <div class="booking-form-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-12">
-                                            {% if session %}
-                                                <input type="text" name="full_name" id="booking-form-name" class="form-control text-muted" value="{{ session['user']['first_name'] }} {{ session['user']['last_name'] }}" readonly>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="col-lg-6 col-12">
-                                            {% if session %}
-                                                <input type="text" class="form-control text-muted" name="phone" value="{{ session['user']['phone'] }}" pattern="[0-9]{10}" readonly>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="col-lg-6 col-12">
-                                            <input class="form-control" type="time" id="time" name="time" value="18:30" required="">
-                                        </div>
-
-                                        <div class="col-lg-6 col-12">
-                                            <input type="date" name="date" id="booking-form-date" class="form-control" placeholder="Date" required="">
-                                        </div>
-
-
-                                        <div class="col-lg-6 col-12">
-                                            <label name="hdresser" style="color: white">Select Hair stylist</label>
-                                                <select class= "form-control" name="hdresser" required>
-                                                    <option value="">--select--</option>
-                                                    <option type="hidden" name="hdresser">Camilla</option>
-                                                    <option type="hidden" name="hdresser">Mariacarla</option>
-                                                    <option type="hidden" name="hdresser">Mario</option>
-                                                    <option type="hidden" name="hdresser">Jessica</option>
-                                                </select>
-                                        </div>
-
-                                        <div class="col-lg-6 col-12">
-                                            <label name="typeS" style="color: white">Service</label>
-                                                <select class= "form-control" name="typeS" required>
-                                                    <option value="">--select--</option>
-                                                    <option type="hidden" name="typeS">Haircut</option>
-                                                    <option type="hidden" name="typeS">Styling</option>
-                                                    <option type="hidden" name="typeS">Hair Coloring</option>
-                                                    <option type="hidden" name="typeS">Extensions</option>
-                                                    <option type="hidden" name="typeS">Keratin Treatments</option>
-                                                </select>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">
-                                            <button type="submit" class="form-control">Reservation</button>
-                                        </div>
+                                <div class="col-lg-5 col-12 p-0">
+                                    <div class="booking-form-image-wrap contact-section">
+                                        <img src="../static/images/team/bookingWoman.jpg"
+                                             class="booking-form-image img-fluid" alt="">
                                     </div>
+
                                 </div>
-                            </form>
-                        </div>
-
-                        <div class="col-lg-5 col-12 p-0">
-                            <div class="booking-form-image-wrap contact-section">
-                                <img src="../static/images/team/bookingWoman.jpg"  class="booking-form-image img-fluid" alt="">
                             </div>
-
                         </div>
+
                     </div>
                 </div>
-
             </div>
-        </div>
-    </div>
-    </section>
-</main>
+        </section>
+    </main>
 
 {% endblock %}

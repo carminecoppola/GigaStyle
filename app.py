@@ -126,8 +126,8 @@ def login():
 def admin():
     if 'user' in session:
 
-        #db.services.update_one({"type": "barber"}, {"$set": {"hbeard": "17.00"}})
-        #db.services.update_one({"type": "barber"}, {"$set": {"shave": "7.00"}})
+        # db.services.update_one({"type": "barber"}, {"$set": {"hbeard": "17.00"}})
+        # db.services.update_one({"type": "barber"}, {"$set": {"shave": "7.00"}})
         numBarber = db.utenti.count_documents({"role": "barber"})
         numHair = db.utenti.count_documents({"role": "hairdresser"})
 

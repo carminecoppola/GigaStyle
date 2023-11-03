@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<div class="col-lg-12 col-12 text-center mb-4 pb-lg-2" style="background-color: rgba(233,233,231,0.68)!important;">
-    <h3 style="color: rgba(188,108,37,0.73) !important;">Check reservations</h3>
+    <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2" style="background-color: rgba(233,233,231,0.68)!important;">
+        <h3 style="color: rgba(188,108,37,0.73) !important;">Check reservations</h3>
 
-    <div class="container">
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
+        <div class="container">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
                 <tr>
                     <th>Client</th>
                     <th>Date</th>
@@ -15,20 +15,20 @@
                     <th>Service</th>
                     <th>Cellular</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 {% for booking_id, booking_data in cursor.items() %}
-                <tr>
-                    <td >{{ booking_data.full_name }}</td>
-                    <td >{{ booking_data.date }}</td>
-                    <td >{{ booking_data.time }}</td>
-                    <td >{{ booking_data.typeS }}</td>
-                    <td >{{ booking_data.phone }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ booking_data.full_name }}</td>
+                        <td>{{ booking_data.date }}</td>
+                        <td>{{ booking_data.time }}</td>
+                        <td>{{ booking_data.typeS }}</td>
+                        <td>{{ booking_data.phone }}</td>
+                    </tr>
                 {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 {% endblock %}

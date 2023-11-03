@@ -224,6 +224,7 @@ def reservationEmployees():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
+        print(session['user']['first_name'])
         if '@employments.com' in session['user']['email']:
             return render_template('employees.html')
         elif session['user']['email'] == 'admin@admin.com':
@@ -245,24 +246,6 @@ def home():
         return render_template('login.html')
 
 
-@app.route('/homePage')
-def homePage():
-    print(session['user']['first_name'])
-    cursor = db.booking.find({"email": session['user']['email']})
-    booking = {}
-
-    for doc in cursor:
-        booking[str(doc['_id'])] = {
-            "email": doc.get("email"),
-            "time": doc.get("time"),
-            "date": doc.get("date"),
-            "typeS": doc.get("typeS"),
-            "employe": doc.get("employe")
-        }
-
-    return render_template('homePage.html', cursor=booking)
-
-
 # si potrebbe togliere
 @app.route('/confirmed')
 def confirmed():
@@ -279,14 +262,16 @@ def delete(booking_id):
 
 @app.route('/modifyUser', methods=['GET', 'POST'])
 def modifyUser():
-    user = session['user']['email']
     if request.method == 'POST':
+        user = session['user']['email']
+
         email = request.form['email']
         #password = request.form['password']
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         phone = request.form['phone']
         gender = request.form['gender']
+
 
         # crea hash della password
         #hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
@@ -297,6 +282,7 @@ def modifyUser():
         db.utenti.update_one({"email": user}, {"$set": {"last_name": last_name}})
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
         db.utenti.update_one({"email": user}, {"$set": {"gender": gender}})
+
 
         return redirect(url_for('home'))
 

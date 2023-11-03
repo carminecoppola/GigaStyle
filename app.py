@@ -335,11 +335,23 @@ def modifyPrice(type):
         return render_template('modifyPriceHD.html', cursor=prices)
 
 
-@app.route('/viewEmployees')
-def viewEmployees():
-    return render_template('viewB.html')
-    # return render_template('viewHD.html')
+@app.route('/viewEmployees/<string:type>', methods=['GET', 'POST'])
+def viewEmployees(type):
+    cursor = db.utenti.find({"role": type})
+    employees = {}
+    for doc in cursor:
+        employees[str(doc['_id'])] = {
+            "email": doc.get("email"),
+            "first_name": doc.get("first_name"),
+            "role": doc.get("role"),
+        }
+    if type == "barber":
+        return render_template('viewB.html', cursor=employees)
+    elif type == "hairdresser":
+
+        return render_template('viewHD.html', cursor=employees)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8000)
+    # per pycharm compila da terminale così flask run --host=0.0.0.0 --port=8000

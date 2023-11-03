@@ -15,11 +15,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for booking_id, booking_data in cursor.items() %}
+                {% for employees_id, employees_data in cursor.items() %}
                     <tr>
-                        <td>{{ booking_data.first_name }}</td>
-                        <td>{{ booking_data.email }}</td>
-                        <td>{{ booking_data.role }}</td>
+                        <td>{{ employees_data.first_name }}</td>
+                        <td>{{ employees_data.email }}</td>
+                        <td>{{ employees_data.role }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

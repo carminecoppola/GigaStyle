@@ -86,7 +86,7 @@
                                         style="color: white!important;">Barbers</small>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="/viewEmployees" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
+                                    <a href={{ url_for('viewEmployees', type="barber") }} class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
                                        style="color: black"> View</a>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                                         style="color: white!important;">Hairdressers</small>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="/viewEmployees" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
+                                    <a href={{ url_for('viewEmployees', type="hairdresser") }} class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4"
                                        style="color: black"> View</a>
                                 </div>
                             </div>

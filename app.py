@@ -281,6 +281,7 @@ def modify():
 @app.route('/modifyPrice')
 def modifyPrice():
     return render_template('modifyPrice.html')
+    #return render_template('modifyPriceHD.html')
 
 
 if __name__ == '__main__':

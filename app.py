@@ -270,23 +270,23 @@ def modifyUser():
     user = session['user']['email']
     if request.method == 'POST':
         email = request.form['email']
-        password = request.form['password']
+        #password = request.form['password']
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         phone = request.form['phone']
         gender = request.form['gender']
 
         # crea hash della password
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        #hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
         db.utenti.update_one({"email": user}, {"$set": {"email": email}})
-        db.utenti.update_one({"email": user}, {"$set": {"password": hashed_password}})
+        #db.utenti.update_one({"email": user}, {"$set": {"password": hashed_password}})
         db.utenti.update_one({"email": user}, {"$set": {"first_name": first_name}})
         db.utenti.update_one({"email": user}, {"$set": {"last_name": last_name}})
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
         db.utenti.update_one({"email": user}, {"$set": {"gender": gender}})
 
-        return redirect(url_for('homePage'))
+        return render_template('confirmed.html')
 
     return render_template('modifyUser.html')
 

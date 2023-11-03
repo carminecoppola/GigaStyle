@@ -286,8 +286,6 @@ def modifyUser():
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
         db.utenti.update_one({"email": user}, {"$set": {"gender": gender}})
 
-        session['user']['firs_name'] = first_name
-
         return redirect(url_for('home'))
 
     user_data = db.utenti.find_one({"email": session['user']['email']})

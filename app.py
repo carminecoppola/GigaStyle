@@ -275,12 +275,12 @@ def delete(booking_id):
 
 @app.route('/modifyUser')
 def modify():
-    render_template('modifyUseer.html')
+    return render_template('modifyUser.html')
 
 
 @app.route('/modifyPrice')
 def modifyPrice():
-    render_template('modifyPrice.html')
+    return render_template('modifyPrice.html')
 
 
 if __name__ == '__main__':

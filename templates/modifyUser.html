@@ -35,11 +35,7 @@
                                                    style="width: 100%;" value="{{ session['user']['email'] }}">
                                         </div>
 
-                                        <div class="col-lg-6 col-12">
-                                            <label for="password" style="color: white">Password</label>
-                                            <input type="password" name="password" id="password" class="form-control"
-                                                   style="width: 100%;" value="{{ session['user']['password'] }}">
-                                        </div>
+
 
                                         <div class="col-lg-6 col-12">
                                             <label for="phone" style="color: white">Cellular</label>
@@ -50,7 +46,7 @@
                                         <div class="col-lg-6 col-12">
                                             <label for="gender" style="color: white">Gender</label>
                                             <select class="form-control" name="gender" id="gender" style="width: 100%;">
-                                                <option value="">--select--</option>
+                                                <option value="{{ session['user']['gender'] }}">--select--</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                                 <option value="Other">Other</option>

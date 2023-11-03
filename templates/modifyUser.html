@@ -16,6 +16,7 @@
                                 </div>
 
                                 <div class="booking-form-body">
+                                    {% if session['user'] %}
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
                                             <label for="first_name" style="color: white">First Name</label>
@@ -61,6 +62,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </form>
                         </div>

@@ -361,7 +361,7 @@ def viewEmployees(type):
 
 @app.route('/modifyEmployees/<string:email>', methods=['GET', 'POST'])
 def modifyEmployees(email):
-    cursor = db.utenti.find_one({"email": email})
+    cursor = db.utenti.find({"email": email})
     employe = {}
     for doc in cursor:
         employe[str(doc['_id'])] = {

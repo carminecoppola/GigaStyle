@@ -351,6 +351,7 @@ def viewEmployees(type):
             "email": doc.get("email"),
             "first_name": doc.get("first_name"),
             "role": doc.get("role"),
+            "salary": doc.get("salary"),
         }
     if type == "barber":
         return render_template('viewB.html', cursor=employees)

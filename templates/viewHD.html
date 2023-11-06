@@ -23,9 +23,8 @@
                         <td>{{ employees_data.email }}</td>
                         <td>{{ employees_data.role }}</td>
                         <td>{{ employees_data.salary}}</td>
-                        <div class="text-center mt-2">
-                            <a href="" class="text-secondary" style="color: #8f1616!important;">Modify</a>
-                        </div>
+                        <td> <a href="modifyEmployees/{{ employees_data.email }}" class="text-secondary form-control" >Modify</a></td>
+
                     </tr>
                 {% endfor %}
                 </tbody>

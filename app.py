@@ -358,6 +358,7 @@ def viewEmployees(type):
     elif type == "hairdresser":
         return render_template('viewHD.html', cursor=employees)
 
+
 @app.route('/modifyEmployees/<string:type>', methods=['GET', 'POST'])
 def modifyEmployees(email):
     if request.method == 'POST':
@@ -370,7 +371,6 @@ def modifyEmployees(email):
     return render_template('modifyEmployees.html')
 
 
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
-    # per pycharm compila da terminale così flask run --host=0.0.0.0 --port=8000
+    # Per pycharm compila da terminale così flask run --host=0.0.0.0 --port=8000

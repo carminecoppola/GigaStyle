@@ -351,7 +351,7 @@ def viewEmployees(type):
             "email": doc.get("email"),
             "first_name": doc.get("first_name"),
             "role": doc.get("role"),
-            "salary": doc.get("salary"),
+            "salary": doc.get("salary")
         }
     if type == "barber":
         return render_template('viewB.html', cursor=employees)
@@ -359,18 +359,29 @@ def viewEmployees(type):
         return render_template('viewHD.html', cursor=employees)
 
 
-@app.route('/modifyEmployees/<string:type>', methods=['GET', 'POST'])
+@app.route('/modifyEmployees/<string:email>', methods=['GET', 'POST'])
 def modifyEmployees(email):
+    cursor = db.utenti.find_one({"email": email})
+    employe = {}
+    for doc in cursor:
+        employe[str(doc['_id'])] = {
+            "email": doc.get("email"),
+            "first_name": doc.get("first_name"),
+            "role": doc.get("role"),
+            "salary": doc.get("salary")
+        }
     if request.method == 'POST':
         role = request.form['role']
         salary = request.form['salary']
 
-        db.utenti.update_one({"email": email}, {"$set": {"role": role}})
-        db.utenti.update_one({"email": email}, {"$set": {"salary": salary}})
+        #db.utenti.update_one({"email": email}, {"$set": {"role": role}})
+        #db.utenti.update_one({"email": email}, {"$set": {"salary": salary}})
         return render_template('confirmed.html')
-    return render_template('modifyEmployees.html')
+
+    return render_template('modifyEmployees.html', cursor=employe)
+
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
-    # Per pycharm compila da terminale così flask run --host=0.0.0.0 --port=8000
+    # per pycharm compila da terminale così flask run --host=0.0.0.0 --port=8000

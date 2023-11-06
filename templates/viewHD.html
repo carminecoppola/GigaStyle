@@ -13,6 +13,7 @@
                     <th>Hairdressers</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Salary</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,6 +22,10 @@
                         <td>{{ employees_data.first_name }}</td>
                         <td>{{ employees_data.email }}</td>
                         <td>{{ employees_data.role }}</td>
+                        <td>{{ employees_data.salary}}</td>
+                        <div class="text-center mt-2">
+                            <a href="" class="text-secondary" style="color: #8f1616!important;">Modify</a>
+                        </div>
                     </tr>
                 {% endfor %}
                 </tbody>

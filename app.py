@@ -361,10 +361,15 @@ def viewEmployees(type):
 @app.route('/modifyEmployees/<string:type>', methods=['GET', 'POST'])
 def modifyEmployees(email):
     if request.method == 'POST':
+        role = request.form['role']
         salary = request.form['salary']
+
+        db.utenti.update_one({"email": email}, {"$set": {"role": role}})
         db.utenti.update_one({"email": email}, {"$set": {"salary": salary}})
         return render_template('confirmed.html')
-    return render_template('modifyUser.html')
+    return render_template('modifyEmployees.html')
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
     # per pycharm compila da terminale così flask run --host=0.0.0.0 --port=8000

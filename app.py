@@ -374,12 +374,11 @@ def modifyEmployees(email):
         role = request.form['role']
         salary = request.form['salary']
 
-        #db.utenti.update_one({"email": email}, {"$set": {"role": role}})
-        #db.utenti.update_one({"email": email}, {"$set": {"salary": salary}})
+        # db.utenti.update_one({"email": email}, {"$set": {"role": role}})
+        # db.utenti.update_one({"email": email}, {"$set": {"salary": salary}})
         return render_template('confirmed.html')
 
     return render_template('modifyEmployees.html', cursor=employe)
-
 
 
 if __name__ == '__main__':

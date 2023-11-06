@@ -15,18 +15,18 @@
                                 </div>
 
                                 <div class="booking-form-body">
-                                    {% if session['user'] %}
+                                    {% for employe_id, employe_data in cursor.items() %}
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
                                             <label for="first_name" style="color: white">First Name</label>
                                             <input type="text" name="first_name" id="first_name" class="form-control"
-                                                   style="width: 100%;" value="{{ session['user']['first_name'] }}">
+                                                   style="width: 100%;" value="{{ employe_data.first_name }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">
                                             <label for="email" style="color: white">E-mail</label>
                                             <input type="email" name="email" id="email" class="form-control"
-                                                   style="width: 100%;" value="{{ session['user']['email'] }}">
+                                                   style="width: 100%;" value="{{ employe_data.email }}">
                                         </div>
 
 
@@ -34,13 +34,13 @@
                                         <div class="col-lg-6 col-12">
                                             <label for="role" style="color: white">Role</label>
                                             <input type="text" class="form-control" name="role" id="role"
-                                                   style="width: 100%;" value="{{ session['user']['role'] }}">
+                                                   style="width: 100%;" value="{{ employe_data.role }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">
                                             <label for="gender" style="color: white">Salary</label>
                                             <input type="number" class="form-control" name="salary" id="salary"
-                                                   style="width: 100%;" value="{{ session['user']['salary'] }}">
+                                                   style="width: 100%;" value="{{ employe_data.salary }}">
                                         </div>
 
                                         <div class="col-12 mt-2">
@@ -48,7 +48,7 @@
                                                    style="width: 100%;">
                                         </div>
                                     </div>
-                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </form>
                         </div>

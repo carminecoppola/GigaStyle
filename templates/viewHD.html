@@ -23,8 +23,7 @@
                         <td>{{ employees_data.email }}</td>
                         <td>{{ employees_data.role }}</td>
                         <td>{{ employees_data.salary}}</td>
-                        <td> <a href="modifyEmployees/{{ employees_data.email }}" class="text-secondary form-control" >Modify</a></td>
-
+                        <td> <a class="text-secondary form-control" href={{ url_for('modifyEmployees', email=employees_data.email) }}> Modify </a> </td>
                     </tr>
                 {% endfor %}
                 </tbody>

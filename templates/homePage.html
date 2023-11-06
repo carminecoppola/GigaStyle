@@ -112,10 +112,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: white!important;">
                             <ul id="cursor">
                                 {% for booking_id, booking_data in cursor.items() %}
-                                    <li style="background-color: #96908b; padding: 10px; margin: 20px 0; border-radius: 5px; display: flex; justify-content: space-between; align-items: center;">
+                                    <li style="background-color: #cdcdcd; padding: 10px; margin: 20px 0; border-radius: 5px; display: flex; justify-content: space-between; align-items: center;">
                                         <div>
                                             <h4 class="text-black" style="font-size: small!important;">
                                                 <i class="bi bi-calendar2-week"></i> {{ booking_data.date }}

@@ -120,9 +120,6 @@ This project is licensed under the MIT License. For more details, please refer t
 
 Thanks to the Flask community for providing a powerful web framework. This project was inspired by the need for a convenient barber and hairdresser booking system.
 
-## Screenshot
-
-![HomePage](https://github.com/carminecoppola/GigaStyle/assets/74236426/a50a6fc7-12d6-4033-acf0-adf38ee9c791)
 
 ## Questions or Assistance
 

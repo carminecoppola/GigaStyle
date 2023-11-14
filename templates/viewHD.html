@@ -22,8 +22,9 @@
                         <td>{{ employees_data.first_name }}</td>
                         <td>{{ employees_data.email }}</td>
                         <td>{{ employees_data.role }}</td>
-                        <td>{{ employees_data.salary}}</td>
-                        <td> <a class="text-secondary form-control" href={{ url_for('modifyEmployees', email=employees_data.email) }}> Modify </a> </td>
+                        <td>{{ employees_data.salary }}</td>
+                        <td><a class="text-secondary form-control"
+                               href={{ url_for('modifyEmployees', email=employees_data.email) }}> Modify </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

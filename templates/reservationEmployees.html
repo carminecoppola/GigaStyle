@@ -17,7 +17,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for booking_id, booking_data in cursor.items() %}
+                {% for booking_id, booking_data in cursor.items()|reverse %}
                     <tr>
                         <td>{{ booking_data.full_name }}</td>
                         <td>{{ booking_data.date }}</td>

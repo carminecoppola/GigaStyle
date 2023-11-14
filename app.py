@@ -1,33 +1,58 @@
 import json
+import os.path
+import pathlib
+import random
 import secrets
+import string
 
 import bcrypt
+import cachecontrol
+import requests
 from bson import json_util, ObjectId
-from flask import Flask, request, render_template, redirect, url_for, session, flash
+from flask import Flask, request, render_template, redirect, url_for, session, flash, abort
+from google.auth.transport.requests import Request
+from google.oauth2 import id_token
+from google_auth_oauthlib.flow import Flow
 from pymongo import MongoClient
 
-app = Flask(__name__)
+# Configure Flask app
+app = Flask("GigaStyle")
 app.secret_key = secrets.token_hex(16)
 
+# Connect to MongoDB database
 uri = "mongodb+srv://miniello:pericle@cluster0.1lorjnu.mongodb.net/?retryWrites=true&w=majority"
-
-# Create a new client and connect to the server
 client = MongoClient(uri)
 
-# Send a ping to confirm a successful connection
+# Set up an insecure transport environment for development purposes
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+# Configure OAuth credentials for Google authentication
+GOOGLE_CLIENT_ID = "374607879800-i650u9di0huvkvp0oh85nbohavlm53gi.apps.googleusercontent.com"
+client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
+
+# Configuration of the Flow object for OAuth authentication
+flow = Flow.from_client_secrets_file(
+    client_secrets_file=client_secrets_file,
+    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email",
+            "openid"],
+    redirect_uri="http://127.0.0.1:5000/callback"
+)
+
+# Check MongoDB database connection
 try:
     client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
     print(e)
 
+# Select MongoDB database and collections
 db = client['utenti']
 collection = db['utenti']
 collection2 = db['booking']
 collection3 = db['services']
 
 
-# Routes - credo che qui sia inutile il controllo sulle sessioni
+# Function for the main page
 @app.route('/')
 def index():
     session['visited'] = True
@@ -56,6 +81,7 @@ def index():
     return render_template('index.html', cursor1=bSaloon, cursor2=hSaloon)
 
 
+# Function for user registration
 @app.route('/signup', methods=['GET', 'POST'])
 def signUp():
     # Verifica se la richiesta è di tipo POST, ovvero se è stata inviata una form
@@ -97,6 +123,7 @@ def signUp():
     return render_template('signup.html')
 
 
+# Function for User login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     # Verifica se la richiesta è di tipo POST, ovvero se è stata inviata una form
@@ -144,6 +171,74 @@ def login():
     return render_template('login.html')
 
 
+# Function for Google login
+@app.route('/loginGoogle')
+def loginGoogle():
+    authorization_url, state = flow.authorization_url()
+    session["state"] = state
+    return redirect(authorization_url)
+
+
+# Callback after Google authentication
+@app.route('/callback')
+def callback():
+    flow.fetch_token(authorization_response=request.url)
+
+    if not session['state'] == request.args['state']:
+        abort(500)  # Stato non corrispondente
+
+    credentials = flow.credentials
+    request_session = requests.Session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = Request(session=cached_session)
+
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials.id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID
+    )
+
+    session["google_id"] = id_info.get("sub")
+    session["name"] = id_info.get("name")
+    name = id_info.get("name")
+
+    # Estrai l'email dall'ID token di Google
+    email = id_info.get("email")
+    possible_characters = string.ascii_letters + string.digits + string.punctuation + string.whitespace
+
+    user = collection.find_one({'email': email})
+
+    if user:
+        session['user'] = json.loads(json_util.dumps(user))
+        url = request.referrer
+
+        return redirect(url_for('home', email=email))
+    # Se l'utente esiste
+    else:
+        password = ''.join(random.choice(possible_characters) for _ in range(12))
+        # Crea un hash della password prima di archiviarlo nel database per migliorare la sicurezza delle password
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+        session["user"] = True
+
+        # Crea un nuovo utente con i dati forniti
+        new_user = {
+            'email': email,
+            'password': hashed_password,
+            'first_name': id_info.get("name"),
+            'last_name': id_info.get("last_name", ""),
+            'phone': id_info.get("phone", ""),
+            'gender': id_info.get("gender", "")
+        }
+        collection.insert_one(new_user)
+
+        # Imposta la sessione con l'email dell'utente dopo la registrazione
+        session['user'] = json.loads(json_util.dumps(new_user))
+
+        return redirect(url_for('home', email=email))
+
+
+# Admin page
 @app.route('/admin')
 def admin():
     if 'user' in session:
@@ -155,6 +250,7 @@ def admin():
         return redirect(url_for('login'))
 
 
+# Employees page
 @app.route('/employees')
 def employees():
     if 'user' in session:
@@ -163,12 +259,14 @@ def employees():
         return redirect(url_for('login'))
 
 
+# Function for user logout
 @app.route('/logout')
 def logout():
     session.pop('user', None)
     return redirect(url_for('index'))
 
 
+# Route for choosing a service
 @app.route('/choose')
 def choose():
     if 'user' in session:
@@ -177,6 +275,7 @@ def choose():
         return redirect(url_for('login'))
 
 
+# Route for handling reservations based on service type
 @app.route('/reservation/<string:type>', methods=['GET', 'POST'])
 def reservation(type):
     if request.method == 'POST':
@@ -200,6 +299,7 @@ def reservation(type):
             return render_template('reservationHairDresser.html')
 
 
+# Route for viewing reservations made by employees
 @app.route('/reservationEmployees')
 def reservationEmployees():
     cursor = db.booking.find({"employe": session['user']['first_name']})
@@ -217,6 +317,7 @@ def reservationEmployees():
     return render_template('reservationEmployees.html', cursor=reservation)
 
 
+# Route for the user's home page
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if 'user' in session:
@@ -244,11 +345,13 @@ def home():
         return render_template('login.html')
 
 
+# Route for confirming a reservation
 @app.route('/confirmed')
 def confirmed():
     return render_template('confirmed.html')
 
 
+# Route for deleting a reservation
 @app.route('/delete/<string:booking_id>', methods=['GET'])
 def delete(booking_id):
     booking_id_object = ObjectId(booking_id)
@@ -257,22 +360,19 @@ def delete(booking_id):
     return render_template('delete.html')
 
 
+# Route for modifying user information
 @app.route('/modifyUser', methods=['GET', 'POST'])
 def modifyUser():
     if request.method == 'POST':
+        # Update user information in the database
         user = session['user']['email']
         email = request.form['email']
-        # password = request.form['password']
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         phone = request.form['phone']
         gender = request.form['gender']
 
-        # crea hash della password
-        # hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
         db.utenti.update_one({"email": user}, {"$set": {"email": email}})
-        # db.utenti.update_one({"email": user}, {"$set": {"password": hashed_password}})
         db.utenti.update_one({"email": user}, {"$set": {"first_name": first_name}})
         db.utenti.update_one({"email": user}, {"$set": {"last_name": last_name}})
         db.utenti.update_one({"email": user}, {"$set": {"phone": phone}})
@@ -280,12 +380,13 @@ def modifyUser():
 
         return redirect(url_for('home'))
 
-    # aggiorna i dati
+    # Update user data for display
     user = db.utenti.find_one({"email": session['user']['email']})
     session['user'] = json.loads(json_util.dumps(user))
     return render_template('modifyUser.html')
 
 
+# Route for modifying service prices
 @app.route('/modifyPrice/<string:type>', methods=['GET', 'POST'])
 def modifyPrice(type):
     cursor = db.services.find({"type": type})
@@ -342,6 +443,7 @@ def modifyPrice(type):
         return render_template('modifyPriceHD.html', cursor=prices)
 
 
+# Route for viewing and modifying employee information
 @app.route('/viewEmployees/<string:type>', methods=['GET', 'POST'])
 def viewEmployees(type):
     cursor = db.utenti.find({"role": type})
@@ -359,6 +461,7 @@ def viewEmployees(type):
         return render_template('viewHD.html', cursor=employees)
 
 
+# Route for modifying employee information
 @app.route('/modifyEmployees/<string:email>', methods=['GET', 'POST'])
 def modifyEmployees(email):
     cursor = db.utenti.find({"email": email})
@@ -381,6 +484,7 @@ def modifyEmployees(email):
     return render_template('modifyEmployees.html', cursor=employe)
 
 
+# Run the Flask app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
-    # per pycharm compila da terminale così flask run --host=0.0.0.0 --port=8000
+    # For PyCharm, run from the terminal: flask run --host=0.0.0.0 --port=8000

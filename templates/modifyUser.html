@@ -41,7 +41,7 @@
                                         <div class="col-lg-6 col-12">
                                             <label for="phone" style="color: white">Cellular</label>
                                             <input type="tel" class="form-control" name="phone" id="phone"
-                                                   style="width: 100%;" pattern="[0-9]{10}" value="{{ session['user']['phone'] }}">
+                                                   style="width: 100%;" maxlength="10" pattern="[0-9]{10}" value="{{ session['user']['phone'] }}">
                                         </div>
 
                                         <div class="col-lg-6 col-12">

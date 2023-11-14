@@ -1,0 +1,9 @@
+{
+    "name": "GigaStyle",
+    "short_name": "GS",
+    "lang": "en-US",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#E9E9E7A5",
+    "theme_color": "#E9E9E7A5"
+  }

@@ -99,8 +99,9 @@ Here you can watch a preview of **_GigaStyle_**:
 
 Here you can see the GigaStyle proposal and the final presentation:
 
- - Proposal:
- - Final Presentation:
+- [Proposal-GigaStyle.pdf](https://github.com/carminecoppola/GigaStyle/files/13412028/Proposal-GigaStyle.pdf)
+
+- 
 
 ## License
 

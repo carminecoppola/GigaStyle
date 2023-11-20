@@ -101,7 +101,8 @@ Here you can see the GigaStyle proposal and the final presentation:
 
 - [Proposal-GigaStyle.pdf](https://github.com/carminecoppola/GigaStyle/files/13412028/Proposal-GigaStyle.pdf)
 
-- 
+- [FinalPresentation.pdf](https://github.com/carminecoppola/GigaStyle/files/13412138/FinalPresentation.pdf)
+
 
 ## License
 

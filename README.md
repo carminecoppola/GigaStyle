@@ -126,8 +126,9 @@ Thanks to the Flask community for providing a powerful web framework. This proje
 
 ## Questions or Assistance
 
-If you have questions or need assistance, feel free to contact us at [carminecoppola917@gmail.com](mailto:your@email.com).
-
+If you have questions or need assistance, feel free to contact us at:
+    - [carminecoppola917@gmail.com](mailto:your@email.com)
+    
 ---
 
 **Note:** Please make sure your virtual environment is activated when running commands like `flask run` and `flask init-db`.

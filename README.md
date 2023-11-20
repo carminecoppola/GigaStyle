@@ -70,13 +70,16 @@ Follow these steps to set up and run the GigaStyle project:
 
 The application will be available at `http://localhost:5000` in your web browser.
 
-9. (Optional) It is possible to run GigaStyle through a server:
+9. (Optional) To run the GigaStyle application via remote access:
 
     ```
     flask run --host=0.0.0.0 --port=8000
     ```
 
-    Afterwards, GigaStyle can be used on devices that are on the same subnet.
+    Starts the Flask server by making the GigaStyle application accessible on all IP addresses on the local machine and network.
+
+   - **_host=0.0.0.0:_** Specifies that the Flask server must be available on all IP addresses on the local machine and network. In this way, the application will be accessible from other devices on the same network.
+   - **_port=8000:_** Specifies the port on which the Flask server will be listening. In your case, the application will be accessible at the IP address of the machine followed by port 8000 (for example, http://192.168.1.2:8000).
 
 ## Project Structure
 

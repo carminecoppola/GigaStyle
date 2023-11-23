@@ -104,7 +104,9 @@ If you would like to contribute to this project, please follow the guidelines in
 
 ## Preview
 
-Here you can watch a preview of **_GigaStyle_**:
+Is it possible to see a short presentation of **GigaStyle** with the features explained:
+
+https://github.com/carminecoppola/GigaStyle/assets/74236426/24c2cb93-18ad-4531-b9aa-b6a9c2a52ec0
 
 ## Presentations
 
